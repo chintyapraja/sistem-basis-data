@@ -3636,6 +3636,230 @@ footer {
   margin: 10px 0 0;
 }
 
+/* Pertemuan 6: ER Model */
+.basic-erd-row {
+  display: grid;
+  grid-template-columns: minmax(190px, 1fr) minmax(260px, 1.35fr) minmax(
+      190px,
+      1fr
+    );
+  gap: 18px;
+  align-items: center;
+  min-width: 760px;
+  padding: 32px 20px;
+}
+.meeting-six .lesson-table th,
+.meeting-six .lesson-table td {
+  min-width: 110px;
+  white-space: normal;
+  line-height: 1.45;
+}
+.meeting-six .lesson-table table {
+  min-width: 680px;
+  table-layout: fixed;
+}
+.meeting-six .lesson-table th:first-child,
+.meeting-six .lesson-table td:first-child {
+  min-width: 125px;
+}
+.relationship-connector {
+  display: grid;
+  grid-template-columns: minmax(35px, 1fr) auto minmax(35px, 1fr);
+  gap: 8px;
+  align-items: center;
+  text-align: center;
+}
+.relationship-connector > div {
+  position: relative;
+  display: flex;
+  min-width: 175px;
+  min-height: 150px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+.relationship-connector > div::before {
+  content: '';
+  position: absolute;
+  z-index: 0;
+  width: 108px;
+  height: 108px;
+  border: 2px solid #9b3340;
+  background: #fff3f4;
+  transform: rotate(45deg);
+}
+.relationship-connector > div > * {
+  position: relative;
+  z-index: 1;
+  display: block;
+}
+.relationship-connector b {
+  max-width: 116px;
+  color: #842d3a;
+  font-size: 14px;
+  line-height: 1.2;
+}
+.relationship-connector small {
+  max-width: 108px;
+  margin: 7px auto 0;
+  color: var(--muted);
+  font-size: 11px;
+  line-height: 1.25;
+}
+.connector-line {
+  height: 2px;
+  background: #9b3340;
+}
+.erd-notation-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 14px;
+  margin: 25px 0 38px;
+}
+.erd-notation-grid article {
+  display: grid;
+  min-height: 190px;
+  place-items: center;
+  align-content: center;
+  padding: 20px;
+  border: 1px solid var(--line);
+  background: #fbfcfd;
+  text-align: center;
+}
+.erd-notation-grid article > b {
+  margin-top: 20px;
+  color: var(--blue-deep);
+}
+.erd-notation-grid article > p {
+  margin: 5px 0 0;
+  color: var(--muted);
+  font-size: 13px;
+}
+.notation-entity,
+.entity-reference {
+  display: grid;
+  min-width: 145px;
+  min-height: 58px;
+  place-items: center;
+  padding: 12px 18px;
+  border: 2px solid var(--blue);
+  background: white;
+  color: var(--blue-deep);
+  font-weight: 850;
+  text-align: center;
+}
+.notation-attribute {
+  display: grid;
+  min-width: 118px;
+  min-height: 58px;
+  place-items: center;
+  padding: 10px 18px;
+  border: 2px solid #287151;
+  border-radius: 50%;
+  background: #eff9f3;
+  color: #1d5940;
+  font-weight: 750;
+}
+.notation-key {
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 4px;
+}
+.notation-relationship {
+  position: relative;
+  display: grid;
+  min-width: 145px;
+  min-height: 125px;
+  place-items: center;
+  padding: 12px;
+  color: #842d3a;
+  font-size: 13px;
+  font-weight: 850;
+}
+.notation-relationship::before {
+  content: '';
+  position: absolute;
+  width: 92px;
+  height: 92px;
+  border: 2px solid #9b3340;
+  background: #fff3f4;
+  transform: rotate(45deg);
+}
+.notation-relationship > span {
+  position: relative;
+  z-index: 1;
+}
+.notation-example {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 780px;
+  padding: 65px 25px 35px;
+}
+.notation-example .notation-attribute {
+  align-self: flex-start;
+}
+.notation-stem {
+  width: 45px;
+  height: 2px;
+  background: var(--blue);
+  transform: rotate(35deg);
+}
+.notation-stem.horizontal {
+  transform: none;
+}
+.hospital-erd,
+.krs-erd {
+  min-width: 800px;
+  padding: 15px 0 25px;
+}
+.hospital-erd .basic-erd-row,
+.krs-erd .basic-erd-row {
+  padding-block: 20px;
+}
+.basic-erd-row.second-row {
+  border-top: 1px dashed var(--line);
+}
+.entity-reference {
+  min-height: 80px;
+  background: var(--blue-soft);
+}
+.independent-case-list {
+  display: grid;
+  gap: 16px;
+  margin: 28px 0;
+}
+.independent-case-list > article {
+  display: grid;
+  grid-template-columns: 58px minmax(0, 1fr);
+  gap: 20px;
+  align-items: start;
+  padding: 24px;
+  border: 1px solid var(--line);
+  border-left: 5px solid var(--blue);
+  background: #fbfcfd;
+}
+.independent-case-list > article > span {
+  display: grid;
+  width: 46px;
+  height: 46px;
+  place-items: center;
+  border-radius: 50%;
+  color: white;
+  background: var(--blue);
+  font-size: 14px;
+  font-weight: 850;
+}
+.independent-case-list h3 {
+  margin: 0 0 8px;
+}
+.independent-case-list p {
+  margin: 0;
+  color: #43545f;
+  line-height: 1.65;
+}
+
 /* Pertemuan 8–10: exam review and ER-to-table mapping */
 .exam-topic-grid {
   display: grid;
@@ -4063,6 +4287,14 @@ footer {
   .dependency-panel {
     grid-template-columns: 1fr;
   }
+  .erd-notation-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .independent-case-list > article {
+    grid-template-columns: 46px minmax(0, 1fr);
+    gap: 14px;
+    padding: 18px;
+  }
 }
 @media (max-width: 520px) {
   .meeting-sections ol {
@@ -4077,6 +4309,9 @@ footer {
   .numbered-section::before {
     right: 0;
     font-size: 11px;
+  }
+  .erd-notation-grid {
+    grid-template-columns: 1fr;
   }
 }
 @media print {
@@ -4106,7 +4341,7 @@ footer {
     color: inherit;
   }
 }
-</style></head><body><a class="skip-link" href="#materi">Langsung ke materi</a><aside class="sidebar"><a class="brand" href="../">Sistem<br/>Basis Data</a><p class="side-meta">Bahan kuliah teori</p><p class="teacher-note">Ni Putu Praja Chintya<br/>bersama Ir. Waljiyanto, M.Sc.</p><nav class="semester-nav" aria-label="Navigasi pertemuan"><p>Pertemuan 1–16</p><ol><li><a href="../pertemuan-1/" title="Pertemuan 1: Pengertian dan kebutuhan basis data"><b>1</b><span>Pengertian dan kebutuhan basis data</span></a></li><li><a href="../pertemuan-2/" title="Pertemuan 2: Karakteristik basis data dan pengelolaannya"><b>2</b><span>Karakteristik basis data dan pengelolaannya</span></a></li><li><a href="../pertemuan-3/" title="Pertemuan 3: Struktur tabel, identitas tabel, dan key"><b>3</b><span>Struktur tabel, identitas tabel, dan key</span></a></li><li><a href="../" title="Pertemuan 4: Determinan, ketergantungan fungsional, dan 1NF"><b>4</b><span>Determinan, ketergantungan fungsional, dan 1NF</span></a></li><li><a href="../pertemuan-5/" title="Pertemuan 5: Normalisasi 2NF dan 3NF"><b>5</b><span>Normalisasi 2NF dan 3NF</span></a></li><li><a href="../pertemuan-6/" title="Pertemuan 6: ER Model: entitas, atribut, dan relationship"><b>6</b><span>ER Model: entitas, atribut, dan relationship</span></a></li><li><a href="../pertemuan-7/" title="Pertemuan 7: Derajat, kardinalitas, dan partisipasi hubungan"><b>7</b><span>Derajat, kardinalitas, dan partisipasi hubungan</span></a></li><li><a href="../pertemuan-8/" aria-current="page" title="Pertemuan 8: Ujian Tengah Semester"><b>8</b><span>Ujian Tengah Semester</span></a></li><li><a href="../pertemuan-9/" title="Pertemuan 9: ER Model menjadi tabel: hubungan 1:1 dan 1:N"><b>9</b><span>ER Model menjadi tabel: hubungan 1:1 dan 1:N</span></a></li><li><a href="../pertemuan-10/" title="Pertemuan 10: Hubungan M:N dan atribut relationship"><b>10</b><span>Hubungan M:N dan atribut relationship</span></a></li><li><a href="../pertemuan-11/" title="Pertemuan 11: Hubungan berjenjang dan rekursif"><b>11</b><span>Hubungan berjenjang dan rekursif</span></a></li><li><a href="../pertemuan-12/" title="Pertemuan 12: Aljabar relasional"><b>12</b><span>Aljabar relasional</span></a></li><li><a href="../pertemuan-13/" title="Pertemuan 13: SQL: memilih dan menggabungkan data"><b>13</b><span>SQL: memilih dan menggabungkan data</span></a></li><li><a href="../pertemuan-14/" title="Pertemuan 14: Fungsi agregat dan pengelompokan data"><b>14</b><span>Fungsi agregat dan pengelompokan data</span></a></li><li><a href="../pertemuan-15/" title="Pertemuan 15: Subquery dan latihan kasus"><b>15</b><span>Subquery dan latihan kasus</span></a></li><li><a href="../#pertemuan-16" title="Pertemuan 16: Ujian Akhir Semester"><b>16</b><span>Ujian Akhir Semester</span></a></li></ol></nav></aside><div class="page-shell meeting-exam" id="top"><main id="materi"><header class="lesson-header"><p class="eyebrow">Pertemuan 8 · Persiapan UTS · Pertemuan 1–7</p><h1>Rangkuman dan Latihan Ujian Tengah Semester</h1><p class="lead">Meninjau konsep dasar basis data, struktur tabel, normalisasi, ER Model, serta aturan relationship melalui contoh pembahasan dan latihan terpadu.</p><dl class="class-meta"><div><dt>Cakupan</dt><dd>Pertemuan 1–7</dd></div><div><dt>Bentuk latihan</dt><dd>Konsep, analisis tabel, dan pemodelan</dd></div></dl></header><section id="cakupan" class="lesson-section"><h2>Cakupan Ujian Tengah Semester</h2><p class="section-intro">UTS mengukur kemampuan menjelaskan konsep, menganalisis masalah pada tabel, dan menyusun model data berdasarkan aturan sistem.</p><ol class="wide-number-list learning-outcomes"><li>Menjelaskan istilah dan fungsi dasar basis data serta DBMS.</li><li>Mengidentifikasi tabel, atribut, domain, record, key, dan NULL.</li><li>Menganalisis ketergantungan fungsional dan normalisasi sampai 3NF.</li><li>Menyusun ER Model berdasarkan entitas, atribut, dan relationship.</li><li>Menentukan derajat, kardinalitas, partisipasi, dan notasi min–max.</li></ol></section><section id="peta" class="lesson-section numbered-section" data-section="01" data-section-title="PETA MATERI"><h2>Hubungan materi Pertemuan 1–7</h2><p class="section-intro">Setiap materi membentuk urutan dari pemahaman data sampai penyusunan model konseptual.</p><div class="exam-topic-grid"><article><span>1</span><b>Dasar basis data</b><p>Data, informasi, basis data, dan kebutuhan pengelolaan.</p></article><article><span>2</span><b>DBMS</b><p>Karakteristik basis data, fungsi DBMS, serta skema dan instance.</p></article><article><span>3</span><b>Struktur tabel</b><p>Atribut, record, domain, key, foreign key, dan NULL.</p></article><article><span>4</span><b>1NF</b><p>Determinan, ketergantungan fungsional, repeating group, dan 1NF.</p></article><article><span>5</span><b>2NF dan 3NF</b><p>Ketergantungan parsial, transitif, dekomposisi, dan anomali.</p></article><article><span>6</span><b>ER Model</b><p>Entitas, instance, atribut, key attribute, dan relationship.</p></article><article><span>7</span><b>Aturan relationship</b><p>Derajat, kardinalitas, partisipasi, dan min–max.</p></article></div></section><section id="strategi" class="lesson-section numbered-section" data-section="02" data-section-title="STRATEGI MENJAWAB"><h2>Urutan analisis soal</h2><ol class="wide-number-list question-list"><li><b>Baca aturan</b><span>Tandai objek, fakta, batasan, dan kata yang menunjukkan jumlah.</span></li><li><b>Tentukan konsep</b><span>Pastikan soal meminta analisis tabel, normalisasi, atau ER Model.</span></li><li><b>Tuliskan alasan</b><span>Jawaban tidak cukup berupa istilah; jelaskan bukti dari data atau narasi.</span></li><li><b>Periksa konsistensi</b><span>Uji key, ketergantungan, dan aturan dari kedua arah menggunakan contoh instance.</span></li></ol></section><section id="konsep" class="lesson-section numbered-section" data-section="03" data-section-title="KONSEP DASAR"><h2>Contoh soal konsep dasar</h2><div class="worked-answer"><h3>Soal</h3><p>Jelaskan hubungan antara basis data dan DBMS.</p><h3>Pembahasan</h3><p><b>Basis data</b> merupakan kumpulan data yang saling berkaitan dan disusun secara sistematis. <b>DBMS</b> atau <i>Database Management System</i> merupakan perangkat lunak untuk mendefinisikan struktur, menyimpan, mengubah, mencari, mengamankan, dan memulihkan data. Basis data adalah data yang dikelola, sedangkan DBMS adalah sistem pengelolanya.</p></div></section><section id="tabel" class="lesson-section numbered-section" data-section="04" data-section-title="TABEL, KEY, DAN NULL"><h2>Contoh analisis struktur tabel</h2><div class="interactive-illustration " aria-label="Ilustrasi interaktif: Tabel MAHASISWA"><div class="illustration-toolbar" role="toolbar" aria-label="Alat untuk Tabel MAHASISWA"><div class="zoom-tools" aria-label="Pengaturan ukuran"><button data-action="zoom-out" type="button" title="Perkecil ilustrasi"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-zoom-out" aria-hidden="true"><circle cx="11" cy="11" r="8"></circle><line x1="21" x2="16.65" y1="21" y2="16.65"></line><line x1="8" x2="14" y1="11" y2="11"></line></svg><span>Perkecil</span></button><button data-action="zoom-reset" class="zoom-value" type="button" title="Kembalikan ke ukuran 100%">100%</button><button data-action="zoom-in" type="button" title="Perbesar ilustrasi"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-zoom-in" aria-hidden="true"><circle cx="11" cy="11" r="8"></circle><line x1="21" x2="16.65" y1="21" y2="16.65"></line><line x1="11" x2="11" y1="8" y2="14"></line><line x1="8" x2="14" y1="11" y2="11"></line></svg><span>Perbesar</span></button></div><div class="drawing-tools" aria-label="Alat anotasi"><button data-action="pen" class="" type="button" aria-pressed="false" title="Aktifkan pena"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-pen-line" aria-hidden="true"><path d="M13 21h8"></path><path d="M21.174 6.812a1 1 0 0 0-3.986-3.987L3.842 16.174a2 2 0 0 0-.5.83l-1.321 4.352a.5.5 0 0 0 .623.622l4.353-1.32a2 2 0 0 0 .83-.497z"></path></svg><span>Pena</span></button><button data-action="eraser" class="" type="button" aria-pressed="false" disabled="" title="Pilih coretan yang akan dihapus"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-eraser" aria-hidden="true"><path d="M21 21H8a2 2 0 0 1-1.42-.587l-3.994-3.999a2 2 0 0 1 0-2.828l10-10a2 2 0 0 1 2.829 0l5.999 6a2 2 0 0 1 0 2.828L12.834 21"></path><path d="m5.082 11.09 8.828 8.828"></path></svg><span>Penghapus</span></button><button data-action="undo" type="button" disabled="" title="Batalkan coretan terakhir"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-rotate-ccw" aria-hidden="true"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"></path><path d="M3 3v5h5"></path></svg><span>Urungkan</span></button><button data-action="clear" type="button" disabled="" title="Hapus semua coretan"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-trash2 lucide-trash-2" aria-hidden="true"><path d="M10 11v6"></path><path d="M14 11v6"></path><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6"></path><path d="M3 6h18"></path><path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg><span>Bersihkan</span></button></div></div><div class="illustration-viewport"><div class="illustration-stage"><div class="illustration-zoom-layer" style="zoom:1"><div class="illustration-content"><figure class="lesson-table "><figcaption>Tabel MAHASISWA</figcaption><div class="table-wrap"><table><thead><tr><th>NIM</th><th>Email</th><th>Nama</th><th>Tahun Masuk</th><th>Nomor Telepon</th></tr></thead><tbody><tr><td class="key-cell">24001</td><td class="">ayu@kampus.id</td><td class="">Ayu</td><td class="">2024</td><td class="">0812345678</td></tr><tr><td class="key-cell">24002</td><td class="">bima@kampus.id</td><td class="">Bima</td><td class="">2024</td><td class="null-cell"><i>NULL</i></td></tr></tbody></table></div></figure></div><svg class="drawing-layer " viewBox="0 0 1 1" preserveAspectRatio="none" aria-label="Lapisan untuk membuat anotasi"></svg></div></div></div></div><ul class="formal-points"><li><b>Candidate key:</b> NIM dan Email karena masing-masing unik serta dapat mengidentifikasi satu mahasiswa.</li><li><b>Primary key:</b> NIM dipilih sebagai identitas utama yang stabil dan wajib terisi.</li><li><b>Domain Tahun Masuk:</b> bilangan tahun empat digit dalam rentang yang ditetapkan perguruan tinggi.</li><li><b>NULL pada Nomor Telepon:</b> nilai belum diketahui atau belum dicatat; bukan angka 0 dan bukan teks kosong.</li></ul></section><section id="normalisasi" class="lesson-section numbered-section" data-section="05" data-section-title="NORMALISASI"><h2>Contoh normalisasi sampai 3NF</h2><p class="section-intro">Diketahui KRS(NIM, NamaMahasiswa, KodeMK, NamaMK, SKS, NIDN, NamaDosen, Nilai) dengan key gabungan (NIM, KodeMK).</p><div class="dependency-panel"><p><b>NIM</b> → NamaMahasiswa</p><p><b>KodeMK</b> → NamaMK, SKS, NIDN</p><p><b>NIDN</b> → NamaDosen</p><p><b>(NIM, KodeMK)</b> → Nilai</p></div><ol class="wide-number-list question-list"><li><b>1NF</b><span>Setiap sel berisi satu nilai dan setiap baris merepresentasikan satu mahasiswa mengambil satu mata kuliah.</span></li><li><b>2NF</b><span>Pisahkan atribut yang bergantung hanya pada NIM dan hanya pada KodeMK menjadi MAHASISWA, MATA_KULIAH, dan KRS.</span></li><li><b>3NF</b><span>Pisahkan NamaDosen karena bergantung pada NIDN, bukan langsung pada KodeMK. Hasil akhir: MAHASISWA, DOSEN, MATA_KULIAH, dan KRS.</span></li></ol></section><section id="ermodel" class="lesson-section numbered-section" data-section="06" data-section-title="ER MODEL"><h2>Contoh identifikasi ER Model</h2><p class="section-intro">Aturan: “Setiap peminjaman dilakukan oleh satu anggota dan mencatat satu buku, tanggal pinjam, serta tanggal kembali.”</p><div class="comparison-grid three"><article><span>Entitas</span><b>ANGGOTA dan BUKU</b><p>Keduanya mempunyai identitas dan data yang dapat berdiri sendiri.</p></article><article><span>Relationship</span><b>PEMINJAMAN</b><p>Menghubungkan anggota dengan buku yang dipinjam.</p></article><article><span>Atribut relationship</span><b>Tanggal Pinjam, Tanggal Kembali</b><p>Nilainya menjelaskan satu kejadian peminjaman tertentu.</p></article></div></section><section id="aturan" class="lesson-section numbered-section" data-section="07" data-section-title="ATURAN RELATIONSHIP"><h2>Contoh kardinalitas dan partisipasi</h2><p class="section-intro">Aturan: “Satu program studi memiliki banyak mahasiswa. Setiap mahasiswa wajib terdaftar pada tepat satu program studi. Program studi baru boleh belum mempunyai mahasiswa.”</p><div class="interactive-illustration " aria-label="Ilustrasi interaktif: Analisis dari kedua arah"><div class="illustration-toolbar" role="toolbar" aria-label="Alat untuk Analisis dari kedua arah"><div class="zoom-tools" aria-label="Pengaturan ukuran"><button data-action="zoom-out" type="button" title="Perkecil ilustrasi"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-zoom-out" aria-hidden="true"><circle cx="11" cy="11" r="8"></circle><line x1="21" x2="16.65" y1="21" y2="16.65"></line><line x1="8" x2="14" y1="11" y2="11"></line></svg><span>Perkecil</span></button><button data-action="zoom-reset" class="zoom-value" type="button" title="Kembalikan ke ukuran 100%">100%</button><button data-action="zoom-in" type="button" title="Perbesar ilustrasi"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-zoom-in" aria-hidden="true"><circle cx="11" cy="11" r="8"></circle><line x1="21" x2="16.65" y1="21" y2="16.65"></line><line x1="11" x2="11" y1="8" y2="14"></line><line x1="8" x2="14" y1="11" y2="11"></line></svg><span>Perbesar</span></button></div><div class="drawing-tools" aria-label="Alat anotasi"><button data-action="pen" class="" type="button" aria-pressed="false" title="Aktifkan pena"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-pen-line" aria-hidden="true"><path d="M13 21h8"></path><path d="M21.174 6.812a1 1 0 0 0-3.986-3.987L3.842 16.174a2 2 0 0 0-.5.83l-1.321 4.352a.5.5 0 0 0 .623.622l4.353-1.32a2 2 0 0 0 .83-.497z"></path></svg><span>Pena</span></button><button data-action="eraser" class="" type="button" aria-pressed="false" disabled="" title="Pilih coretan yang akan dihapus"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-eraser" aria-hidden="true"><path d="M21 21H8a2 2 0 0 1-1.42-.587l-3.994-3.999a2 2 0 0 1 0-2.828l10-10a2 2 0 0 1 2.829 0l5.999 6a2 2 0 0 1 0 2.828L12.834 21"></path><path d="m5.082 11.09 8.828 8.828"></path></svg><span>Penghapus</span></button><button data-action="undo" type="button" disabled="" title="Batalkan coretan terakhir"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-rotate-ccw" aria-hidden="true"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"></path><path d="M3 3v5h5"></path></svg><span>Urungkan</span></button><button data-action="clear" type="button" disabled="" title="Hapus semua coretan"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-trash2 lucide-trash-2" aria-hidden="true"><path d="M10 11v6"></path><path d="M14 11v6"></path><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6"></path><path d="M3 6h18"></path><path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg><span>Bersihkan</span></button></div></div><div class="illustration-viewport"><div class="illustration-stage"><div class="illustration-zoom-layer" style="zoom:1"><div class="illustration-content"><figure class="lesson-table "><figcaption>Analisis dari kedua arah</figcaption><div class="table-wrap"><table><thead><tr><th>Sisi</th><th>Minimum</th><th>Maksimum</th><th>Notasi</th></tr></thead><tbody><tr><td class="">PROGRAM_STUDI terhadap MAHASISWA</td><td class="">0</td><td class="">Banyak</td><td class="">(0,N)</td></tr><tr><td class="">MAHASISWA terhadap PROGRAM_STUDI</td><td class="">1</td><td class="">Satu</td><td class="">(1,1)</td></tr></tbody></table></div></figure></div><svg class="drawing-layer " viewBox="0 0 1 1" preserveAspectRatio="none" aria-label="Lapisan untuk membuat anotasi"></svg></div></div></div></div><p class="plain-note"><b>Kesimpulan:</b> kardinalitas 1:N; PROGRAM_STUDI berpartisipasi parsial, sedangkan MAHASISWA berpartisipasi total.</p></section><section id="kasus" class="lesson-section numbered-section" data-section="08" data-section-title="KASUS TERPADU"><h2>Kasus sistem layanan klinik</h2><p class="section-intro">Setiap pasien dapat melakukan beberapa kunjungan. Setiap kunjungan ditangani tepat satu dokter. Dalam satu kunjungan, dokter dapat meresepkan beberapa obat dan satu obat dapat diresepkan pada banyak kunjungan.</p><ol class="wide-number-list question-list"><li><b>Entitas</b><span>PASIEN, KUNJUNGAN, DOKTER, dan OBAT.</span></li><li><b>Relationship 1:N</b><span>PASIEN–KUNJUNGAN dan DOKTER–KUNJUNGAN.</span></li><li><b>Relationship M:N</b><span>KUNJUNGAN–OBAT; relationship RESEP dapat mempunyai atribut Jumlah dan AturanPakai.</span></li><li><b>Key</b><span>NoPasien, NoKunjungan, NIDN_Dokter, dan KodeObat mengidentifikasi instance setiap entitas.</span></li></ol></section><section id="latihan" class="lesson-section numbered-section" data-section="09" data-section-title="BANK LATIHAN UTS"><h2>Bank latihan UTS</h2><p class="section-intro">Latihan berikut tidak dilengkapi jawaban. Kerjakan dengan menuliskan konsep, hasil analisis, dan alasan setiap keputusan.</p><section class="exam-question-group"><h3>A. Konsep dasar basis data dan DBMS</h3><ol class="wide-number-list exercise-wide"><li>Jelaskan perbedaan data, basis data, dan DBMS serta berikan satu contoh untuk setiap istilah.</li><li>Jelaskan dua masalah yang dapat muncul apabila data mahasiswa disimpan dalam beberapa berkas terpisah tanpa pengelolaan terpusat.</li><li>Sebutkan empat fungsi DBMS dan jelaskan manfaat masing-masing fungsi bagi pengguna.</li><li>Jelaskan perbedaan skema basis data dan instance basis data menggunakan contoh data akademik.</li></ol></section><section class="exam-question-group"><h3>B. Struktur tabel, key, domain, dan NULL</h3><ol class="wide-number-list exercise-wide"><li>Pada tabel MAHASISWA(NIM, Nama, ProgramStudi, TahunMasuk), tentukan nama tabel, atribut, satu contoh record, domain setiap atribut, dan primary key.</li><li>Tentukan candidate key dan primary key yang tepat untuk PEGAWAI(NIP, NIK, Email, Nama). Jelaskan alasan pemilihannya.</li><li>Jelaskan perbedaan primary key, candidate key, composite key, dan foreign key disertai satu contoh.</li><li>Bedakan NULL, angka 0, teks kosong, dan nilai “Tidak ada” dalam penyimpanan data nomor telepon.</li></ol></section><section class="exam-question-group"><h3>C. Ketergantungan fungsional dan normalisasi</h3><ol class="wide-number-list exercise-wide"><li>Tabel PESANAN(NoPesanan, Tanggal, KodePelanggan, NamaPelanggan, {KodeProduk, NamaProduk, Jumlah}) masih memiliki repeating group. Ubah menjadi 1NF dan tentukan key-nya.</li><li>Diketahui KRS(NIM, KodeMK, NamaMahasiswa, NamaMK, SKS, Nilai) dengan key (NIM, KodeMK). Tentukan ketergantungan parsial dan hasil 2NF.</li><li>Diketahui PEGAWAI(NIP, NamaPegawai, KodeUnit, NamaUnit, LokasiUnit). Tentukan ketergantungan transitif dan hasil 3NF.</li><li>Jelaskan anomali insert, update, dan delete yang dapat muncul pada tabel KRS sebelum dinormalisasi.</li></ol></section><section class="exam-question-group"><h3>D. ER Model dan aturan relationship</h3><ol class="wide-number-list exercise-wide"><li>Dari narasi perpustakaan, tentukan entitas, key attribute, atribut lain, dan relationship antara ANGGOTA dan BUKU.</li><li>Klasifikasikan atribut NamaLengkap, Alamat(Jalan, Kota, KodePos), NomorTelepon, Umur, dan NIM sebagai simple, composite, multivalued, derived, atau key attribute.</li><li>Tentukan derajat relationship PEGAWAI membawahi PEGAWAI dan jelaskan peran kedua sisi entitas.</li><li>Seorang pelanggan dapat belum membuat pesanan; setiap pesanan wajib dimiliki tepat satu pelanggan. Tentukan kardinalitas, partisipasi, dan notasi min–max kedua sisi.</li><li>Mahasiswa mengambil banyak mata kuliah dan mata kuliah diambil banyak mahasiswa. Tentukan kardinalitas dan atribut yang lebih tepat ditempatkan pada relationship.</li><li>Dokter meresepkan obat kepada pasien pada tanggal tertentu. Jelaskan mengapa konteks tersebut dapat dimodelkan sebagai ternary relationship.</li></ol></section></section><section id="ringkasan" class="lesson-section numbered-section" data-section="10" data-section-title="RINGKASAN"><h2>Checklist persiapan UTS</h2><ul class="formal-points checklist-points"><li>Dapat menjelaskan istilah tanpa hanya menghafal singkatan.</li><li>Dapat membuktikan pemilihan key dan membaca ketergantungan fungsional.</li><li>Dapat menunjukkan alasan pemisahan tabel pada 1NF, 2NF, dan 3NF.</li><li>Dapat menerjemahkan narasi menjadi entitas, atribut, dan relationship.</li><li>Dapat membaca aturan relationship dari kedua arah.</li></ul></section></main><aside class="toc" aria-label="Pada halaman ini"><strong>Pada halaman ini</strong><a href="#cakupan">1. Cakupan UTS</a><a href="#peta">2. Peta materi</a><a href="#strategi">3. Strategi menjawab</a><a href="#konsep">4. Konsep dasar</a><a href="#tabel">5. Tabel, key, dan NULL</a><a href="#normalisasi">6. Normalisasi</a><a href="#ermodel">7. ER Model</a><a href="#aturan">8. Aturan relationship</a><a href="#kasus">9. Kasus terpadu</a><a href="#latihan">10. Bank latihan UTS</a><a href="#ringkasan">11. Ringkasan</a></aside></div><script>
+</style></head><body><a class="skip-link" href="#materi">Langsung ke materi</a><aside class="sidebar"><a class="brand" href="../">Sistem<br/>Basis Data</a><p class="side-meta">Bahan kuliah teori</p><p class="teacher-note">Ni Putu Praja Chintya<br/>bersama Ir. Waljiyanto, M.Sc.</p><nav class="semester-nav" aria-label="Navigasi pertemuan"><p>Pertemuan 1–16</p><ol><li><a href="../pertemuan-1/" title="Pertemuan 1: Pengertian dan kebutuhan basis data"><b>1</b><span>Pengertian dan kebutuhan basis data</span></a></li><li><a href="../pertemuan-2/" title="Pertemuan 2: Karakteristik basis data dan pengelolaannya"><b>2</b><span>Karakteristik basis data dan pengelolaannya</span></a></li><li><a href="../pertemuan-3/" title="Pertemuan 3: Struktur tabel, identitas tabel, dan key"><b>3</b><span>Struktur tabel, identitas tabel, dan key</span></a></li><li><a href="../" title="Pertemuan 4: Determinan, ketergantungan fungsional, dan 1NF"><b>4</b><span>Determinan, ketergantungan fungsional, dan 1NF</span></a></li><li><a href="../pertemuan-5/" title="Pertemuan 5: Normalisasi 2NF dan 3NF"><b>5</b><span>Normalisasi 2NF dan 3NF</span></a></li><li><a href="../pertemuan-6/" title="Pertemuan 6: ER Model: entitas, atribut, dan relationship"><b>6</b><span>ER Model: entitas, atribut, dan relationship</span></a></li><li><a href="../pertemuan-7/" title="Pertemuan 7: Derajat, kardinalitas, dan partisipasi hubungan"><b>7</b><span>Derajat, kardinalitas, dan partisipasi hubungan</span></a></li><li><a href="../pertemuan-8/" aria-current="page" title="Pertemuan 8: Ujian Tengah Semester"><b>8</b><span>Ujian Tengah Semester</span></a></li><li><a href="../pertemuan-9/" title="Pertemuan 9: ER Model menjadi tabel: hubungan 1:1 dan 1:N"><b>9</b><span>ER Model menjadi tabel: hubungan 1:1 dan 1:N</span></a></li><li><a href="../pertemuan-10/" title="Pertemuan 10: Hubungan M:N dan atribut relationship"><b>10</b><span>Hubungan M:N dan atribut relationship</span></a></li><li><a href="../pertemuan-11/" title="Pertemuan 11: Hubungan berjenjang dan rekursif"><b>11</b><span>Hubungan berjenjang dan rekursif</span></a></li><li><a href="../pertemuan-12/" title="Pertemuan 12: Aljabar relasional"><b>12</b><span>Aljabar relasional</span></a></li><li><a href="../pertemuan-13/" title="Pertemuan 13: SQL: memilih dan menggabungkan data"><b>13</b><span>SQL: memilih dan menggabungkan data</span></a></li><li><a href="../pertemuan-14/" title="Pertemuan 14: Fungsi agregat dan pengelompokan data"><b>14</b><span>Fungsi agregat dan pengelompokan data</span></a></li><li><a href="../pertemuan-15/" title="Pertemuan 15: Subquery dan latihan kasus"><b>15</b><span>Subquery dan latihan kasus</span></a></li><li><a href="../#pertemuan-16" title="Pertemuan 16: Ujian Akhir Semester"><b>16</b><span>Ujian Akhir Semester</span></a></li></ol></nav></aside><div class="page-shell meeting-exam" id="top"><main id="materi"><header class="lesson-header"><p class="eyebrow">Pertemuan 8 · Persiapan UTS · Pertemuan 1–7</p><h1>Rangkuman dan Latihan Ujian Tengah Semester</h1><p class="lead">Meninjau konsep dasar basis data, struktur tabel, normalisasi, ER Model, serta aturan relationship melalui contoh pembahasan dan latihan terpadu.</p><dl class="class-meta"><div><dt>Cakupan</dt><dd>Pertemuan 1–7</dd></div><div><dt>Bentuk latihan</dt><dd>Konsep, analisis tabel, dan pemodelan</dd></div></dl></header><section id="cakupan" class="lesson-section"><h2>Cakupan Ujian Tengah Semester</h2><p class="section-intro">UTS mengukur kemampuan menjelaskan konsep, menganalisis masalah pada tabel, dan menyusun model data berdasarkan aturan sistem.</p><ol class="wide-number-list learning-outcomes"><li>Menjelaskan istilah dan fungsi dasar basis data serta DBMS.</li><li>Mengidentifikasi tabel, atribut, domain, record, key, dan NULL.</li><li>Menganalisis ketergantungan fungsional dan normalisasi sampai 3NF.</li><li>Menyusun ER Model berdasarkan entitas, atribut, dan relationship.</li><li>Menentukan derajat, kardinalitas, partisipasi, dan notasi min–max.</li></ol></section><section id="peta" class="lesson-section numbered-section" data-section="01" data-section-title="PETA MATERI"><h2>Hubungan materi Pertemuan 1–7</h2><p class="section-intro">Setiap materi membentuk urutan dari pemahaman data sampai penyusunan model konseptual.</p><div class="exam-topic-grid"><article><span>1</span><b>Dasar basis data</b><p>Data, informasi, basis data, dan kebutuhan pengelolaan.</p></article><article><span>2</span><b>DBMS</b><p>Karakteristik basis data, fungsi DBMS, serta skema dan instance.</p></article><article><span>3</span><b>Struktur tabel</b><p>Atribut, record, domain, key, foreign key, dan NULL.</p></article><article><span>4</span><b>1NF</b><p>Determinan, ketergantungan fungsional, repeating group, dan 1NF.</p></article><article><span>5</span><b>2NF dan 3NF</b><p>Ketergantungan parsial, transitif, dekomposisi, dan anomali.</p></article><article><span>6</span><b>ER Model</b><p>Entitas, instance, atribut, key attribute, dan relationship.</p></article><article><span>7</span><b>Aturan relationship</b><p>Derajat, kardinalitas, partisipasi, dan min–max.</p></article></div></section><section id="strategi" class="lesson-section numbered-section" data-section="02" data-section-title="STRATEGI MENJAWAB"><h2>Urutan analisis soal</h2><ol class="wide-number-list question-list"><li><b>Baca aturan</b><span>Tandai objek, fakta, batasan, dan kata yang menunjukkan jumlah.</span></li><li><b>Tentukan konsep</b><span>Pastikan soal meminta analisis tabel, normalisasi, atau ER Model.</span></li><li><b>Tuliskan alasan</b><span>Setiap jawaban harus disertai bukti yang berasal dari data atau narasi.</span></li><li><b>Periksa konsistensi</b><span>Uji key, ketergantungan, dan aturan dari kedua arah menggunakan contoh instance.</span></li></ol></section><section id="konsep" class="lesson-section numbered-section" data-section="03" data-section-title="KONSEP DASAR"><h2>Contoh soal konsep dasar</h2><div class="worked-answer"><h3>Soal</h3><p>Jelaskan hubungan antara basis data dan DBMS.</p><h3>Pembahasan</h3><p><b>Basis data</b> merupakan kumpulan data yang saling berkaitan dan disusun secara sistematis. <b>DBMS</b> atau <i>Database Management System</i> merupakan perangkat lunak untuk mendefinisikan struktur, menyimpan, mengubah, mencari, mengamankan, dan memulihkan data. Basis data adalah data yang dikelola, sedangkan DBMS adalah sistem pengelolanya.</p></div></section><section id="tabel" class="lesson-section numbered-section" data-section="04" data-section-title="TABEL, KEY, DAN NULL"><h2>Contoh analisis struktur tabel</h2><div class="interactive-illustration " aria-label="Ilustrasi interaktif: Tabel MAHASISWA"><div class="illustration-toolbar" role="toolbar" aria-label="Alat untuk Tabel MAHASISWA"><div class="zoom-tools" aria-label="Pengaturan ukuran"><button data-action="zoom-out" type="button" title="Perkecil ilustrasi"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-zoom-out" aria-hidden="true"><circle cx="11" cy="11" r="8"></circle><line x1="21" x2="16.65" y1="21" y2="16.65"></line><line x1="8" x2="14" y1="11" y2="11"></line></svg><span>Perkecil</span></button><button data-action="zoom-reset" class="zoom-value" type="button" title="Kembalikan ke ukuran 100%">100%</button><button data-action="zoom-in" type="button" title="Perbesar ilustrasi"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-zoom-in" aria-hidden="true"><circle cx="11" cy="11" r="8"></circle><line x1="21" x2="16.65" y1="21" y2="16.65"></line><line x1="11" x2="11" y1="8" y2="14"></line><line x1="8" x2="14" y1="11" y2="11"></line></svg><span>Perbesar</span></button></div><div class="drawing-tools" aria-label="Alat anotasi"><button data-action="pen" class="" type="button" aria-pressed="false" title="Aktifkan pena"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-pen-line" aria-hidden="true"><path d="M13 21h8"></path><path d="M21.174 6.812a1 1 0 0 0-3.986-3.987L3.842 16.174a2 2 0 0 0-.5.83l-1.321 4.352a.5.5 0 0 0 .623.622l4.353-1.32a2 2 0 0 0 .83-.497z"></path></svg><span>Pena</span></button><button data-action="eraser" class="" type="button" aria-pressed="false" disabled="" title="Pilih coretan yang akan dihapus"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-eraser" aria-hidden="true"><path d="M21 21H8a2 2 0 0 1-1.42-.587l-3.994-3.999a2 2 0 0 1 0-2.828l10-10a2 2 0 0 1 2.829 0l5.999 6a2 2 0 0 1 0 2.828L12.834 21"></path><path d="m5.082 11.09 8.828 8.828"></path></svg><span>Penghapus</span></button><button data-action="undo" type="button" disabled="" title="Batalkan coretan terakhir"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-rotate-ccw" aria-hidden="true"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"></path><path d="M3 3v5h5"></path></svg><span>Urungkan</span></button><button data-action="clear" type="button" disabled="" title="Hapus semua coretan"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-trash2 lucide-trash-2" aria-hidden="true"><path d="M10 11v6"></path><path d="M14 11v6"></path><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6"></path><path d="M3 6h18"></path><path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg><span>Bersihkan</span></button></div></div><div class="illustration-viewport"><div class="illustration-stage"><div class="illustration-zoom-layer" style="zoom:1"><div class="illustration-content"><figure class="lesson-table "><figcaption>Tabel MAHASISWA</figcaption><div class="table-wrap"><table><thead><tr><th>NIM</th><th>Email</th><th>Nama</th><th>Tahun Masuk</th><th>Nomor Telepon</th></tr></thead><tbody><tr><td class="key-cell">24001</td><td class="">ayu@kampus.id</td><td class="">Ayu</td><td class="">2024</td><td class="">0812345678</td></tr><tr><td class="key-cell">24002</td><td class="">bima@kampus.id</td><td class="">Bima</td><td class="">2024</td><td class="null-cell"><i>NULL</i></td></tr></tbody></table></div></figure></div><svg class="drawing-layer " viewBox="0 0 1 1" preserveAspectRatio="none" aria-label="Lapisan untuk membuat anotasi"></svg></div></div></div></div><ul class="formal-points"><li><b>Candidate key:</b> NIM dan Email karena masing-masing unik serta dapat mengidentifikasi satu mahasiswa.</li><li><b>Primary key:</b> NIM dipilih sebagai identitas utama yang stabil dan wajib terisi.</li><li><b>Domain Tahun Masuk:</b> bilangan tahun empat digit dalam rentang yang ditetapkan perguruan tinggi.</li><li><b>NULL pada Nomor Telepon:</b> nilai belum diketahui atau belum dicatat; bukan angka 0 dan bukan teks kosong.</li></ul></section><section id="normalisasi" class="lesson-section numbered-section" data-section="05" data-section-title="NORMALISASI"><h2>Contoh normalisasi sampai 3NF</h2><p class="section-intro">Diketahui KRS(NIM, NamaMahasiswa, KodeMK, NamaMK, SKS, NIDN, NamaDosen, Nilai) dengan key gabungan (NIM, KodeMK).</p><div class="dependency-panel"><p><b>NIM</b> → NamaMahasiswa</p><p><b>KodeMK</b> → NamaMK, SKS, NIDN</p><p><b>NIDN</b> → NamaDosen</p><p><b>(NIM, KodeMK)</b> → Nilai</p></div><ol class="wide-number-list question-list"><li><b>1NF</b><span>Setiap sel berisi satu nilai dan setiap baris merepresentasikan satu mahasiswa mengambil satu mata kuliah.</span></li><li><b>2NF</b><span>Pisahkan atribut yang bergantung hanya pada NIM dan hanya pada KodeMK menjadi MAHASISWA, MATA_KULIAH, dan KRS.</span></li><li><b>3NF</b><span>Pisahkan NamaDosen karena bergantung pada NIDN, bukan langsung pada KodeMK. Hasil akhir: MAHASISWA, DOSEN, MATA_KULIAH, dan KRS.</span></li></ol></section><section id="ermodel" class="lesson-section numbered-section" data-section="06" data-section-title="ER MODEL"><h2>Contoh identifikasi ER Model</h2><p class="section-intro">Aturan: “Setiap peminjaman dilakukan oleh satu anggota dan mencatat satu buku, tanggal pinjam, serta tanggal kembali.”</p><div class="comparison-grid three"><article><span>Entitas</span><b>ANGGOTA dan BUKU</b><p>Keduanya mempunyai identitas dan data yang dapat berdiri sendiri.</p></article><article><span>Relationship</span><b>PEMINJAMAN</b><p>Menghubungkan anggota dengan buku yang dipinjam.</p></article><article><span>Atribut relationship</span><b>Tanggal Pinjam, Tanggal Kembali</b><p>Nilainya menjelaskan satu kejadian peminjaman tertentu.</p></article></div></section><section id="aturan" class="lesson-section numbered-section" data-section="07" data-section-title="ATURAN RELATIONSHIP"><h2>Contoh kardinalitas dan partisipasi</h2><p class="section-intro">Aturan: “Satu program studi memiliki banyak mahasiswa. Setiap mahasiswa wajib terdaftar pada tepat satu program studi. Program studi baru boleh belum mempunyai mahasiswa.”</p><div class="interactive-illustration " aria-label="Ilustrasi interaktif: Analisis dari kedua arah"><div class="illustration-toolbar" role="toolbar" aria-label="Alat untuk Analisis dari kedua arah"><div class="zoom-tools" aria-label="Pengaturan ukuran"><button data-action="zoom-out" type="button" title="Perkecil ilustrasi"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-zoom-out" aria-hidden="true"><circle cx="11" cy="11" r="8"></circle><line x1="21" x2="16.65" y1="21" y2="16.65"></line><line x1="8" x2="14" y1="11" y2="11"></line></svg><span>Perkecil</span></button><button data-action="zoom-reset" class="zoom-value" type="button" title="Kembalikan ke ukuran 100%">100%</button><button data-action="zoom-in" type="button" title="Perbesar ilustrasi"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-zoom-in" aria-hidden="true"><circle cx="11" cy="11" r="8"></circle><line x1="21" x2="16.65" y1="21" y2="16.65"></line><line x1="11" x2="11" y1="8" y2="14"></line><line x1="8" x2="14" y1="11" y2="11"></line></svg><span>Perbesar</span></button></div><div class="drawing-tools" aria-label="Alat anotasi"><button data-action="pen" class="" type="button" aria-pressed="false" title="Aktifkan pena"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-pen-line" aria-hidden="true"><path d="M13 21h8"></path><path d="M21.174 6.812a1 1 0 0 0-3.986-3.987L3.842 16.174a2 2 0 0 0-.5.83l-1.321 4.352a.5.5 0 0 0 .623.622l4.353-1.32a2 2 0 0 0 .83-.497z"></path></svg><span>Pena</span></button><button data-action="eraser" class="" type="button" aria-pressed="false" disabled="" title="Pilih coretan yang akan dihapus"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-eraser" aria-hidden="true"><path d="M21 21H8a2 2 0 0 1-1.42-.587l-3.994-3.999a2 2 0 0 1 0-2.828l10-10a2 2 0 0 1 2.829 0l5.999 6a2 2 0 0 1 0 2.828L12.834 21"></path><path d="m5.082 11.09 8.828 8.828"></path></svg><span>Penghapus</span></button><button data-action="undo" type="button" disabled="" title="Batalkan coretan terakhir"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-rotate-ccw" aria-hidden="true"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"></path><path d="M3 3v5h5"></path></svg><span>Urungkan</span></button><button data-action="clear" type="button" disabled="" title="Hapus semua coretan"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-trash2 lucide-trash-2" aria-hidden="true"><path d="M10 11v6"></path><path d="M14 11v6"></path><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6"></path><path d="M3 6h18"></path><path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg><span>Bersihkan</span></button></div></div><div class="illustration-viewport"><div class="illustration-stage"><div class="illustration-zoom-layer" style="zoom:1"><div class="illustration-content"><figure class="lesson-table "><figcaption>Analisis dari kedua arah</figcaption><div class="table-wrap"><table><thead><tr><th>Sisi</th><th>Minimum</th><th>Maksimum</th><th>Notasi</th></tr></thead><tbody><tr><td class="">PROGRAM_STUDI terhadap MAHASISWA</td><td class="">0</td><td class="">Banyak</td><td class="">(0,N)</td></tr><tr><td class="">MAHASISWA terhadap PROGRAM_STUDI</td><td class="">1</td><td class="">Satu</td><td class="">(1,1)</td></tr></tbody></table></div></figure></div><svg class="drawing-layer " viewBox="0 0 1 1" preserveAspectRatio="none" aria-label="Lapisan untuk membuat anotasi"></svg></div></div></div></div><p class="plain-note"><b>Kesimpulan:</b> kardinalitas 1:N; PROGRAM_STUDI berpartisipasi parsial, sedangkan MAHASISWA berpartisipasi total.</p></section><section id="kasus" class="lesson-section numbered-section" data-section="08" data-section-title="KASUS TERPADU"><h2>Kasus sistem layanan klinik</h2><p class="section-intro">Setiap pasien dapat melakukan beberapa kunjungan. Setiap kunjungan ditangani tepat satu dokter. Dalam satu kunjungan, dokter dapat meresepkan beberapa obat dan satu obat dapat diresepkan pada banyak kunjungan.</p><ol class="wide-number-list question-list"><li><b>Entitas</b><span>PASIEN, KUNJUNGAN, DOKTER, dan OBAT.</span></li><li><b>Relationship 1:N</b><span>PASIEN–KUNJUNGAN dan DOKTER–KUNJUNGAN.</span></li><li><b>Relationship M:N</b><span>KUNJUNGAN–OBAT; relationship RESEP dapat mempunyai atribut Jumlah dan AturanPakai.</span></li><li><b>Key</b><span>NoPasien, NoKunjungan, NIDN_Dokter, dan KodeObat mengidentifikasi instance setiap entitas.</span></li></ol></section><section id="latihan" class="lesson-section numbered-section" data-section="09" data-section-title="BANK LATIHAN UTS"><h2>Bank latihan UTS</h2><p class="section-intro">Petunjuk pengerjaan: tuliskan konsep, hasil analisis, dan alasan yang mendasari setiap keputusan.</p><section class="exam-question-group"><h3>A. Konsep dasar basis data dan DBMS</h3><ol class="wide-number-list exercise-wide"><li>Jelaskan perbedaan data, basis data, dan DBMS serta berikan satu contoh untuk setiap istilah.</li><li>Jelaskan dua masalah yang dapat muncul apabila data mahasiswa disimpan dalam beberapa berkas terpisah tanpa pengelolaan terpusat.</li><li>Sebutkan empat fungsi DBMS dan jelaskan manfaat masing-masing fungsi bagi pengguna.</li><li>Jelaskan perbedaan skema basis data dan instance basis data menggunakan contoh data akademik.</li></ol></section><section class="exam-question-group"><h3>B. Struktur tabel, key, domain, dan NULL</h3><ol class="wide-number-list exercise-wide"><li>Pada tabel MAHASISWA(NIM, Nama, ProgramStudi, TahunMasuk), tentukan nama tabel, atribut, satu contoh record, domain setiap atribut, dan primary key.</li><li>Tentukan candidate key dan primary key yang tepat untuk PEGAWAI(NIP, NIK, Email, Nama). Jelaskan alasan pemilihannya.</li><li>Jelaskan perbedaan primary key, candidate key, composite key, dan foreign key disertai satu contoh.</li><li>Bedakan NULL, angka 0, teks kosong, dan nilai “Tidak ada” dalam penyimpanan data nomor telepon.</li></ol></section><section class="exam-question-group"><h3>C. Ketergantungan fungsional dan normalisasi</h3><ol class="wide-number-list exercise-wide"><li>Tabel PESANAN(NoPesanan, Tanggal, KodePelanggan, NamaPelanggan, {KodeProduk, NamaProduk, Jumlah}) masih memiliki repeating group. Ubah menjadi 1NF dan tentukan key-nya.</li><li>Diketahui KRS(NIM, KodeMK, NamaMahasiswa, NamaMK, SKS, Nilai) dengan key (NIM, KodeMK). Tentukan ketergantungan parsial dan hasil 2NF.</li><li>Diketahui PEGAWAI(NIP, NamaPegawai, KodeUnit, NamaUnit, LokasiUnit). Tentukan ketergantungan transitif dan hasil 3NF.</li><li>Jelaskan anomali insert, update, dan delete yang dapat muncul pada tabel KRS sebelum dinormalisasi.</li></ol></section><section class="exam-question-group"><h3>D. ER Model dan aturan relationship</h3><ol class="wide-number-list exercise-wide"><li>Dari narasi perpustakaan, tentukan entitas, key attribute, atribut lain, dan relationship antara ANGGOTA dan BUKU.</li><li>Klasifikasikan atribut NamaLengkap, Alamat(Jalan, Kota, KodePos), NomorTelepon, Umur, dan NIM sebagai simple, composite, multivalued, derived, atau key attribute.</li><li>Tentukan derajat relationship PEGAWAI membawahi PEGAWAI dan jelaskan peran kedua sisi entitas.</li><li>Seorang pelanggan dapat belum membuat pesanan; setiap pesanan wajib dimiliki tepat satu pelanggan. Tentukan kardinalitas, partisipasi, dan notasi min–max kedua sisi.</li><li>Mahasiswa mengambil banyak mata kuliah dan mata kuliah diambil banyak mahasiswa. Tentukan kardinalitas dan atribut yang lebih tepat ditempatkan pada relationship.</li><li>Dokter meresepkan obat kepada pasien pada tanggal tertentu. Jelaskan mengapa konteks tersebut dapat dimodelkan sebagai ternary relationship.</li></ol></section></section><section id="ringkasan" class="lesson-section numbered-section" data-section="10" data-section-title="RINGKASAN"><h2>Checklist persiapan UTS</h2><ul class="formal-points checklist-points"><li>Dapat menjelaskan istilah tanpa hanya menghafal singkatan.</li><li>Dapat membuktikan pemilihan key dan membaca ketergantungan fungsional.</li><li>Dapat menunjukkan alasan pemisahan tabel pada 1NF, 2NF, dan 3NF.</li><li>Dapat menerjemahkan narasi menjadi entitas, atribut, dan relationship.</li><li>Dapat membaca aturan relationship dari kedua arah.</li></ul></section></main><aside class="toc" aria-label="Pada halaman ini"><strong>Pada halaman ini</strong><a href="#cakupan">1. Cakupan UTS</a><a href="#peta">2. Peta materi</a><a href="#strategi">3. Strategi menjawab</a><a href="#konsep">4. Konsep dasar</a><a href="#tabel">5. Tabel, key, dan NULL</a><a href="#normalisasi">6. Normalisasi</a><a href="#ermodel">7. ER Model</a><a href="#aturan">8. Aturan relationship</a><a href="#kasus">9. Kasus terpadu</a><a href="#latihan">10. Bank latihan UTS</a><a href="#ringkasan">11. Ringkasan</a></aside></div><script>
 (() => {
   const NS = 'http://www.w3.org/2000/svg';
   document.querySelectorAll('.interactive-illustration').forEach((root) => {
