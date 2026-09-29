@@ -3563,6 +3563,236 @@ footer {
   border-left: 5px solid var(--blue);
   background: var(--blue-soft);
 }
+
+.sql-lab {
+  border: 1px solid var(--line);
+  background: #f8fbfc;
+  padding: clamp(20px, 3vw, 34px);
+}
+.sql-lab-heading,
+.sql-result-heading {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 20px;
+}
+.sql-lab-heading h3,
+.sql-result-heading h4,
+.sql-independent-exercises h4 {
+  margin: 0;
+}
+.sql-lab-kicker {
+  margin: 0 0 6px;
+  color: var(--blue);
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+}
+.sql-engine-status,
+.sql-result-heading span {
+  border-radius: 999px;
+  background: #e7f1f5;
+  color: var(--navy);
+  padding: 7px 12px;
+  font-size: 0.78rem;
+  font-weight: 750;
+  white-space: nowrap;
+}
+.sql-engine-status.is-ready {
+  background: #e4f4e9;
+  color: #1e6b3d;
+}
+.sql-engine-status.is-error,
+.sql-result-heading span.is-error {
+  background: #fdebed;
+  color: #9b2f3d;
+}
+.sql-schema {
+  margin: 22px 0;
+  border: 1px solid #cbdce3;
+  background: white;
+}
+.sql-schema summary {
+  cursor: pointer;
+  padding: 13px 16px;
+  color: var(--navy);
+  font-weight: 800;
+}
+.sql-schema pre {
+  overflow-x: auto;
+  margin: 0;
+  border-top: 1px solid #d7e2e7;
+  background: #f3f7f9;
+  padding: 16px;
+  font:
+    0.88rem/1.65 ui-monospace,
+    SFMono-Regular,
+    Menlo,
+    Monaco,
+    Consolas,
+    monospace;
+  white-space: pre;
+}
+.sql-example-picker {
+  display: grid;
+  grid-template-columns: minmax(250px, 0.8fr) minmax(0, 1.2fr);
+  align-items: end;
+  gap: 18px;
+  margin-bottom: 14px;
+}
+.sql-example-picker label {
+  display: grid;
+  gap: 7px;
+  color: var(--navy);
+  font-weight: 800;
+}
+.sql-example-picker select {
+  width: 100%;
+  border: 1px solid #9eb8c3;
+  background: white;
+  padding: 11px 12px;
+  color: var(--ink);
+  font: inherit;
+}
+.sql-example-prompt {
+  min-height: 48px;
+  margin: 0;
+  border-left: 4px solid var(--blue);
+  background: white;
+  padding: 12px 14px;
+}
+.sql-terminal {
+  overflow: hidden;
+  border: 1px solid #183f53;
+  background: #0e2532;
+}
+.sql-terminal-bar {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  border-bottom: 1px solid #345467;
+  padding: 10px 14px;
+  color: #d4e7ef;
+  font-size: 0.78rem;
+  font-weight: 750;
+}
+.sql-terminal textarea {
+  display: block;
+  width: 100%;
+  min-height: 190px;
+  resize: vertical;
+  border: 0;
+  outline: 0;
+  background: #0e2532;
+  padding: 18px;
+  color: #f4f8fa;
+  font:
+    0.94rem/1.65 ui-monospace,
+    SFMono-Regular,
+    Menlo,
+    Monaco,
+    Consolas,
+    monospace;
+  tab-size: 2;
+}
+.sql-actions {
+  display: flex;
+  gap: 10px;
+  border-top: 1px solid #345467;
+  padding: 12px 14px;
+}
+.sql-actions button {
+  border: 1px solid #86afc2;
+  background: transparent;
+  padding: 9px 14px;
+  color: white;
+  font: inherit;
+  font-weight: 750;
+  cursor: pointer;
+}
+.sql-actions button:first-child {
+  border-color: #77c6ee;
+  background: #0d6f9e;
+}
+.sql-actions button:disabled {
+  cursor: wait;
+  opacity: 0.55;
+}
+.sql-result {
+  margin-top: 18px;
+  border: 1px solid #cbdce3;
+  background: white;
+}
+.sql-result-heading {
+  align-items: center;
+  border-bottom: 1px solid #d7e2e7;
+  padding: 12px 15px;
+}
+.sql-result-body {
+  overflow-x: auto;
+  min-height: 82px;
+  padding: 16px;
+}
+.sql-result-body table {
+  width: 100%;
+  border-collapse: collapse;
+}
+.sql-result-body th,
+.sql-result-body td {
+  border: 1px solid #d5e0e5;
+  padding: 9px 11px;
+  text-align: left;
+}
+.sql-result-body th {
+  background: var(--navy);
+  color: white;
+}
+.sql-null {
+  color: #9b2f3d;
+  font-style: italic;
+}
+.sql-explanation {
+  margin-top: 14px;
+  border-left: 4px solid #2b8c62;
+  background: #edf7f1;
+  padding: 14px 16px;
+}
+.sql-explanation p {
+  margin: 5px 0 0;
+}
+.sql-independent-exercises {
+  margin-top: 26px;
+  border-top: 1px solid #cbdce3;
+  padding-top: 22px;
+}
+.sql-independent-exercises > p {
+  margin-bottom: 15px;
+}
+.sql-independent-exercises ol {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  counter-reset: sql-exercise;
+}
+.sql-independent-exercises li {
+  position: relative;
+  border: 1px solid #d3e0e5;
+  background: white;
+  padding: 15px 15px 15px 48px;
+  counter-increment: sql-exercise;
+}
+.sql-independent-exercises li::before {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  color: var(--blue);
+  font-size: 0.8rem;
+  font-weight: 850;
+  content: counter(sql-exercise, decimal-leading-zero);
+}
 .question-list > li {
   grid-template-columns: 56px 170px minmax(0, 1fr);
 }
@@ -4450,8 +4680,19 @@ footer {
   .extended-topic-grid,
   .analysis-list,
   .exercise-grid,
-  .extended-summary-grid {
+  .extended-summary-grid,
+  .sql-example-picker,
+  .sql-independent-exercises ol {
     grid-template-columns: 1fr;
+  }
+  .sql-lab-heading,
+  .sql-result-heading {
+    align-items: stretch;
+    flex-direction: column;
+  }
+  .sql-engine-status,
+  .sql-result-heading span {
+    align-self: flex-start;
   }
   .anatomy-grid article {
     min-height: 0;
@@ -4745,7 +4986,18 @@ footer {
     color: inherit;
   }
 }
-</style></head><body><a class="skip-link" href="#materi">Langsung ke materi</a><aside class="sidebar"><a class="brand" href="../">Sistem<br/>Basis Data</a><p class="side-meta">Bahan kuliah teori</p><p class="teacher-note">Ni Putu Praja Chintya<br/>bersama Ir. Waljiyanto, M.Sc.</p><nav class="semester-nav" aria-label="Navigasi pertemuan"><p>Pertemuan 1–16</p><ol><li><a href="../pertemuan-1/" title="Pertemuan 1: Pengertian dan kebutuhan basis data"><b>1</b><span>Pengertian dan kebutuhan basis data</span></a></li><li><a href="../pertemuan-2/" title="Pertemuan 2: Karakteristik basis data dan pengelolaannya"><b>2</b><span>Karakteristik basis data dan pengelolaannya</span></a></li><li><a href="../pertemuan-3/" title="Pertemuan 3: Struktur tabel, identitas tabel, dan key"><b>3</b><span>Struktur tabel, identitas tabel, dan key</span></a></li><li><a href="../" title="Pertemuan 4: Determinan, ketergantungan fungsional, dan 1NF"><b>4</b><span>Determinan, ketergantungan fungsional, dan 1NF</span></a></li><li><a href="../pertemuan-5/" title="Pertemuan 5: Normalisasi 2NF dan 3NF"><b>5</b><span>Normalisasi 2NF dan 3NF</span></a></li><li><a href="../pertemuan-6/" title="Pertemuan 6: ER Model: entitas, atribut, dan relationship"><b>6</b><span>ER Model: entitas, atribut, dan relationship</span></a></li><li><a href="../pertemuan-7/" title="Pertemuan 7: Derajat, kardinalitas, dan partisipasi hubungan"><b>7</b><span>Derajat, kardinalitas, dan partisipasi hubungan</span></a></li><li><a href="../pertemuan-8/" title="Pertemuan 8: Ujian Tengah Semester"><b>8</b><span>Ujian Tengah Semester</span></a></li><li><a href="../pertemuan-9/" title="Pertemuan 9: ER Model menjadi tabel: hubungan 1:1 dan 1:N"><b>9</b><span>ER Model menjadi tabel: hubungan 1:1 dan 1:N</span></a></li><li><a href="../pertemuan-10/" title="Pertemuan 10: Hubungan M:N dan atribut relationship"><b>10</b><span>Hubungan M:N dan atribut relationship</span></a></li><li><a href="../pertemuan-11/" title="Pertemuan 11: Hubungan berjenjang dan rekursif"><b>11</b><span>Hubungan berjenjang dan rekursif</span></a></li><li><a href="../pertemuan-12/" title="Pertemuan 12: Aljabar relasional"><b>12</b><span>Aljabar relasional</span></a></li><li><a href="../pertemuan-13/" title="Pertemuan 13: SQL: memilih dan menggabungkan data"><b>13</b><span>SQL: memilih dan menggabungkan data</span></a></li><li><a href="../pertemuan-14/" aria-current="page" title="Pertemuan 14: Fungsi agregat dan pengelompokan data"><b>14</b><span>Fungsi agregat dan pengelompokan data</span></a></li><li><a href="../pertemuan-15/" title="Pertemuan 15: Subquery dan latihan kasus"><b>15</b><span>Subquery dan latihan kasus</span></a></li><li><a href="../pertemuan-16/" title="Pertemuan 16: Ujian Akhir Semester"><b>16</b><span>Ujian Akhir Semester</span></a></li></ol></nav></aside><div class="page-shell" id="top"><main id="materi"><header class="lesson-header"><p class="eyebrow">Pertemuan 14 · Teori · 100 menit</p><h1>Fungsi Agregat dan Pengelompokan Data</h1><p class="lead">Merangkum banyak baris menjadi informasi seperti jumlah, rata-rata, nilai terendah, dan nilai tertinggi untuk setiap kelompok.</p></header><section id="tujuan" class="lesson-section"><h2>Tujuan pembelajaran</h2><p class="section-intro">Setelah mengikuti pertemuan ini, mahasiswa dapat:</p><ol class="wide-number-list learning-outcomes"><li>Menggunakan COUNT, SUM, AVG, MIN, dan MAX.</li><li>Mengelompokkan data dengan GROUP BY.</li><li>Membedakan WHERE dan HAVING.</li><li>Menjelaskan pengaruh NULL pada fungsi agregat.</li></ol></section><section id="konsep" class="lesson-section numbered-section" data-section="01" data-section-title="KONSEP UTAMA"><h2>Konsep yang perlu dipahami</h2><p class="section-intro">Konsep utama disajikan melalui definisi dan contoh penerapannya.</p><dl class="extended-topic-grid"><div><dt>Fungsi agregat</dt><dd><p>Fungsi yang menghitung sekumpulan baris dan menghasilkan satu nilai ringkasan.</p><p><b>Contoh:</b> AVG(Nilai) menghitung rata-rata nilai non-NULL.</p></dd></div><div><dt>GROUP BY</dt><dd><p>Membagi baris menjadi kelompok sebelum agregat dihitung.</p><p><b>Contoh:</b> GROUP BY KodeMK menghasilkan satu ringkasan untuk setiap mata kuliah.</p></dd></div><div><dt>WHERE</dt><dd><p>Menyaring baris sebelum pengelompokan dilakukan.</p><p><b>Contoh:</b> WHERE Semester = 20261 membatasi data ke satu semester.</p></dd></div><div><dt>HAVING</dt><dd><p>Menyaring kelompok setelah fungsi agregat dihitung.</p><p><b>Contoh:</b> HAVING COUNT(*) &gt;= 10 memilih mata kuliah dengan sedikitnya 10 peserta.</p></dd></div></dl></section><section id="contoh" class="lesson-section numbered-section" data-section="02" data-section-title="CONTOH KASUS"><h2>Ringkasan nilai per mata kuliah</h2><p class="section-intro">Kebutuhan: hitung jumlah peserta, rata-rata, nilai terendah, dan tertinggi untuk setiap mata kuliah.</p><div class="interactive-illustration " aria-label="Ilustrasi interaktif: Ringkasan nilai per mata kuliah"><div class="illustration-toolbar" role="toolbar" aria-label="Alat untuk Ringkasan nilai per mata kuliah"><div class="zoom-tools" aria-label="Pengaturan ukuran"><button data-action="zoom-out" type="button" title="Perkecil ilustrasi"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-zoom-out" aria-hidden="true"><circle cx="11" cy="11" r="8"></circle><line x1="21" x2="16.65" y1="21" y2="16.65"></line><line x1="8" x2="14" y1="11" y2="11"></line></svg><span>Perkecil</span></button><button data-action="zoom-reset" class="zoom-value" type="button" title="Kembalikan ke ukuran 100%">100%</button><button data-action="zoom-in" type="button" title="Perbesar ilustrasi"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-zoom-in" aria-hidden="true"><circle cx="11" cy="11" r="8"></circle><line x1="21" x2="16.65" y1="21" y2="16.65"></line><line x1="11" x2="11" y1="8" y2="14"></line><line x1="8" x2="14" y1="11" y2="11"></line></svg><span>Perbesar</span></button></div><div class="drawing-tools" aria-label="Alat anotasi"><button data-action="pen" class="" type="button" aria-pressed="false" title="Aktifkan pena"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-pen-line" aria-hidden="true"><path d="M13 21h8"></path><path d="M21.174 6.812a1 1 0 0 0-3.986-3.987L3.842 16.174a2 2 0 0 0-.5.83l-1.321 4.352a.5.5 0 0 0 .623.622l4.353-1.32a2 2 0 0 0 .83-.497z"></path></svg><span>Pena</span></button><button data-action="eraser" class="" type="button" aria-pressed="false" disabled="" title="Pilih coretan yang akan dihapus"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-eraser" aria-hidden="true"><path d="M21 21H8a2 2 0 0 1-1.42-.587l-3.994-3.999a2 2 0 0 1 0-2.828l10-10a2 2 0 0 1 2.829 0l5.999 6a2 2 0 0 1 0 2.828L12.834 21"></path><path d="m5.082 11.09 8.828 8.828"></path></svg><span>Penghapus</span></button><button data-action="undo" type="button" disabled="" title="Batalkan coretan terakhir"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-rotate-ccw" aria-hidden="true"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"></path><path d="M3 3v5h5"></path></svg><span>Urungkan</span></button><button data-action="clear" type="button" disabled="" title="Hapus semua coretan"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-trash2 lucide-trash-2" aria-hidden="true"><path d="M10 11v6"></path><path d="M14 11v6"></path><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6"></path><path d="M3 6h18"></path><path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg><span>Bersihkan</span></button></div></div><div class="illustration-viewport"><div class="illustration-stage"><div class="illustration-zoom-layer" style="zoom:1"><div class="illustration-content"><figure class="lesson-table "><figcaption>Ringkasan nilai per mata kuliah</figcaption><div class="table-wrap"><table><thead><tr><th>Kode MK</th><th>Nilai</th></tr></thead><tbody><tr><td class="">BD01</td><td class="">88</td></tr><tr><td class="">BD01</td><td class="">84</td></tr><tr><td class="">BD01</td><td class="">NULL</td></tr><tr><td class="">SIG01</td><td class="">90</td></tr><tr><td class="">SIG01</td><td class="">78</td></tr></tbody></table></div></figure></div><svg class="drawing-layer " viewBox="0 0 1 1" preserveAspectRatio="none" aria-label="Lapisan untuk membuat anotasi"></svg></div></div></div></div></section><section id="langkah" class="lesson-section numbered-section" data-section="03" data-section-title="PENYELESAIAN BERTAHAP"><h2>Penyelesaian langkah demi langkah</h2><p class="section-intro">Penyelesaian dilakukan secara berurutan berdasarkan tujuan, tindakan, dan hasil pada setiap tahap.</p><div class="stacked-steps"><details class="normalization-step" open=""><summary><span class="step-number">LANGKAH 1</span><span class="step-heading"><b>Tentukan satuan kelompok</b></span><span class="step-toggle" aria-hidden="true"></span></summary><div class="normalization-step-body"><p>Hasil diminta “untuk setiap mata kuliah”, sehingga KodeMK menjadi kolom GROUP BY.</p><div class="definition-focus"><span>Hasil</span><p>Satu baris hasil mewakili satu KodeMK.</p></div></div></details><details class="normalization-step"><summary><span class="step-number">LANGKAH 2</span><span class="step-heading"><b>Pilih agregat</b></span><span class="step-toggle" aria-hidden="true"></span></summary><div class="normalization-step-body"><p>Gunakan COUNT(*), AVG(Nilai), MIN(Nilai), dan MAX(Nilai).</p><div class="definition-focus"><span>Hasil</span><p>Setiap kelompok mempunyai empat ringkasan.</p></div></div></details><details class="normalization-step"><summary><span class="step-number">LANGKAH 3</span><span class="step-heading"><b>Periksa NULL</b></span><span class="step-toggle" aria-hidden="true"></span></summary><div class="normalization-step-body"><p>COUNT(*) menghitung seluruh baris, sedangkan COUNT(Nilai) dan AVG(Nilai) mengabaikan Nilai yang NULL.</p><div class="definition-focus"><span>Hasil</span><p>Jumlah peserta dan jumlah nilai yang sudah masuk dapat berbeda.</p></div></div></details><details class="normalization-step"><summary><span class="step-number">LANGKAH 4</span><span class="step-heading"><b>Saring kelompok bila perlu</b></span><span class="step-toggle" aria-hidden="true"></span></summary><div class="normalization-step-body"><p>Gunakan HAVING AVG(Nilai) &gt;= 80 untuk memilih kelompok berdasarkan hasil rata-rata.</p><div class="definition-focus"><span>Hasil</span><p>Filter diterapkan setelah agregasi.</p></div></div></details></div></section><section id="contoh-lanjutan" class="lesson-section numbered-section" data-section="04" data-section-title="CONTOH TAMBAHAN"><h2>Contoh tambahan</h2><p class="section-intro">Setiap contoh menunjukkan hubungan antara aturan, struktur data, dan hasil analisis.</p><div class="worked-example-stack"><article class="worked-example"><p class="worked-example-number">CONTOH 2</p><h3>Jumlah mahasiswa per program studi dan angkatan</h3><p>Satu baris hasil harus mewakili satu kombinasi program studi dan angkatan.</p><div class="interactive-illustration " aria-label="Ilustrasi interaktif: Jumlah mahasiswa per program studi dan angkatan"><div class="illustration-toolbar" role="toolbar" aria-label="Alat untuk Jumlah mahasiswa per program studi dan angkatan"><div class="zoom-tools" aria-label="Pengaturan ukuran"><button data-action="zoom-out" type="button" title="Perkecil ilustrasi"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-zoom-out" aria-hidden="true"><circle cx="11" cy="11" r="8"></circle><line x1="21" x2="16.65" y1="21" y2="16.65"></line><line x1="8" x2="14" y1="11" y2="11"></line></svg><span>Perkecil</span></button><button data-action="zoom-reset" class="zoom-value" type="button" title="Kembalikan ke ukuran 100%">100%</button><button data-action="zoom-in" type="button" title="Perbesar ilustrasi"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-zoom-in" aria-hidden="true"><circle cx="11" cy="11" r="8"></circle><line x1="21" x2="16.65" y1="21" y2="16.65"></line><line x1="11" x2="11" y1="8" y2="14"></line><line x1="8" x2="14" y1="11" y2="11"></line></svg><span>Perbesar</span></button></div><div class="drawing-tools" aria-label="Alat anotasi"><button data-action="pen" class="" type="button" aria-pressed="false" title="Aktifkan pena"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-pen-line" aria-hidden="true"><path d="M13 21h8"></path><path d="M21.174 6.812a1 1 0 0 0-3.986-3.987L3.842 16.174a2 2 0 0 0-.5.83l-1.321 4.352a.5.5 0 0 0 .623.622l4.353-1.32a2 2 0 0 0 .83-.497z"></path></svg><span>Pena</span></button><button data-action="eraser" class="" type="button" aria-pressed="false" disabled="" title="Pilih coretan yang akan dihapus"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-eraser" aria-hidden="true"><path d="M21 21H8a2 2 0 0 1-1.42-.587l-3.994-3.999a2 2 0 0 1 0-2.828l10-10a2 2 0 0 1 2.829 0l5.999 6a2 2 0 0 1 0 2.828L12.834 21"></path><path d="m5.082 11.09 8.828 8.828"></path></svg><span>Penghapus</span></button><button data-action="undo" type="button" disabled="" title="Batalkan coretan terakhir"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-rotate-ccw" aria-hidden="true"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"></path><path d="M3 3v5h5"></path></svg><span>Urungkan</span></button><button data-action="clear" type="button" disabled="" title="Hapus semua coretan"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-trash2 lucide-trash-2" aria-hidden="true"><path d="M10 11v6"></path><path d="M14 11v6"></path><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6"></path><path d="M3 6h18"></path><path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg><span>Bersihkan</span></button></div></div><div class="illustration-viewport"><div class="illustration-stage"><div class="illustration-zoom-layer" style="zoom:1"><div class="illustration-content"><figure class="lesson-table "><figcaption>Jumlah mahasiswa per program studi dan angkatan</figcaption><div class="table-wrap"><table><thead><tr><th>KodeProdi</th><th>Angkatan</th><th>Jumlah mahasiswa</th></tr></thead><tbody><tr><td class="">TRSP</td><td class="">2024</td><td class="">42</td></tr><tr><td class="">TRSP</td><td class="">2025</td><td class="">38</td></tr><tr><td class="">SIG</td><td class="">2024</td><td class="">35</td></tr></tbody></table></div></figure></div><svg class="drawing-layer " viewBox="0 0 1 1" preserveAspectRatio="none" aria-label="Lapisan untuk membuat anotasi"></svg></div></div></div></div><ol class="analysis-list"><li>SELECT memuat KodeProdi, Angkatan, dan COUNT(*).</li><li>GROUP BY harus memuat KodeProdi dan Angkatan karena keduanya bukan hasil agregat.</li><li>COUNT(*) menghitung setiap baris mahasiswa dalam kelompok.</li><li>ORDER BY dapat digunakan agar hasil terurut menurut program studi dan angkatan.</li></ol></article><article class="worked-example"><p class="worked-example-number">CONTOH 3</p><h3>Mata kuliah dengan rata-rata minimal 80</h3><p>Data dikelompokkan berdasarkan mata kuliah, kemudian kelompok disaring berdasarkan hasil AVG.</p><div class="interactive-illustration " aria-label="Ilustrasi interaktif: Mata kuliah dengan rata-rata minimal 80"><div class="illustration-toolbar" role="toolbar" aria-label="Alat untuk Mata kuliah dengan rata-rata minimal 80"><div class="zoom-tools" aria-label="Pengaturan ukuran"><button data-action="zoom-out" type="button" title="Perkecil ilustrasi"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-zoom-out" aria-hidden="true"><circle cx="11" cy="11" r="8"></circle><line x1="21" x2="16.65" y1="21" y2="16.65"></line><line x1="8" x2="14" y1="11" y2="11"></line></svg><span>Perkecil</span></button><button data-action="zoom-reset" class="zoom-value" type="button" title="Kembalikan ke ukuran 100%">100%</button><button data-action="zoom-in" type="button" title="Perbesar ilustrasi"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-zoom-in" aria-hidden="true"><circle cx="11" cy="11" r="8"></circle><line x1="21" x2="16.65" y1="21" y2="16.65"></line><line x1="11" x2="11" y1="8" y2="14"></line><line x1="8" x2="14" y1="11" y2="11"></line></svg><span>Perbesar</span></button></div><div class="drawing-tools" aria-label="Alat anotasi"><button data-action="pen" class="" type="button" aria-pressed="false" title="Aktifkan pena"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-pen-line" aria-hidden="true"><path d="M13 21h8"></path><path d="M21.174 6.812a1 1 0 0 0-3.986-3.987L3.842 16.174a2 2 0 0 0-.5.83l-1.321 4.352a.5.5 0 0 0 .623.622l4.353-1.32a2 2 0 0 0 .83-.497z"></path></svg><span>Pena</span></button><button data-action="eraser" class="" type="button" aria-pressed="false" disabled="" title="Pilih coretan yang akan dihapus"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-eraser" aria-hidden="true"><path d="M21 21H8a2 2 0 0 1-1.42-.587l-3.994-3.999a2 2 0 0 1 0-2.828l10-10a2 2 0 0 1 2.829 0l5.999 6a2 2 0 0 1 0 2.828L12.834 21"></path><path d="m5.082 11.09 8.828 8.828"></path></svg><span>Penghapus</span></button><button data-action="undo" type="button" disabled="" title="Batalkan coretan terakhir"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-rotate-ccw" aria-hidden="true"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"></path><path d="M3 3v5h5"></path></svg><span>Urungkan</span></button><button data-action="clear" type="button" disabled="" title="Hapus semua coretan"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-trash2 lucide-trash-2" aria-hidden="true"><path d="M10 11v6"></path><path d="M14 11v6"></path><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6"></path><path d="M3 6h18"></path><path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg><span>Bersihkan</span></button></div></div><div class="illustration-viewport"><div class="illustration-stage"><div class="illustration-zoom-layer" style="zoom:1"><div class="illustration-content"><figure class="lesson-table "><figcaption>Mata kuliah dengan rata-rata minimal 80</figcaption><div class="table-wrap"><table><thead><tr><th>KodeMK</th><th>Jumlah peserta</th><th>Jumlah nilai terisi</th><th>Rata-rata</th></tr></thead><tbody><tr><td class="">BD01</td><td class="">3</td><td class="">2</td><td class="">86</td></tr><tr><td class="">SIG01</td><td class="">2</td><td class="">2</td><td class="">84</td></tr></tbody></table></div></figure></div><svg class="drawing-layer " viewBox="0 0 1 1" preserveAspectRatio="none" aria-label="Lapisan untuk membuat anotasi"></svg></div></div></div></div><ol class="analysis-list"><li>WHERE digunakan jika data perlu dibatasi menurut semester sebelum pengelompokan.</li><li>GROUP BY KodeMK membentuk satu kelompok untuk setiap mata kuliah.</li><li>HAVING AVG(Nilai) &gt;= 80 menyaring kelompok setelah rata-rata dihitung.</li><li>COUNT(*) dan COUNT(Nilai) dapat berbeda karena COUNT(Nilai) mengabaikan NULL.</li></ol></article></div></section><section id="aturan" class="lesson-section numbered-section" data-section="05" data-section-title="ATURAN PENTING"><h2>Aturan utama</h2><div class="interactive-illustration " aria-label="Ilustrasi interaktif: Aturan penting Pertemuan 14"><div class="illustration-toolbar" role="toolbar" aria-label="Alat untuk Aturan penting Pertemuan 14"><div class="zoom-tools" aria-label="Pengaturan ukuran"><button data-action="zoom-out" type="button" title="Perkecil ilustrasi"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-zoom-out" aria-hidden="true"><circle cx="11" cy="11" r="8"></circle><line x1="21" x2="16.65" y1="21" y2="16.65"></line><line x1="8" x2="14" y1="11" y2="11"></line></svg><span>Perkecil</span></button><button data-action="zoom-reset" class="zoom-value" type="button" title="Kembalikan ke ukuran 100%">100%</button><button data-action="zoom-in" type="button" title="Perbesar ilustrasi"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-zoom-in" aria-hidden="true"><circle cx="11" cy="11" r="8"></circle><line x1="21" x2="16.65" y1="21" y2="16.65"></line><line x1="11" x2="11" y1="8" y2="14"></line><line x1="8" x2="14" y1="11" y2="11"></line></svg><span>Perbesar</span></button></div><div class="drawing-tools" aria-label="Alat anotasi"><button data-action="pen" class="" type="button" aria-pressed="false" title="Aktifkan pena"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-pen-line" aria-hidden="true"><path d="M13 21h8"></path><path d="M21.174 6.812a1 1 0 0 0-3.986-3.987L3.842 16.174a2 2 0 0 0-.5.83l-1.321 4.352a.5.5 0 0 0 .623.622l4.353-1.32a2 2 0 0 0 .83-.497z"></path></svg><span>Pena</span></button><button data-action="eraser" class="" type="button" aria-pressed="false" disabled="" title="Pilih coretan yang akan dihapus"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-eraser" aria-hidden="true"><path d="M21 21H8a2 2 0 0 1-1.42-.587l-3.994-3.999a2 2 0 0 1 0-2.828l10-10a2 2 0 0 1 2.829 0l5.999 6a2 2 0 0 1 0 2.828L12.834 21"></path><path d="m5.082 11.09 8.828 8.828"></path></svg><span>Penghapus</span></button><button data-action="undo" type="button" disabled="" title="Batalkan coretan terakhir"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-rotate-ccw" aria-hidden="true"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"></path><path d="M3 3v5h5"></path></svg><span>Urungkan</span></button><button data-action="clear" type="button" disabled="" title="Hapus semua coretan"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-trash2 lucide-trash-2" aria-hidden="true"><path d="M10 11v6"></path><path d="M14 11v6"></path><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6"></path><path d="M3 6h18"></path><path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg><span>Bersihkan</span></button></div></div><div class="illustration-viewport"><div class="illustration-stage"><div class="illustration-zoom-layer" style="zoom:1"><div class="illustration-content"><ol class="rule-cards"><li><b>1</b><span>Kolom non-agregat pada SELECT harus konsisten dengan GROUP BY.</span></li><li><b>2</b><span>COUNT(*) menghitung baris; COUNT(kolom) mengabaikan NULL.</span></li><li><b>3</b><span>WHERE bekerja sebelum GROUP BY.</span></li><li><b>4</b><span>HAVING bekerja setelah GROUP BY.</span></li><li><b>5</b><span>Jangan mengganti nilai yang belum diketahui dengan 0 tanpa aturan yang jelas.</span></li></ol></div><svg class="drawing-layer " viewBox="0 0 1 1" preserveAspectRatio="none" aria-label="Lapisan untuk membuat anotasi"></svg></div></div></div></div></section><section id="latihan" class="lesson-section numbered-section" data-section="06" data-section-title="LATIHAN"><h2>Latihan</h2><p class="section-intro">Petunjuk pengerjaan: tuliskan hasil analisis beserta alasan yang mendasari setiap jawaban.</p><ol class="exercise-grid"><li>Hitung jumlah mahasiswa per angkatan.</li><li>Tampilkan rata-rata nilai setiap mata kuliah pada semester 2026-1.</li><li>Pilih mata kuliah yang mempunyai lebih dari 30 peserta.</li><li>Bandingkan COUNT(*) dan COUNT(Nilai) pada tabel contoh.</li><li>Hitung nilai terendah dan tertinggi pada setiap mata kuliah.</li><li>Hitung jumlah pesanan dan total nilai transaksi untuk setiap pelanggan.</li><li>Tampilkan program studi yang mempunyai sedikitnya 40 mahasiswa.</li><li>Hitung jumlah mahasiswa untuk setiap kombinasi program studi dan angkatan.</li><li>Tampilkan dosen yang mengampu lebih dari dua kelas.</li><li>Hitung rata-rata nilai hanya untuk KRS semester 2026-1.</li><li>Jelaskan mengapa kondisi AVG(Nilai) tidak diletakkan pada WHERE.</li><li>Perbaiki query yang memilih NamaMK tetapi hanya mengelompokkan KodeProdi.</li><li>Buat query join dan agregasi untuk menghitung peserta setiap nama mata kuliah.</li><li>Tentukan hasil COUNT(*), COUNT(Nilai), dan AVG(Nilai) ketika sebagian Nilai bernilai NULL.</li></ol></section><section id="ringkasan" class="lesson-section numbered-section" data-section="07" data-section-title="RINGKASAN"><h2>Ringkasan</h2><ul class="extended-summary-grid"><li>Agregat merangkum sekumpulan baris.</li><li>GROUP BY menentukan kelompok.</li><li>WHERE menyaring baris dan HAVING menyaring kelompok.</li><li>NULL perlu dipertimbangkan saat membaca hasil agregat.</li></ul></section></main><aside class="toc" aria-label="Pada halaman ini"><strong>Pada halaman ini</strong><a href="#tujuan">1. Tujuan pembelajaran</a><a href="#konsep">2. Konsep utama</a><a href="#contoh">3. Contoh kasus</a><a href="#langkah">4. Penyelesaian bertahap</a><a href="#contoh-lanjutan">5. Contoh tambahan</a><a href="#aturan">6. Aturan penting</a><a href="#latihan">7. Latihan</a><a href="#ringkasan">8. Ringkasan</a></aside></div>
+</style></head><body><a class="skip-link" href="#materi">Langsung ke materi</a><aside class="sidebar"><a class="brand" href="../">Sistem<br/>Basis Data</a><p class="side-meta">Bahan kuliah teori</p><p class="teacher-note">Ni Putu Praja Chintya<br/>bersama Ir. Waljiyanto, M.Sc.</p><nav class="semester-nav" aria-label="Navigasi pertemuan"><p>Pertemuan 1–16</p><ol><li><a href="../pertemuan-1/" title="Pertemuan 1: Pengertian dan kebutuhan basis data"><b>1</b><span>Pengertian dan kebutuhan basis data</span></a></li><li><a href="../pertemuan-2/" title="Pertemuan 2: Karakteristik basis data dan pengelolaannya"><b>2</b><span>Karakteristik basis data dan pengelolaannya</span></a></li><li><a href="../pertemuan-3/" title="Pertemuan 3: Struktur tabel, identitas tabel, dan key"><b>3</b><span>Struktur tabel, identitas tabel, dan key</span></a></li><li><a href="../" title="Pertemuan 4: Determinan, ketergantungan fungsional, dan 1NF"><b>4</b><span>Determinan, ketergantungan fungsional, dan 1NF</span></a></li><li><a href="../pertemuan-5/" title="Pertemuan 5: Normalisasi 2NF dan 3NF"><b>5</b><span>Normalisasi 2NF dan 3NF</span></a></li><li><a href="../pertemuan-6/" title="Pertemuan 6: ER Model: entitas, atribut, dan relationship"><b>6</b><span>ER Model: entitas, atribut, dan relationship</span></a></li><li><a href="../pertemuan-7/" title="Pertemuan 7: Derajat, kardinalitas, dan partisipasi hubungan"><b>7</b><span>Derajat, kardinalitas, dan partisipasi hubungan</span></a></li><li><a href="../pertemuan-8/" title="Pertemuan 8: Ujian Tengah Semester"><b>8</b><span>Ujian Tengah Semester</span></a></li><li><a href="../pertemuan-9/" title="Pertemuan 9: ER Model menjadi tabel: hubungan 1:1 dan 1:N"><b>9</b><span>ER Model menjadi tabel: hubungan 1:1 dan 1:N</span></a></li><li><a href="../pertemuan-10/" title="Pertemuan 10: Hubungan M:N dan atribut relationship"><b>10</b><span>Hubungan M:N dan atribut relationship</span></a></li><li><a href="../pertemuan-11/" title="Pertemuan 11: Hubungan berjenjang dan rekursif"><b>11</b><span>Hubungan berjenjang dan rekursif</span></a></li><li><a href="../pertemuan-12/" title="Pertemuan 12: Aljabar relasional"><b>12</b><span>Aljabar relasional</span></a></li><li><a href="../pertemuan-13/" title="Pertemuan 13: SQL: memilih dan menggabungkan data"><b>13</b><span>SQL: memilih dan menggabungkan data</span></a></li><li><a href="../pertemuan-14/" aria-current="page" title="Pertemuan 14: Fungsi agregat dan pengelompokan data"><b>14</b><span>Fungsi agregat dan pengelompokan data</span></a></li><li><a href="../pertemuan-15/" title="Pertemuan 15: Subquery dan latihan kasus"><b>15</b><span>Subquery dan latihan kasus</span></a></li><li><a href="../pertemuan-16/" title="Pertemuan 16: Ujian Akhir Semester"><b>16</b><span>Ujian Akhir Semester</span></a></li></ol></nav></aside><div class="page-shell" id="top"><main id="materi"><header class="lesson-header"><p class="eyebrow">Pertemuan 14 · Teori · 100 menit</p><h1>Fungsi Agregat dan Pengelompokan Data</h1><p class="lead">Merangkum banyak baris menjadi informasi seperti jumlah, rata-rata, nilai terendah, dan nilai tertinggi untuk setiap kelompok.</p></header><section id="tujuan" class="lesson-section"><h2>Tujuan pembelajaran</h2><p class="section-intro">Setelah mengikuti pertemuan ini, mahasiswa dapat:</p><ol class="wide-number-list learning-outcomes"><li>Menggunakan COUNT, SUM, AVG, MIN, dan MAX.</li><li>Mengelompokkan data dengan GROUP BY.</li><li>Membedakan WHERE dan HAVING.</li><li>Menjelaskan pengaruh NULL pada fungsi agregat.</li></ol></section><section id="konsep" class="lesson-section numbered-section" data-section="01" data-section-title="KONSEP UTAMA"><h2>Konsep yang perlu dipahami</h2><p class="section-intro">Konsep utama disajikan melalui definisi dan contoh penerapannya.</p><dl class="extended-topic-grid"><div><dt>Fungsi agregat</dt><dd><p>Fungsi yang menghitung sekumpulan baris dan menghasilkan satu nilai ringkasan.</p><p><b>Contoh:</b> AVG(Nilai) menghitung rata-rata nilai non-NULL.</p></dd></div><div><dt>GROUP BY</dt><dd><p>Membagi baris menjadi kelompok sebelum agregat dihitung.</p><p><b>Contoh:</b> GROUP BY KodeMK menghasilkan satu ringkasan untuk setiap mata kuliah.</p></dd></div><div><dt>WHERE</dt><dd><p>Menyaring baris sebelum pengelompokan dilakukan.</p><p><b>Contoh:</b> WHERE Semester = 20261 membatasi data ke satu semester.</p></dd></div><div><dt>HAVING</dt><dd><p>Menyaring kelompok setelah fungsi agregat dihitung.</p><p><b>Contoh:</b> HAVING COUNT(*) &gt;= 10 memilih mata kuliah dengan sedikitnya 10 peserta.</p></dd></div></dl></section><section id="contoh" class="lesson-section numbered-section" data-section="02" data-section-title="CONTOH KASUS"><h2>Ringkasan nilai per mata kuliah</h2><p class="section-intro">Kebutuhan: hitung jumlah peserta, rata-rata, nilai terendah, dan tertinggi untuk setiap mata kuliah.</p><div class="interactive-illustration " aria-label="Ilustrasi interaktif: Ringkasan nilai per mata kuliah"><div class="illustration-toolbar" role="toolbar" aria-label="Alat untuk Ringkasan nilai per mata kuliah"><div class="zoom-tools" aria-label="Pengaturan ukuran"><button data-action="zoom-out" type="button" title="Perkecil ilustrasi"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-zoom-out" aria-hidden="true"><circle cx="11" cy="11" r="8"></circle><line x1="21" x2="16.65" y1="21" y2="16.65"></line><line x1="8" x2="14" y1="11" y2="11"></line></svg><span>Perkecil</span></button><button data-action="zoom-reset" class="zoom-value" type="button" title="Kembalikan ke ukuran 100%">100%</button><button data-action="zoom-in" type="button" title="Perbesar ilustrasi"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-zoom-in" aria-hidden="true"><circle cx="11" cy="11" r="8"></circle><line x1="21" x2="16.65" y1="21" y2="16.65"></line><line x1="11" x2="11" y1="8" y2="14"></line><line x1="8" x2="14" y1="11" y2="11"></line></svg><span>Perbesar</span></button></div><div class="drawing-tools" aria-label="Alat anotasi"><button data-action="pen" class="" type="button" aria-pressed="false" title="Aktifkan pena"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-pen-line" aria-hidden="true"><path d="M13 21h8"></path><path d="M21.174 6.812a1 1 0 0 0-3.986-3.987L3.842 16.174a2 2 0 0 0-.5.83l-1.321 4.352a.5.5 0 0 0 .623.622l4.353-1.32a2 2 0 0 0 .83-.497z"></path></svg><span>Pena</span></button><button data-action="eraser" class="" type="button" aria-pressed="false" disabled="" title="Pilih coretan yang akan dihapus"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-eraser" aria-hidden="true"><path d="M21 21H8a2 2 0 0 1-1.42-.587l-3.994-3.999a2 2 0 0 1 0-2.828l10-10a2 2 0 0 1 2.829 0l5.999 6a2 2 0 0 1 0 2.828L12.834 21"></path><path d="m5.082 11.09 8.828 8.828"></path></svg><span>Penghapus</span></button><button data-action="undo" type="button" disabled="" title="Batalkan coretan terakhir"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-rotate-ccw" aria-hidden="true"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"></path><path d="M3 3v5h5"></path></svg><span>Urungkan</span></button><button data-action="clear" type="button" disabled="" title="Hapus semua coretan"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-trash2 lucide-trash-2" aria-hidden="true"><path d="M10 11v6"></path><path d="M14 11v6"></path><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6"></path><path d="M3 6h18"></path><path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg><span>Bersihkan</span></button></div></div><div class="illustration-viewport"><div class="illustration-stage"><div class="illustration-zoom-layer" style="zoom:1"><div class="illustration-content"><figure class="lesson-table "><figcaption>Ringkasan nilai per mata kuliah</figcaption><div class="table-wrap"><table><thead><tr><th>Kode MK</th><th>Nilai</th></tr></thead><tbody><tr><td class="">BD01</td><td class="">88</td></tr><tr><td class="">BD01</td><td class="">84</td></tr><tr><td class="">BD01</td><td class="">NULL</td></tr><tr><td class="">SIG01</td><td class="">90</td></tr><tr><td class="">SIG01</td><td class="">78</td></tr></tbody></table></div></figure></div><svg class="drawing-layer " viewBox="0 0 1 1" preserveAspectRatio="none" aria-label="Lapisan untuk membuat anotasi"></svg></div></div></div></div></section><section id="langkah" class="lesson-section numbered-section" data-section="03" data-section-title="PENYELESAIAN BERTAHAP"><h2>Penyelesaian langkah demi langkah</h2><p class="section-intro">Penyelesaian dilakukan secara berurutan berdasarkan tujuan, tindakan, dan hasil pada setiap tahap.</p><div class="stacked-steps"><details class="normalization-step" open=""><summary><span class="step-number">LANGKAH 1</span><span class="step-heading"><b>Tentukan satuan kelompok</b></span><span class="step-toggle" aria-hidden="true"></span></summary><div class="normalization-step-body"><p>Hasil diminta “untuk setiap mata kuliah”, sehingga KodeMK menjadi kolom GROUP BY.</p><div class="definition-focus"><span>Hasil</span><p>Satu baris hasil mewakili satu KodeMK.</p></div></div></details><details class="normalization-step"><summary><span class="step-number">LANGKAH 2</span><span class="step-heading"><b>Pilih agregat</b></span><span class="step-toggle" aria-hidden="true"></span></summary><div class="normalization-step-body"><p>Gunakan COUNT(*), AVG(Nilai), MIN(Nilai), dan MAX(Nilai).</p><div class="definition-focus"><span>Hasil</span><p>Setiap kelompok mempunyai empat ringkasan.</p></div></div></details><details class="normalization-step"><summary><span class="step-number">LANGKAH 3</span><span class="step-heading"><b>Periksa NULL</b></span><span class="step-toggle" aria-hidden="true"></span></summary><div class="normalization-step-body"><p>COUNT(*) menghitung seluruh baris, sedangkan COUNT(Nilai) dan AVG(Nilai) mengabaikan Nilai yang NULL.</p><div class="definition-focus"><span>Hasil</span><p>Jumlah peserta dan jumlah nilai yang sudah masuk dapat berbeda.</p></div></div></details><details class="normalization-step"><summary><span class="step-number">LANGKAH 4</span><span class="step-heading"><b>Saring kelompok bila perlu</b></span><span class="step-toggle" aria-hidden="true"></span></summary><div class="normalization-step-body"><p>Gunakan HAVING AVG(Nilai) &gt;= 80 untuk memilih kelompok berdasarkan hasil rata-rata.</p><div class="definition-focus"><span>Hasil</span><p>Filter diterapkan setelah agregasi.</p></div></div></details></div></section><section id="contoh-lanjutan" class="lesson-section numbered-section" data-section="04" data-section-title="CONTOH TAMBAHAN"><h2>Contoh tambahan</h2><p class="section-intro">Setiap contoh menunjukkan hubungan antara aturan, struktur data, dan hasil analisis.</p><div class="worked-example-stack"><article class="worked-example"><p class="worked-example-number">CONTOH 2</p><h3>Jumlah mahasiswa per program studi dan angkatan</h3><p>Satu baris hasil harus mewakili satu kombinasi program studi dan angkatan.</p><div class="interactive-illustration " aria-label="Ilustrasi interaktif: Jumlah mahasiswa per program studi dan angkatan"><div class="illustration-toolbar" role="toolbar" aria-label="Alat untuk Jumlah mahasiswa per program studi dan angkatan"><div class="zoom-tools" aria-label="Pengaturan ukuran"><button data-action="zoom-out" type="button" title="Perkecil ilustrasi"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-zoom-out" aria-hidden="true"><circle cx="11" cy="11" r="8"></circle><line x1="21" x2="16.65" y1="21" y2="16.65"></line><line x1="8" x2="14" y1="11" y2="11"></line></svg><span>Perkecil</span></button><button data-action="zoom-reset" class="zoom-value" type="button" title="Kembalikan ke ukuran 100%">100%</button><button data-action="zoom-in" type="button" title="Perbesar ilustrasi"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-zoom-in" aria-hidden="true"><circle cx="11" cy="11" r="8"></circle><line x1="21" x2="16.65" y1="21" y2="16.65"></line><line x1="11" x2="11" y1="8" y2="14"></line><line x1="8" x2="14" y1="11" y2="11"></line></svg><span>Perbesar</span></button></div><div class="drawing-tools" aria-label="Alat anotasi"><button data-action="pen" class="" type="button" aria-pressed="false" title="Aktifkan pena"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-pen-line" aria-hidden="true"><path d="M13 21h8"></path><path d="M21.174 6.812a1 1 0 0 0-3.986-3.987L3.842 16.174a2 2 0 0 0-.5.83l-1.321 4.352a.5.5 0 0 0 .623.622l4.353-1.32a2 2 0 0 0 .83-.497z"></path></svg><span>Pena</span></button><button data-action="eraser" class="" type="button" aria-pressed="false" disabled="" title="Pilih coretan yang akan dihapus"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-eraser" aria-hidden="true"><path d="M21 21H8a2 2 0 0 1-1.42-.587l-3.994-3.999a2 2 0 0 1 0-2.828l10-10a2 2 0 0 1 2.829 0l5.999 6a2 2 0 0 1 0 2.828L12.834 21"></path><path d="m5.082 11.09 8.828 8.828"></path></svg><span>Penghapus</span></button><button data-action="undo" type="button" disabled="" title="Batalkan coretan terakhir"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-rotate-ccw" aria-hidden="true"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"></path><path d="M3 3v5h5"></path></svg><span>Urungkan</span></button><button data-action="clear" type="button" disabled="" title="Hapus semua coretan"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-trash2 lucide-trash-2" aria-hidden="true"><path d="M10 11v6"></path><path d="M14 11v6"></path><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6"></path><path d="M3 6h18"></path><path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg><span>Bersihkan</span></button></div></div><div class="illustration-viewport"><div class="illustration-stage"><div class="illustration-zoom-layer" style="zoom:1"><div class="illustration-content"><figure class="lesson-table "><figcaption>Jumlah mahasiswa per program studi dan angkatan</figcaption><div class="table-wrap"><table><thead><tr><th>KodeProdi</th><th>Angkatan</th><th>Jumlah mahasiswa</th></tr></thead><tbody><tr><td class="">TRSP</td><td class="">2024</td><td class="">42</td></tr><tr><td class="">TRSP</td><td class="">2025</td><td class="">38</td></tr><tr><td class="">SIG</td><td class="">2024</td><td class="">35</td></tr></tbody></table></div></figure></div><svg class="drawing-layer " viewBox="0 0 1 1" preserveAspectRatio="none" aria-label="Lapisan untuk membuat anotasi"></svg></div></div></div></div><ol class="analysis-list"><li>SELECT memuat KodeProdi, Angkatan, dan COUNT(*).</li><li>GROUP BY harus memuat KodeProdi dan Angkatan karena keduanya bukan hasil agregat.</li><li>COUNT(*) menghitung setiap baris mahasiswa dalam kelompok.</li><li>ORDER BY dapat digunakan agar hasil terurut menurut program studi dan angkatan.</li></ol></article><article class="worked-example"><p class="worked-example-number">CONTOH 3</p><h3>Mata kuliah dengan rata-rata minimal 80</h3><p>Data dikelompokkan berdasarkan mata kuliah, kemudian kelompok disaring berdasarkan hasil AVG.</p><div class="interactive-illustration " aria-label="Ilustrasi interaktif: Mata kuliah dengan rata-rata minimal 80"><div class="illustration-toolbar" role="toolbar" aria-label="Alat untuk Mata kuliah dengan rata-rata minimal 80"><div class="zoom-tools" aria-label="Pengaturan ukuran"><button data-action="zoom-out" type="button" title="Perkecil ilustrasi"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-zoom-out" aria-hidden="true"><circle cx="11" cy="11" r="8"></circle><line x1="21" x2="16.65" y1="21" y2="16.65"></line><line x1="8" x2="14" y1="11" y2="11"></line></svg><span>Perkecil</span></button><button data-action="zoom-reset" class="zoom-value" type="button" title="Kembalikan ke ukuran 100%">100%</button><button data-action="zoom-in" type="button" title="Perbesar ilustrasi"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-zoom-in" aria-hidden="true"><circle cx="11" cy="11" r="8"></circle><line x1="21" x2="16.65" y1="21" y2="16.65"></line><line x1="11" x2="11" y1="8" y2="14"></line><line x1="8" x2="14" y1="11" y2="11"></line></svg><span>Perbesar</span></button></div><div class="drawing-tools" aria-label="Alat anotasi"><button data-action="pen" class="" type="button" aria-pressed="false" title="Aktifkan pena"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-pen-line" aria-hidden="true"><path d="M13 21h8"></path><path d="M21.174 6.812a1 1 0 0 0-3.986-3.987L3.842 16.174a2 2 0 0 0-.5.83l-1.321 4.352a.5.5 0 0 0 .623.622l4.353-1.32a2 2 0 0 0 .83-.497z"></path></svg><span>Pena</span></button><button data-action="eraser" class="" type="button" aria-pressed="false" disabled="" title="Pilih coretan yang akan dihapus"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-eraser" aria-hidden="true"><path d="M21 21H8a2 2 0 0 1-1.42-.587l-3.994-3.999a2 2 0 0 1 0-2.828l10-10a2 2 0 0 1 2.829 0l5.999 6a2 2 0 0 1 0 2.828L12.834 21"></path><path d="m5.082 11.09 8.828 8.828"></path></svg><span>Penghapus</span></button><button data-action="undo" type="button" disabled="" title="Batalkan coretan terakhir"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-rotate-ccw" aria-hidden="true"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"></path><path d="M3 3v5h5"></path></svg><span>Urungkan</span></button><button data-action="clear" type="button" disabled="" title="Hapus semua coretan"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-trash2 lucide-trash-2" aria-hidden="true"><path d="M10 11v6"></path><path d="M14 11v6"></path><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6"></path><path d="M3 6h18"></path><path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg><span>Bersihkan</span></button></div></div><div class="illustration-viewport"><div class="illustration-stage"><div class="illustration-zoom-layer" style="zoom:1"><div class="illustration-content"><figure class="lesson-table "><figcaption>Mata kuliah dengan rata-rata minimal 80</figcaption><div class="table-wrap"><table><thead><tr><th>KodeMK</th><th>Jumlah peserta</th><th>Jumlah nilai terisi</th><th>Rata-rata</th></tr></thead><tbody><tr><td class="">BD01</td><td class="">3</td><td class="">2</td><td class="">86</td></tr><tr><td class="">SIG01</td><td class="">2</td><td class="">2</td><td class="">84</td></tr></tbody></table></div></figure></div><svg class="drawing-layer " viewBox="0 0 1 1" preserveAspectRatio="none" aria-label="Lapisan untuk membuat anotasi"></svg></div></div></div></div><ol class="analysis-list"><li>WHERE digunakan jika data perlu dibatasi menurut semester sebelum pengelompokan.</li><li>GROUP BY KodeMK membentuk satu kelompok untuk setiap mata kuliah.</li><li>HAVING AVG(Nilai) &gt;= 80 menyaring kelompok setelah rata-rata dihitung.</li><li>COUNT(*) dan COUNT(Nilai) dapat berbeda karena COUNT(Nilai) mengabaikan NULL.</li></ol></article></div></section><section id="simulator-sql" class="lesson-section numbered-section" data-section="05" data-section-title="SIMULATOR SQL"><h2>Simulator SQL</h2><p class="section-intro">Gunakan basis data film untuk membentuk ringkasan dengan COUNT, AVG, MIN, MAX, GROUP BY, dan HAVING. Data dibuat cukup beragam agar perbedaan hasil setiap agregat terlihat.</p><div class="sql-lab" data-sql-lab="true"><script type="application/json" class="sql-lab-data">{"setup":"\nCREATE TABLE FILM (ID_FILM STRING, JUDUL_FILM STRING, TAHUN NUMBER, BUDGET NUMBER);\nCREATE TABLE AKTOR (ID_AKTOR STRING, NAMA_AKTOR STRING, JENIS_KELAMIN STRING);\nCREATE TABLE PERAN (ID_AKTOR STRING, ID_FILM STRING, NAMA_PERAN STRING);\nCREATE TABLE RATING (ID_RATING STRING, ID_FILM STRING, NILAI NUMBER);\nCREATE TABLE SUTRADARA (ID_SUTRADARA STRING, NAMA_SUTRADARA STRING);\nCREATE TABLE FILM_SUTRADARA (ID_FILM STRING, ID_SUTRADARA STRING);\nCREATE TABLE GENRE (ID_GENRE STRING, NAMA_GENRE STRING);\nCREATE TABLE GENRE_FILM (ID_FILM STRING, ID_GENRE STRING);\nINSERT INTO FILM VALUES ('F01','Avengers',2012,220),('F02','Iron Man',2008,140),('F03','Lucy',2014,40),('F04','Parasite',2019,11),('F05','Snowpiercer',2013,39),('F06','Film Tanpa Rating',2024,15);\nINSERT INTO AKTOR VALUES ('A01','Robert Downey Jr','L'),('A02','Chris Evans','L'),('A03','Scarlett Johansson','P'),('A04','Song Kang-ho','L'),('A05','Chris Hemsworth','L');\nINSERT INTO PERAN VALUES ('A01','F01','Iron Man'),('A01','F02','Tony Stark'),('A02','F01','Captain America'),('A03','F01','Black Widow'),('A03','F03','Lucy'),('A04','F04','Kim Ki-taek'),('A04','F05','Namgoong'),('A05','F01','Thor');\nINSERT INTO RATING VALUES ('R01','F01',8.0),('R02','F01',8.4),('R03','F02',7.7),('R04','F02',7.9),('R05','F03',6.4),('R06','F03',6.8),('R07','F04',8.5),('R08','F04',8.7),('R09','F05',7.1),('R10','F05',7.3);\nINSERT INTO SUTRADARA VALUES ('S01','Joss Whedon'),('S02','Jon Favreau'),('S03','Luc Besson'),('S04','Bong Joon-ho'),('S05','Joe Russo');\nINSERT INTO FILM_SUTRADARA VALUES ('F01','S01'),('F01','S05'),('F02','S02'),('F03','S03'),('F04','S04'),('F05','S04');\nINSERT INTO GENRE VALUES ('G01','Superhero'),('G02','Fiksi Ilmiah'),('G03','Drama'),('G04','Thriller');\nINSERT INTO GENRE_FILM VALUES ('F01','G01'),('F01','G02'),('F02','G01'),('F03','G02'),('F04','G03'),('F04','G04'),('F05','G02'),('F05','G03');\n","examples":[{"title":"Rata-rata rating setiap film","prompt":"Hitung jumlah rating dan rata-rata rating untuk setiap film yang sudah mempunyai rating.","query":"SELECT f.JUDUL_FILM, COUNT(r.NILAI) AS JUMLAH_RATING, ROUND(AVG(r.NILAI), 2) AS RATA_RATA\nFROM FILM AS f\nINNER JOIN RATING AS r ON r.ID_FILM = f.ID_FILM\nGROUP BY f.ID_FILM, f.JUDUL_FILM\nORDER BY RATA_RATA DESC;","explanation":"GROUP BY membentuk satu kelompok untuk setiap film. COUNT dan AVG kemudian dihitung di dalam masing-masing kelompok."},{"title":"Jumlah film setiap genre","prompt":"Hitung jumlah film yang termasuk dalam setiap genre.","query":"SELECT g.NAMA_GENRE, COUNT(gf.ID_FILM) AS JUMLAH_FILM\nFROM GENRE AS g\nLEFT JOIN GENRE_FILM AS gf ON gf.ID_GENRE = g.ID_GENRE\nGROUP BY g.ID_GENRE, g.NAMA_GENRE\nORDER BY JUMLAH_FILM DESC;","explanation":"LEFT JOIN mempertahankan genre yang belum mempunyai film. COUNT pada ID_FILM hanya menghitung pasangan yang tidak NULL."},{"title":"Aktor yang bermain di lebih dari satu film","prompt":"Tampilkan aktor yang memiliki lebih dari satu film beserta jumlah filmnya.","query":"SELECT a.NAMA_AKTOR, COUNT(p.ID_FILM) AS JUMLAH_FILM\nFROM AKTOR AS a\nINNER JOIN PERAN AS p ON p.ID_AKTOR = a.ID_AKTOR\nGROUP BY a.ID_AKTOR, a.NAMA_AKTOR\nHAVING COUNT(p.ID_FILM) > 1\nORDER BY JUMLAH_FILM DESC;","explanation":"WHERE tidak dapat digunakan untuk kondisi COUNT. HAVING menyaring kelompok setelah jumlah film setiap aktor dihitung."},{"title":"Film dengan lebih dari satu sutradara","prompt":"Tampilkan judul film yang mempunyai lebih dari satu sutradara.","query":"SELECT f.JUDUL_FILM, COUNT(fs.ID_SUTRADARA) AS JUMLAH_SUTRADARA\nFROM FILM AS f\nINNER JOIN FILM_SUTRADARA AS fs ON fs.ID_FILM = f.ID_FILM\nGROUP BY f.ID_FILM, f.JUDUL_FILM\nHAVING COUNT(fs.ID_SUTRADARA) > 1;","explanation":"Setiap baris FILM_SUTRADARA menyatakan satu pasangan film dan sutradara. COUNT menghitung pasangan pada setiap film."},{"title":"Ringkasan budget berdasarkan tahun","prompt":"Hitung jumlah film serta budget minimum, maksimum, dan rata-rata untuk setiap tahun.","query":"SELECT TAHUN, COUNT(*) AS JUMLAH_FILM, MIN(BUDGET) AS BUDGET_MINIMUM, MAX(BUDGET) AS BUDGET_MAKSIMUM, ROUND(AVG(BUDGET), 2) AS BUDGET_RATA_RATA\nFROM FILM\nGROUP BY TAHUN\nORDER BY TAHUN;","explanation":"Satu baris keluaran mewakili satu tahun. Semua kolom selain TAHUN merupakan hasil fungsi agregat."},{"title":"Film tanpa rating","prompt":"Tampilkan seluruh film dan jumlah ratingnya, termasuk film yang belum memperoleh rating.","query":"SELECT f.JUDUL_FILM, COUNT(r.NILAI) AS JUMLAH_RATING\nFROM FILM AS f\nLEFT JOIN RATING AS r ON r.ID_FILM = f.ID_FILM\nGROUP BY f.ID_FILM, f.JUDUL_FILM\nORDER BY JUMLAH_RATING, f.JUDUL_FILM;","explanation":"COUNT(r.NILAI) menghasilkan 0 untuk film tanpa pasangan rating. COUNT(*) justru tetap menghitung satu baris hasil LEFT JOIN."}]}</script><div class="sql-lab-heading"><div><p class="sql-lab-kicker">BASIS DATA LATIHAN</p><h3>Film dan produksi</h3></div><span class="sql-engine-status" data-engine-status="true">Menyiapkan mesin SQL…</span></div><details class="sql-schema" open=""><summary>Struktur tabel</summary><pre>FILM(ID_FILM, JUDUL_FILM, TAHUN, BUDGET)
+AKTOR(ID_AKTOR, NAMA_AKTOR, JENIS_KELAMIN)
+PERAN(ID_AKTOR, ID_FILM, NAMA_PERAN)
+RATING(ID_RATING, ID_FILM, NILAI)
+SUTRADARA(ID_SUTRADARA, NAMA_SUTRADARA)
+FILM_SUTRADARA(ID_FILM, ID_SUTRADARA)
+GENRE(ID_GENRE, NAMA_GENRE)
+GENRE_FILM(ID_FILM, ID_GENRE)</pre></details><div class="sql-example-picker"><label>Contoh query<select data-example-select="true"><option value="0">1. Rata-rata rating setiap film</option><option value="1">2. Jumlah film setiap genre</option><option value="2">3. Aktor yang bermain di lebih dari satu film</option><option value="3">4. Film dengan lebih dari satu sutradara</option><option value="4">5. Ringkasan budget berdasarkan tahun</option><option value="5">6. Film tanpa rating</option></select></label><p class="sql-example-prompt" data-example-prompt="true">Hitung jumlah rating dan rata-rata rating untuk setiap film yang sudah mempunyai rating.</p></div><div class="sql-terminal"><div class="sql-terminal-bar"><span>SQL Query</span><span>SELECT saja</span></div><textarea data-query-editor="true" spellCheck="false" aria-label="Editor query SQL">SELECT f.JUDUL_FILM, COUNT(r.NILAI) AS JUMLAH_RATING, ROUND(AVG(r.NILAI), 2) AS RATA_RATA
+FROM FILM AS f
+INNER JOIN RATING AS r ON r.ID_FILM = f.ID_FILM
+GROUP BY f.ID_FILM, f.JUDUL_FILM
+ORDER BY RATA_RATA DESC;</textarea><div class="sql-actions"><button type="button" data-sql-action="run">Jalankan query</button><button type="button" data-sql-action="reset">Reset</button></div></div><div class="sql-result" aria-live="polite"><div class="sql-result-heading"><h4>Hasil query</h4><span data-result-status="true">Belum dijalankan</span></div><div class="sql-result-body" data-result-body="true">Jalankan query untuk menampilkan hasil.</div></div><div class="sql-explanation" data-example-explanation="true" hidden=""><b>Penjelasan hasil</b><p>GROUP BY membentuk satu kelompok untuk setiap film. COUNT dan AVG kemudian dihitung di dalam masing-masing kelompok.</p></div><div class="sql-independent-exercises"><h4>Latihan mandiri</h4><p>Tulis query pada editor yang sama. Bagian ini tidak memuat jawaban.</p><ol><li>Hitung jumlah aktor laki-laki dan perempuan.</li><li>Tampilkan genre yang mempunyai lebih dari satu film.</li><li>Hitung rata-rata rating hanya untuk film produksi sebelum 2015.</li><li>Tampilkan tahun yang memiliki total budget lebih dari 100.</li><li>Hitung jumlah peran setiap film, termasuk film tanpa peran.</li><li>Tampilkan rating minimum dan maksimum setiap film.</li></ol></div></div></section><section id="aturan" class="lesson-section numbered-section" data-section="06" data-section-title="ATURAN PENTING"><h2>Aturan utama</h2><div class="interactive-illustration " aria-label="Ilustrasi interaktif: Aturan penting Pertemuan 14"><div class="illustration-toolbar" role="toolbar" aria-label="Alat untuk Aturan penting Pertemuan 14"><div class="zoom-tools" aria-label="Pengaturan ukuran"><button data-action="zoom-out" type="button" title="Perkecil ilustrasi"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-zoom-out" aria-hidden="true"><circle cx="11" cy="11" r="8"></circle><line x1="21" x2="16.65" y1="21" y2="16.65"></line><line x1="8" x2="14" y1="11" y2="11"></line></svg><span>Perkecil</span></button><button data-action="zoom-reset" class="zoom-value" type="button" title="Kembalikan ke ukuran 100%">100%</button><button data-action="zoom-in" type="button" title="Perbesar ilustrasi"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-zoom-in" aria-hidden="true"><circle cx="11" cy="11" r="8"></circle><line x1="21" x2="16.65" y1="21" y2="16.65"></line><line x1="11" x2="11" y1="8" y2="14"></line><line x1="8" x2="14" y1="11" y2="11"></line></svg><span>Perbesar</span></button></div><div class="drawing-tools" aria-label="Alat anotasi"><button data-action="pen" class="" type="button" aria-pressed="false" title="Aktifkan pena"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-pen-line" aria-hidden="true"><path d="M13 21h8"></path><path d="M21.174 6.812a1 1 0 0 0-3.986-3.987L3.842 16.174a2 2 0 0 0-.5.83l-1.321 4.352a.5.5 0 0 0 .623.622l4.353-1.32a2 2 0 0 0 .83-.497z"></path></svg><span>Pena</span></button><button data-action="eraser" class="" type="button" aria-pressed="false" disabled="" title="Pilih coretan yang akan dihapus"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-eraser" aria-hidden="true"><path d="M21 21H8a2 2 0 0 1-1.42-.587l-3.994-3.999a2 2 0 0 1 0-2.828l10-10a2 2 0 0 1 2.829 0l5.999 6a2 2 0 0 1 0 2.828L12.834 21"></path><path d="m5.082 11.09 8.828 8.828"></path></svg><span>Penghapus</span></button><button data-action="undo" type="button" disabled="" title="Batalkan coretan terakhir"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-rotate-ccw" aria-hidden="true"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"></path><path d="M3 3v5h5"></path></svg><span>Urungkan</span></button><button data-action="clear" type="button" disabled="" title="Hapus semua coretan"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-trash2 lucide-trash-2" aria-hidden="true"><path d="M10 11v6"></path><path d="M14 11v6"></path><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6"></path><path d="M3 6h18"></path><path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg><span>Bersihkan</span></button></div></div><div class="illustration-viewport"><div class="illustration-stage"><div class="illustration-zoom-layer" style="zoom:1"><div class="illustration-content"><ol class="rule-cards"><li><b>1</b><span>Kolom non-agregat pada SELECT harus konsisten dengan GROUP BY.</span></li><li><b>2</b><span>COUNT(*) menghitung baris; COUNT(kolom) mengabaikan NULL.</span></li><li><b>3</b><span>WHERE bekerja sebelum GROUP BY.</span></li><li><b>4</b><span>HAVING bekerja setelah GROUP BY.</span></li><li><b>5</b><span>Jangan mengganti nilai yang belum diketahui dengan 0 tanpa aturan yang jelas.</span></li></ol></div><svg class="drawing-layer " viewBox="0 0 1 1" preserveAspectRatio="none" aria-label="Lapisan untuk membuat anotasi"></svg></div></div></div></div></section><section id="latihan" class="lesson-section numbered-section" data-section="07" data-section-title="LATIHAN"><h2>Latihan</h2><p class="section-intro">Petunjuk pengerjaan: tuliskan hasil analisis beserta alasan yang mendasari setiap jawaban.</p><ol class="exercise-grid"><li>Hitung jumlah mahasiswa per angkatan.</li><li>Tampilkan rata-rata nilai setiap mata kuliah pada semester 2026-1.</li><li>Pilih mata kuliah yang mempunyai lebih dari 30 peserta.</li><li>Bandingkan COUNT(*) dan COUNT(Nilai) pada tabel contoh.</li><li>Hitung nilai terendah dan tertinggi pada setiap mata kuliah.</li><li>Hitung jumlah pesanan dan total nilai transaksi untuk setiap pelanggan.</li><li>Tampilkan program studi yang mempunyai sedikitnya 40 mahasiswa.</li><li>Hitung jumlah mahasiswa untuk setiap kombinasi program studi dan angkatan.</li><li>Tampilkan dosen yang mengampu lebih dari dua kelas.</li><li>Hitung rata-rata nilai hanya untuk KRS semester 2026-1.</li><li>Jelaskan mengapa kondisi AVG(Nilai) tidak diletakkan pada WHERE.</li><li>Perbaiki query yang memilih NamaMK tetapi hanya mengelompokkan KodeProdi.</li><li>Buat query join dan agregasi untuk menghitung peserta setiap nama mata kuliah.</li><li>Tentukan hasil COUNT(*), COUNT(Nilai), dan AVG(Nilai) ketika sebagian Nilai bernilai NULL.</li></ol></section><section id="ringkasan" class="lesson-section numbered-section" data-section="08" data-section-title="RINGKASAN"><h2>Ringkasan</h2><ul class="extended-summary-grid"><li>Agregat merangkum sekumpulan baris.</li><li>GROUP BY menentukan kelompok.</li><li>WHERE menyaring baris dan HAVING menyaring kelompok.</li><li>NULL perlu dipertimbangkan saat membaca hasil agregat.</li></ul></section></main><aside class="toc" aria-label="Pada halaman ini"><strong>Pada halaman ini</strong><a href="#tujuan">1. Tujuan pembelajaran</a><a href="#konsep">2. Konsep utama</a><a href="#contoh">3. Contoh kasus</a><a href="#langkah">4. Penyelesaian bertahap</a><a href="#contoh-lanjutan">5. Contoh tambahan</a><a href="#simulator-sql">6. Simulator SQL</a><a href="#aturan">7. Aturan penting</a><a href="#latihan">8. Latihan</a><a href="#ringkasan">9. Ringkasan</a></aside></div>
 <div class="page-annotation-toolbar" role="toolbar" aria-label="Alat anotasi halaman">
   <button type="button" data-page-action="pen" aria-pressed="false" title="Aktifkan pena untuk mencoret halaman"><span>Pena</span></button>
   <button type="button" data-page-action="eraser" aria-pressed="false" disabled title="Pilih coretan yang akan dihapus"><span>Hapus</span></button>
@@ -4754,7 +5006,104 @@ footer {
   <button type="button" class="finish-annotation" data-page-action="finish" hidden title="Selesai mencoret dan kembali menggunakan halaman"><span>Selesai</span></button>
 </div>
 <svg class="page-annotation-layer" width="1" height="1" viewBox="0 0 1 1" preserveAspectRatio="none" aria-label="Lapisan anotasi seluruh halaman"></svg>
-<output class="page-annotation-status" hidden></output><script>
+<output class="page-annotation-status" hidden></output>
+<script src="https://cdn.jsdelivr.net/npm/alasql@4.19.1/dist/alasql.min.js"></script>
+<script>
+(() => {
+  const escapeText = value => value === null || value === undefined ? 'NULL' : String(value);
+  document.querySelectorAll('[data-sql-lab]').forEach(root => {
+    const dataNode = root.querySelector('.sql-lab-data');
+    const engineStatus = root.querySelector('[data-engine-status]');
+    const exampleSelect = root.querySelector('[data-example-select]');
+    const prompt = root.querySelector('[data-example-prompt]');
+    const editor = root.querySelector('[data-query-editor]');
+    const runButton = root.querySelector('[data-sql-action="run"]');
+    const resetButton = root.querySelector('[data-sql-action="reset"]');
+    const resultStatus = root.querySelector('[data-result-status]');
+    const resultBody = root.querySelector('[data-result-body]');
+    const explanation = root.querySelector('[data-example-explanation]');
+    if (!dataNode || !editor || !resultBody || !window.alasql) {
+      engineStatus.textContent = 'Mesin SQL gagal dimuat';
+      engineStatus.classList.add('is-error');
+      runButton.disabled = true;
+      return;
+    }
+
+    const config = JSON.parse(dataNode.textContent);
+    let database;
+    const resetDatabase = () => {
+      database = new window.alasql.Database();
+      config.setup.split(';').map(item => item.trim()).filter(Boolean).forEach(statement => database.exec(statement));
+    };
+    const selectExample = () => {
+      const example = config.examples[Number(exampleSelect.value)] || config.examples[0];
+      prompt.textContent = example.prompt;
+      editor.value = example.query;
+      explanation.querySelector('p').textContent = example.explanation;
+      explanation.hidden = true;
+      resultStatus.textContent = 'Belum dijalankan';
+      resultStatus.classList.remove('is-error');
+      resultBody.textContent = 'Jalankan query untuk menampilkan hasil.';
+    };
+    const renderRows = rows => {
+      resultBody.replaceChildren();
+      if (!Array.isArray(rows)) {
+        resultBody.textContent = escapeText(rows);
+        return;
+      }
+      if (!rows.length) {
+        resultBody.textContent = 'Query berhasil, tetapi tidak menghasilkan baris.';
+        return;
+      }
+      const columns = Object.keys(rows[0]);
+      const table = document.createElement('table');
+      const thead = document.createElement('thead');
+      const headerRow = document.createElement('tr');
+      columns.forEach(column => { const th=document.createElement('th'); th.textContent=column; headerRow.appendChild(th); });
+      thead.appendChild(headerRow); table.appendChild(thead);
+      const tbody = document.createElement('tbody');
+      rows.forEach(row => {
+        const tr = document.createElement('tr');
+        columns.forEach(column => {
+          const td = document.createElement('td');
+          td.textContent = escapeText(row[column]);
+          if (row[column] === null || row[column] === undefined) td.className = 'sql-null';
+          tr.appendChild(td);
+        });
+        tbody.appendChild(tr);
+      });
+      table.appendChild(tbody); resultBody.appendChild(table);
+    };
+    const runQuery = () => {
+      const query = editor.value.trim().replace(/;+\s*$/, '').trim();
+      resultStatus.classList.remove('is-error');
+      explanation.hidden = true;
+      try {
+        if (!/^(select|with)\b/i.test(query)) throw new Error('Simulator hanya menerima query SELECT atau WITH.');
+        if (query.includes(';')) throw new Error('Jalankan satu query pada satu waktu.');
+        const rows = database.exec(query);
+        renderRows(rows);
+        resultStatus.textContent = Array.isArray(rows) ? rows.length + ' baris' : 'Query berhasil';
+        explanation.hidden = false;
+      } catch (error) {
+        resultBody.textContent = error && error.message ? error.message : String(error);
+        resultStatus.textContent = 'Periksa query';
+        resultStatus.classList.add('is-error');
+      }
+    };
+
+    resetDatabase();
+    engineStatus.textContent = 'Siap digunakan';
+    engineStatus.classList.add('is-ready');
+    exampleSelect.addEventListener('change', selectExample);
+    runButton.addEventListener('click', runQuery);
+    resetButton.addEventListener('click', () => { resetDatabase(); selectExample(); });
+    editor.addEventListener('keydown', event => {
+      if ((event.metaKey || event.ctrlKey) && event.key === 'Enter') runQuery();
+    });
+  });
+})();
+</script><script>
 (() => {
   const NS = 'http://www.w3.org/2000/svg';
   document.querySelectorAll('.interactive-illustration').forEach((root) => {
