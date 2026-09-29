@@ -1137,6 +1137,113 @@ td:last-child {
   cursor: pointer;
   vector-effect: non-scaling-stroke;
 }
+.page-annotation-toolbar {
+  position: fixed;
+  right: 24px;
+  bottom: 22px;
+  z-index: 1001;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 7px;
+  border: 1px solid #b9cbd5;
+  border-radius: 8px;
+  background: rgba(243, 247, 249, 0.96);
+  box-shadow: 0 8px 24px rgba(23, 56, 72, 0.2);
+  backdrop-filter: blur(8px);
+}
+.page-annotation-toolbar button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  min-height: 36px;
+  padding: 8px 10px;
+  border: 1px solid #c6d3da;
+  border-radius: 5px;
+  color: #264b5d;
+  background: white;
+  font:
+    750 12px/1 system-ui,
+    sans-serif;
+  cursor: pointer;
+}
+.page-annotation-toolbar button:hover:not(:disabled) {
+  border-color: var(--blue);
+  color: var(--blue);
+  background: #edf6fa;
+}
+.page-annotation-toolbar button.active,
+.page-annotation-toolbar .finish-annotation {
+  border-color: var(--blue);
+  color: white;
+  background: var(--blue);
+}
+.page-annotation-toolbar button:disabled {
+  cursor: not-allowed;
+  opacity: 0.42;
+}
+.page-annotation-toolbar button:focus-visible {
+  outline: 3px solid #80b9d2;
+  outline-offset: 2px;
+}
+.page-annotation-toolbar svg {
+  width: 17px;
+  height: 17px;
+  stroke-width: 2.2;
+}
+.page-annotation-toolbar [hidden],
+.page-annotation-status[hidden] {
+  display: none;
+}
+.page-annotation-layer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 999;
+  display: block;
+  max-width: none;
+  pointer-events: none;
+  touch-action: none;
+}
+.page-annotation-layer.is-active {
+  pointer-events: auto;
+  cursor: crosshair;
+}
+.page-annotation-stroke {
+  fill: none;
+  stroke: #c7283d;
+  stroke-width: 4;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  vector-effect: non-scaling-stroke;
+}
+.page-annotation-eraser-target {
+  fill: none;
+  stroke: transparent;
+  stroke-width: 24;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  pointer-events: stroke;
+  cursor: pointer;
+  vector-effect: non-scaling-stroke;
+}
+.page-annotation-status {
+  position: fixed;
+  right: 24px;
+  bottom: 76px;
+  z-index: 1001;
+  max-width: min(430px, calc(100vw - 32px));
+  margin: 0;
+  padding: 9px 12px;
+  border: 1px solid #e3a7af;
+  border-radius: 6px;
+  color: #7b2f39;
+  background: #fff4f5;
+  box-shadow: 0 5px 18px rgba(81, 25, 34, 0.16);
+  font-size: 12px;
+  font-weight: 750;
+}
 .tool-hint {
   max-width: none;
   margin: 0;
@@ -3303,6 +3410,831 @@ footer {
   font-size: 12px;
   font-weight: 850;
 }
+
+/* Pertemuan 7: relationship constraints */
+.wide-number-list {
+  width: 100%;
+  max-width: none;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  border-top: 1px solid var(--line);
+  counter-reset: wide-item;
+}
+.wide-number-list > li {
+  counter-increment: wide-item;
+  display: grid;
+  grid-template-columns: 56px minmax(0, 1fr);
+  gap: 20px;
+  align-items: start;
+  width: 100%;
+  padding: 18px 0;
+  border-bottom: 1px solid var(--line);
+  line-height: 1.55;
+}
+.wide-number-list > li::before {
+  content: counter(wide-item, decimal-leading-zero);
+  color: var(--blue);
+  font-size: 14px;
+  font-weight: 850;
+  letter-spacing: 0.04em;
+}
+.learning-outcomes > li,
+.exercise-wide > li {
+  font-size: 18px;
+}
+.question-list > li {
+  grid-template-columns: 56px 170px minmax(0, 1fr);
+}
+.question-list b {
+  color: var(--blue-deep);
+}
+.question-list span {
+  color: var(--muted);
+}
+.concept-row.three {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+  margin: 24px 0 32px;
+}
+.concept-row.three article {
+  padding: 20px;
+  border-top: 4px solid var(--blue);
+  background: var(--blue-soft);
+}
+.concept-row.three article > span {
+  color: var(--blue);
+  font-size: 12px;
+  font-weight: 850;
+}
+.concept-row.three article > b {
+  display: block;
+  margin: 5px 0 8px;
+  font-size: 19px;
+}
+.concept-row.three p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.5;
+}
+.simple-relation {
+  display: grid;
+  grid-template-columns: minmax(180px, 1fr) minmax(250px, 1.5fr) minmax(
+      180px,
+      1fr
+    );
+  gap: 20px;
+  align-items: center;
+  min-width: 760px;
+  padding: 32px 20px;
+}
+.relation-entity {
+  padding: 20px 18px;
+  border: 2px solid var(--blue);
+  background: white;
+  text-align: center;
+}
+.relation-entity.orange {
+  border-color: #bd711f;
+  background: #fff8eb;
+}
+.relation-entity.green {
+  border-color: #287151;
+  background: #eef8f2;
+}
+.relation-entity.purple {
+  border-color: #5d5aa8;
+  background: #f3f2ff;
+}
+.relation-entity b,
+.relation-entity span {
+  display: block;
+}
+.relation-entity b {
+  color: var(--blue-deep);
+  font-size: 17px;
+}
+.relation-entity span {
+  margin-top: 5px;
+  color: var(--muted);
+  font-size: 13px;
+}
+.relation-line-wide {
+  display: grid;
+  grid-template-columns: auto 1fr auto 1fr auto;
+  gap: 7px;
+  align-items: center;
+  color: var(--blue);
+  text-align: center;
+}
+.relation-line-wide i {
+  overflow: hidden;
+  font-style: normal;
+  white-space: nowrap;
+}
+.relation-line-wide b {
+  padding: 7px 10px;
+  border: 1px solid var(--blue);
+  background: white;
+  font-size: 13px;
+}
+.relation-line-wide small {
+  display: grid;
+  width: 28px;
+  height: 28px;
+  place-items: center;
+  border-radius: 50%;
+  background: var(--blue);
+  color: white;
+  font-weight: 850;
+}
+.degree-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+  margin: 26px 0 34px;
+}
+.degree-grid > article {
+  padding: 22px;
+  border: 1px solid var(--line);
+  border-top: 5px solid var(--blue);
+  background: #fbfcfd;
+}
+.degree-grid > article > span {
+  color: var(--blue);
+  font-size: 11px;
+  font-weight: 850;
+  letter-spacing: 0.08em;
+}
+.degree-grid h3 {
+  margin: 6px 0 16px;
+}
+.degree-grid p {
+  color: #43545f;
+  font-size: 14px;
+  line-height: 1.55;
+}
+.relationship-example-list {
+  display: grid;
+  gap: 8px;
+  margin: 16px 0 0;
+  padding: 0;
+  list-style: none;
+}
+.relationship-example-list li {
+  position: relative;
+  padding: 10px 12px 10px 30px;
+  border-left: 3px solid #78a9c3;
+  background: white;
+  color: #344651;
+  font-size: 13px;
+  line-height: 1.45;
+}
+.relationship-example-list li::before {
+  content: '•';
+  position: absolute;
+  top: 9px;
+  left: 13px;
+  color: var(--blue);
+  font-weight: 900;
+}
+.question-bank-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin: 34px 0 16px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid var(--blue);
+}
+.question-bank-heading h3 {
+  margin: 0;
+}
+.question-bank-heading span {
+  flex: 0 0 auto;
+  padding: 6px 10px;
+  border-radius: 999px;
+  background: var(--blue-soft);
+  color: var(--blue-deep);
+  font-size: 12px;
+  font-weight: 850;
+}
+.multiple-choice-bank {
+  display: grid;
+  gap: 16px;
+  margin: 0 0 42px;
+  padding: 0;
+  list-style: none;
+  counter-reset: multiple-choice;
+}
+.multiple-choice-bank > li {
+  position: relative;
+  padding: 20px 22px 20px 62px;
+  border: 1px solid var(--line);
+  background: #fbfcfd;
+  counter-increment: multiple-choice;
+}
+.multiple-choice-bank > li::before {
+  content: counter(multiple-choice, decimal-leading-zero);
+  position: absolute;
+  top: 20px;
+  left: 18px;
+  color: var(--blue);
+  font-weight: 900;
+}
+.multiple-choice-bank > li > p {
+  margin: 0 0 12px;
+  color: var(--ink);
+  font-weight: 720;
+  line-height: 1.5;
+}
+.multiple-choice-bank > li > ol {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 6px 28px;
+  margin: 0;
+  padding-left: 24px;
+}
+.multiple-choice-bank > li > ol li {
+  padding: 3px 0 3px 4px;
+  color: #43545f;
+  line-height: 1.45;
+}
+.essay-bank {
+  margin-bottom: 20px;
+}
+.essay-bank > li > * {
+  grid-column: 2;
+}
+.essay-bank > li > p {
+  margin: 12px 0 0;
+  color: var(--ink);
+  font-size: 16px;
+  font-weight: 680;
+  line-height: 1.55;
+}
+.exam-question-table {
+  width: 100%;
+  margin: 0 0 15px;
+  border: 1px solid #cbd9e1;
+  background: white;
+}
+.exam-question-table figcaption {
+  padding: 9px 12px;
+  border-bottom: 1px solid #cbd9e1;
+  color: var(--blue-deep);
+  background: var(--blue-soft);
+  font-size: 13px;
+  font-weight: 850;
+}
+.exam-question-table .table-wrap {
+  margin: 0;
+  overflow-x: auto;
+}
+.exam-question-table table {
+  width: 100%;
+  min-width: 500px;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+.exam-question-table th,
+.exam-question-table td {
+  padding: 8px 10px;
+  border-right: 1px solid #d7e1e6;
+  border-bottom: 1px solid #d7e1e6;
+  text-align: left;
+  white-space: nowrap;
+}
+.exam-question-table th:last-child,
+.exam-question-table td:last-child {
+  border-right: 0;
+}
+.exam-question-table tbody tr:last-child td {
+  border-bottom: 0;
+}
+.exam-question-table th {
+  color: white;
+  background: var(--blue-deep);
+  font-weight: 800;
+}
+.mini-diagram {
+  display: grid;
+  gap: 8px;
+  min-height: 125px;
+  align-content: center;
+  padding: 13px;
+  background: var(--blue-soft);
+  text-align: center;
+}
+.mini-diagram b {
+  padding: 6px;
+  border: 1px solid var(--blue);
+  background: white;
+  font-size: 12px;
+}
+.mini-diagram i {
+  color: var(--blue);
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 750;
+}
+.mini-diagram.unary b::after {
+  content: ' ↻';
+  color: #a53e4e;
+}
+.mini-diagram.ternary {
+  grid-template-columns: 1fr 1fr;
+}
+.mini-diagram.ternary i {
+  grid-column: 1 / -1;
+}
+.cardinality-stack {
+  display: grid;
+  gap: 14px;
+  margin: 25px 0 40px;
+}
+.cardinality-stack > article {
+  display: grid;
+  grid-template-columns: 110px minmax(0, 1fr);
+  gap: 24px;
+  align-items: start;
+  padding: 22px;
+  border: 1px solid var(--line);
+  background: #fbfcfd;
+}
+.cardinality-code {
+  display: grid;
+  min-height: 90px;
+  place-items: center;
+  color: white;
+  background: var(--blue);
+  font-size: 27px;
+  font-weight: 850;
+}
+.cardinality-stack h3 {
+  margin: 0 0 7px;
+}
+.cardinality-stack p {
+  margin: 5px 0;
+  color: #43545f;
+  font-size: 15px;
+  line-height: 1.55;
+}
+.minmax-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 12px;
+  margin: 25px 0 32px;
+}
+.minmax-grid article {
+  padding: 18px;
+  border-top: 4px solid var(--blue);
+  background: var(--blue-soft);
+}
+.minmax-grid b,
+.minmax-grid span {
+  display: block;
+}
+.minmax-grid b {
+  margin-bottom: 7px;
+  color: var(--blue-deep);
+  font-size: 22px;
+}
+.minmax-grid span {
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.45;
+}
+.worked-steps {
+  margin: 28px 0;
+  padding: 0;
+  border-top: 1px solid var(--line);
+  counter-reset: worked-step;
+  list-style: none;
+}
+.worked-steps > li {
+  counter-increment: worked-step;
+  display: grid;
+  grid-template-columns: 44px 190px minmax(0, 1fr);
+  gap: 18px;
+  align-items: start;
+  padding: 17px 0;
+  border-bottom: 1px solid var(--line);
+}
+.worked-steps > li::before {
+  content: counter(worked-step, decimal-leading-zero);
+  color: var(--blue);
+  font-size: 13px;
+  font-weight: 850;
+}
+.worked-steps p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 15px;
+  line-height: 1.5;
+}
+.ternary-relation-visual {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(170px, 1fr));
+  gap: 22px;
+  align-items: center;
+  min-width: 760px;
+  padding: 35px 20px;
+}
+.ternary-relation-visual .relationship-node {
+  grid-column: 1 / -1;
+  justify-self: center;
+  position: relative;
+  width: 300px;
+  padding: 17px;
+  border: 2px solid #9b3340;
+  background: #fff2f4;
+  text-align: center;
+}
+.ternary-relation-visual .relationship-node::before {
+  content: '↑              ↑              ↑';
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  width: 650px;
+  transform: translateX(-50%);
+  color: #9b3340;
+  font-weight: 850;
+  word-spacing: 130px;
+}
+.relationship-node b,
+.relationship-node span {
+  display: block;
+}
+.relationship-node span {
+  margin-top: 4px;
+  color: var(--muted);
+  font-size: 13px;
+}
+.assignment-requirements {
+  margin-top: 26px;
+  padding: 22px;
+  border-left: 5px solid var(--blue);
+  background: var(--blue-soft);
+}
+.assignment-requirements > b {
+  color: var(--blue-deep);
+}
+.assignment-requirements ul {
+  margin: 10px 0 0;
+}
+
+/* Pertemuan 6: ER Model */
+.basic-erd-row {
+  display: grid;
+  grid-template-columns: minmax(190px, 1fr) minmax(260px, 1.35fr) minmax(
+      190px,
+      1fr
+    );
+  gap: 18px;
+  align-items: center;
+  min-width: 760px;
+  padding: 32px 20px;
+}
+.meeting-six .lesson-table th,
+.meeting-six .lesson-table td {
+  min-width: 110px;
+  white-space: normal;
+  line-height: 1.45;
+}
+.meeting-six .lesson-table table {
+  min-width: 680px;
+  table-layout: fixed;
+}
+.meeting-six .lesson-table th:first-child,
+.meeting-six .lesson-table td:first-child {
+  min-width: 125px;
+}
+.relationship-connector {
+  display: grid;
+  grid-template-columns: minmax(35px, 1fr) auto minmax(35px, 1fr);
+  gap: 8px;
+  align-items: center;
+  text-align: center;
+}
+.relationship-connector > div {
+  position: relative;
+  display: flex;
+  min-width: 175px;
+  min-height: 150px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+.relationship-connector > div::before {
+  content: '';
+  position: absolute;
+  z-index: 0;
+  width: 108px;
+  height: 108px;
+  border: 2px solid #9b3340;
+  background: #fff3f4;
+  transform: rotate(45deg);
+}
+.relationship-connector > div > * {
+  position: relative;
+  z-index: 1;
+  display: block;
+}
+.relationship-connector b {
+  max-width: 116px;
+  color: #842d3a;
+  font-size: 14px;
+  line-height: 1.2;
+}
+.relationship-connector small {
+  max-width: 108px;
+  margin: 7px auto 0;
+  color: var(--muted);
+  font-size: 11px;
+  line-height: 1.25;
+}
+.connector-line {
+  height: 2px;
+  background: #9b3340;
+}
+.erd-notation-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 14px;
+  margin: 25px 0 38px;
+}
+.erd-notation-grid article {
+  display: grid;
+  min-height: 190px;
+  place-items: center;
+  align-content: center;
+  padding: 20px;
+  border: 1px solid var(--line);
+  background: #fbfcfd;
+  text-align: center;
+}
+.erd-notation-grid article > b {
+  margin-top: 20px;
+  color: var(--blue-deep);
+}
+.erd-notation-grid article > p {
+  margin: 5px 0 0;
+  color: var(--muted);
+  font-size: 13px;
+}
+.notation-entity,
+.entity-reference {
+  display: grid;
+  min-width: 145px;
+  min-height: 58px;
+  place-items: center;
+  padding: 12px 18px;
+  border: 2px solid var(--blue);
+  background: white;
+  color: var(--blue-deep);
+  font-weight: 850;
+  text-align: center;
+}
+.notation-attribute {
+  display: grid;
+  min-width: 118px;
+  min-height: 58px;
+  place-items: center;
+  padding: 10px 18px;
+  border: 2px solid #287151;
+  border-radius: 50%;
+  background: #eff9f3;
+  color: #1d5940;
+  font-weight: 750;
+}
+.notation-key {
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 4px;
+}
+.notation-relationship {
+  position: relative;
+  display: grid;
+  min-width: 145px;
+  min-height: 125px;
+  place-items: center;
+  padding: 12px;
+  color: #842d3a;
+  font-size: 13px;
+  font-weight: 850;
+}
+.notation-relationship::before {
+  content: '';
+  position: absolute;
+  width: 92px;
+  height: 92px;
+  border: 2px solid #9b3340;
+  background: #fff3f4;
+  transform: rotate(45deg);
+}
+.notation-relationship > span {
+  position: relative;
+  z-index: 1;
+}
+.notation-example {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 780px;
+  padding: 65px 25px 35px;
+}
+.notation-example .notation-attribute {
+  align-self: flex-start;
+}
+.notation-stem {
+  width: 45px;
+  height: 2px;
+  background: var(--blue);
+  transform: rotate(35deg);
+}
+.notation-stem.horizontal {
+  transform: none;
+}
+.hospital-erd,
+.krs-erd {
+  min-width: 800px;
+  padding: 15px 0 25px;
+}
+.hospital-erd .basic-erd-row,
+.krs-erd .basic-erd-row {
+  padding-block: 20px;
+}
+.basic-erd-row.second-row {
+  border-top: 1px dashed var(--line);
+}
+.entity-reference {
+  min-height: 80px;
+  background: var(--blue-soft);
+}
+.independent-case-list {
+  display: grid;
+  gap: 16px;
+  margin: 28px 0;
+}
+.independent-case-list > article {
+  display: grid;
+  grid-template-columns: 58px minmax(0, 1fr);
+  gap: 20px;
+  align-items: start;
+  padding: 24px;
+  border: 1px solid var(--line);
+  border-left: 5px solid var(--blue);
+  background: #fbfcfd;
+}
+.independent-case-list > article > span {
+  display: grid;
+  width: 46px;
+  height: 46px;
+  place-items: center;
+  border-radius: 50%;
+  color: white;
+  background: var(--blue);
+  font-size: 14px;
+  font-weight: 850;
+}
+.independent-case-list h3 {
+  margin: 0 0 8px;
+}
+.independent-case-list p {
+  margin: 0;
+  color: #43545f;
+  line-height: 1.65;
+}
+
+/* Pertemuan 8–10: exam review and ER-to-table mapping */
+.exam-topic-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+  margin: 24px 0 8px;
+}
+.exam-topic-grid article {
+  display: grid;
+  grid-template-columns: 42px minmax(0, 1fr);
+  gap: 3px 14px;
+  align-items: start;
+  padding: 20px;
+  border: 1px solid var(--line);
+  border-left: 5px solid var(--blue);
+  background: #fbfcfd;
+}
+.exam-topic-grid article > span {
+  grid-row: 1 / 3;
+  display: grid;
+  width: 36px;
+  height: 36px;
+  place-items: center;
+  border-radius: 50%;
+  color: white;
+  background: var(--blue);
+  font-weight: 850;
+}
+.exam-topic-grid article > b {
+  color: var(--blue-deep);
+  font-size: 18px;
+}
+.exam-topic-grid article > p {
+  margin: 5px 0 0;
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.5;
+}
+.worked-answer {
+  margin: 24px 0;
+  padding: 25px 28px;
+  border: 1px solid var(--line);
+  border-top: 5px solid var(--blue);
+  background: #fbfcfd;
+}
+.worked-answer h3 {
+  margin: 0 0 8px;
+  color: var(--blue-deep);
+  font-size: 17px;
+}
+.worked-answer h3:not(:first-child) {
+  margin-top: 24px;
+}
+.worked-answer p {
+  margin: 0;
+  line-height: 1.7;
+}
+.formal-points {
+  width: 100%;
+  max-width: none;
+  margin: 24px 0;
+  padding: 0;
+  list-style: none;
+  border-top: 1px solid var(--line);
+}
+.formal-points > li {
+  position: relative;
+  margin: 0;
+  padding: 15px 18px 15px 38px;
+  border-bottom: 1px solid var(--line);
+  line-height: 1.6;
+}
+.formal-points > li::before {
+  content: '';
+  position: absolute;
+  top: 24px;
+  left: 10px;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--blue);
+}
+.warning-points > li::before {
+  border-radius: 1px;
+  background: #ad4050;
+  transform: rotate(45deg);
+}
+.checklist-points > li::before {
+  content: '✓';
+  top: 14px;
+  left: 7px;
+  width: auto;
+  height: auto;
+  color: #287151;
+  background: transparent;
+  font-weight: 900;
+}
+.dependency-panel {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+  margin: 22px 0 30px;
+}
+.dependency-panel p {
+  margin: 0;
+  padding: 16px 18px;
+  border-left: 4px solid var(--blue);
+  background: var(--blue-soft);
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 15px;
+}
+.exam-question-group {
+  margin-top: 38px;
+}
+.exam-question-group h3 {
+  margin-bottom: 14px;
+  color: var(--blue-deep);
+}
+.meeting-exam .exam-question-group .wide-number-list {
+  counter-reset: wide-item;
+}
+.meeting-mapping .normalization-step {
+  margin: 14px 0;
+}
+
 @media (max-width: 1150px) {
   .page-shell {
     grid-template-columns: minmax(0, 1fr);
@@ -3346,6 +4278,20 @@ footer {
   }
 }
 @media (max-width: 760px) {
+  .page-annotation-toolbar {
+    right: 10px;
+    bottom: 10px;
+    max-width: calc(100vw - 20px);
+    overflow-x: auto;
+  }
+  .page-annotation-toolbar button {
+    flex: 0 0 auto;
+    padding: 8px;
+  }
+  .page-annotation-status {
+    right: 10px;
+    bottom: 62px;
+  }
   body {
     font-size: 17px;
   }
@@ -3582,6 +4528,47 @@ footer {
     flex-direction: column;
     gap: 4px;
   }
+  .concept-row.three,
+  .degree-grid,
+  .minmax-grid {
+    grid-template-columns: 1fr;
+  }
+  .question-list > li,
+  .worked-steps > li {
+    grid-template-columns: 42px minmax(0, 1fr);
+  }
+  .question-list > li span,
+  .worked-steps > li p {
+    grid-column: 2;
+  }
+  .cardinality-stack > article {
+    grid-template-columns: 1fr;
+  }
+  .cardinality-code {
+    min-height: 64px;
+  }
+  .exam-topic-grid,
+  .dependency-panel {
+    grid-template-columns: 1fr;
+  }
+  .multiple-choice-bank > li {
+    padding: 18px 16px 18px 52px;
+  }
+  .multiple-choice-bank > li::before {
+    top: 18px;
+    left: 14px;
+  }
+  .multiple-choice-bank > li > ol {
+    grid-template-columns: 1fr;
+  }
+  .erd-notation-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .independent-case-list > article {
+    grid-template-columns: 46px minmax(0, 1fr);
+    gap: 14px;
+    padding: 18px;
+  }
 }
 @media (max-width: 520px) {
   .meeting-sections ol {
@@ -3597,10 +4584,16 @@ footer {
     right: 0;
     font-size: 11px;
   }
+  .erd-notation-grid {
+    grid-template-columns: 1fr;
+  }
 }
 @media print {
   .sidebar,
-  .toc {
+  .toc,
+  .page-annotation-toolbar,
+  .page-annotation-layer,
+  .page-annotation-status {
     display: none;
   }
   .page-shell {
@@ -3625,7 +4618,16 @@ footer {
     color: inherit;
   }
 }
-</style></head><body><a class="skip-link" href="#materi">Langsung ke materi</a><aside class="sidebar"><a class="brand" href="../">Sistem<br/>Basis Data</a><p class="side-meta">Bahan kuliah teori</p><p class="teacher-note">Ni Putu Praja Chintya<br/>bersama Ir. Waljiyanto, M.Sc.</p><nav class="semester-nav" aria-label="Navigasi pertemuan"><p>Pertemuan 1–16</p><ol><li><a href="../pertemuan-1/" title="Pertemuan 1: Pengertian dan kebutuhan basis data"><b>1</b><span>Pengertian dan kebutuhan basis data</span></a></li><li><a href="../pertemuan-2/" title="Pertemuan 2: Karakteristik basis data dan pengelolaannya"><b>2</b><span>Karakteristik basis data dan pengelolaannya</span></a></li><li><a href="../pertemuan-3/" aria-current="page" title="Pertemuan 3: Struktur tabel, identitas tabel, dan key"><b>3</b><span>Struktur tabel, identitas tabel, dan key</span></a></li><li><a href="../" title="Pertemuan 4: Determinan, ketergantungan fungsional, dan 1NF"><b>4</b><span>Determinan, ketergantungan fungsional, dan 1NF</span></a></li><li><a href="../pertemuan-5/" title="Pertemuan 5: Normalisasi 2NF dan 3NF"><b>5</b><span>Normalisasi 2NF dan 3NF</span></a></li><li><a href="../pertemuan-6/" title="Pertemuan 6: ER Model: entitas, atribut, dan relationship"><b>6</b><span>ER Model: entitas, atribut, dan relationship</span></a></li><li><a href="../pertemuan-7/" title="Pertemuan 7: Derajat, kardinalitas, dan partisipasi hubungan"><b>7</b><span>Derajat, kardinalitas, dan partisipasi hubungan</span></a></li><li><a href="../pertemuan-8/" title="Pertemuan 8: Ujian Tengah Semester"><b>8</b><span>Ujian Tengah Semester</span></a></li><li><a href="../pertemuan-9/" title="Pertemuan 9: ER Model menjadi tabel: hubungan 1:1 dan 1:N"><b>9</b><span>ER Model menjadi tabel: hubungan 1:1 dan 1:N</span></a></li><li><a href="../pertemuan-10/" title="Pertemuan 10: Hubungan M:N dan atribut relationship"><b>10</b><span>Hubungan M:N dan atribut relationship</span></a></li><li><a href="../pertemuan-11/" title="Pertemuan 11: Hubungan berjenjang dan rekursif"><b>11</b><span>Hubungan berjenjang dan rekursif</span></a></li><li><a href="../pertemuan-12/" title="Pertemuan 12: Aljabar relasional"><b>12</b><span>Aljabar relasional</span></a></li><li><a href="../pertemuan-13/" title="Pertemuan 13: SQL: memilih dan menggabungkan data"><b>13</b><span>SQL: memilih dan menggabungkan data</span></a></li><li><a href="../pertemuan-14/" title="Pertemuan 14: Fungsi agregat dan pengelompokan data"><b>14</b><span>Fungsi agregat dan pengelompokan data</span></a></li><li><a href="../pertemuan-15/" title="Pertemuan 15: Subquery dan latihan kasus"><b>15</b><span>Subquery dan latihan kasus</span></a></li><li><a href="../#pertemuan-16" title="Pertemuan 16: Ujian Akhir Semester"><b>16</b><span>Ujian Akhir Semester</span></a></li></ol></nav></aside><div class="page-shell" id="top"><main id="materi"><header class="lesson-header"><p class="eyebrow">Pertemuan 3 · Teori</p><h1>Struktur Tabel, Identitas Data, dan Key</h1><p class="lead">Membaca tabel relasional dengan benar, menentukan domain atribut, serta membedakan candidate key, primary key, composite key, dan foreign key.</p></header><section id="tujuan" class="lesson-section"><h2>Tujuan pembelajaran</h2><ol class="agenda"><li><strong>Menjelaskan relasi, atribut, tuple, dan domain</strong><span>menggunakan contoh tabel.</span></li><li><strong>Membedakan NULL, teks kosong, dan angka nol</strong><span>berdasarkan maknanya.</span></li><li><strong>Menentukan berbagai jenis key</strong><span>dengan uji keunikan dan minimalitas.</span></li><li><strong>Menjelaskan foreign key dan integritas referensial</strong><span>dalam hubungan antartabel.</span></li></ol></section><section id="relasi" class="lesson-section numbered-section" data-section="01" data-section-title="MODEL RELASIONAL"><h2>Relasi sebagai struktur logis</h2><div class="definition-focus"><span>Relasi</span><p>Himpunan tuple yang mempunyai atribut dengan nama dan domain tertentu. Dalam implementasi DBMS relasional, relasi biasanya ditampilkan sebagai tabel.</p></div><p>Tabel adalah bentuk tampilan yang mudah dibaca, tetapi istilah relasi menekankan aturan logisnya: setiap baris mempunyai struktur yang sama, urutan baris tidak mengubah makna, dan setiap baris harus dapat dibedakan.</p><div class="comparison-grid"><article><span>Relasi</span><b>MAHASISWA</b><p>Nama struktur yang menyimpan data mahasiswa.</p></article><article><span>Skema relasi</span><b>MAHASISWA(NIM, Nama, Prodi)</b><p>Nama relasi beserta atributnya.</p></article><article><span>Instance relasi</span><b>Isi pada suatu waktu</b><p>Seluruh baris mahasiswa yang tersimpan saat ini.</p></article></div></section><section id="struktur" class="lesson-section numbered-section" data-section="02" data-section-title="STRUKTUR TABEL"><h2>Anatomi tabel MAHASISWA</h2><div class="interactive-illustration " aria-label="Ilustrasi interaktif: MAHASISWA"><div class="illustration-toolbar" role="toolbar" aria-label="Alat untuk MAHASISWA"><div class="zoom-tools" aria-label="Pengaturan ukuran"><button data-action="zoom-out" type="button" title="Perkecil ilustrasi"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-zoom-out" aria-hidden="true"><circle cx="11" cy="11" r="8"></circle><line x1="21" x2="16.65" y1="21" y2="16.65"></line><line x1="8" x2="14" y1="11" y2="11"></line></svg><span>Perkecil</span></button><button data-action="zoom-reset" class="zoom-value" type="button" title="Kembalikan ke ukuran 100%">100%</button><button data-action="zoom-in" type="button" title="Perbesar ilustrasi"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-zoom-in" aria-hidden="true"><circle cx="11" cy="11" r="8"></circle><line x1="21" x2="16.65" y1="21" y2="16.65"></line><line x1="11" x2="11" y1="8" y2="14"></line><line x1="8" x2="14" y1="11" y2="11"></line></svg><span>Perbesar</span></button></div><div class="drawing-tools" aria-label="Alat anotasi"><button data-action="pen" class="" type="button" aria-pressed="false" title="Aktifkan pena"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-pen-line" aria-hidden="true"><path d="M13 21h8"></path><path d="M21.174 6.812a1 1 0 0 0-3.986-3.987L3.842 16.174a2 2 0 0 0-.5.83l-1.321 4.352a.5.5 0 0 0 .623.622l4.353-1.32a2 2 0 0 0 .83-.497z"></path></svg><span>Pena</span></button><button data-action="eraser" class="" type="button" aria-pressed="false" disabled="" title="Pilih coretan yang akan dihapus"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-eraser" aria-hidden="true"><path d="M21 21H8a2 2 0 0 1-1.42-.587l-3.994-3.999a2 2 0 0 1 0-2.828l10-10a2 2 0 0 1 2.829 0l5.999 6a2 2 0 0 1 0 2.828L12.834 21"></path><path d="m5.082 11.09 8.828 8.828"></path></svg><span>Penghapus</span></button><button data-action="undo" type="button" disabled="" title="Batalkan coretan terakhir"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-rotate-ccw" aria-hidden="true"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"></path><path d="M3 3v5h5"></path></svg><span>Urungkan</span></button><button data-action="clear" type="button" disabled="" title="Hapus semua coretan"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-trash2 lucide-trash-2" aria-hidden="true"><path d="M10 11v6"></path><path d="M14 11v6"></path><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6"></path><path d="M3 6h18"></path><path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg><span>Bersihkan</span></button></div></div><div class="illustration-viewport"><div class="illustration-stage"><div class="illustration-zoom-layer" style="zoom:1"><div class="illustration-content"><figure class="lesson-table "><figcaption>MAHASISWA</figcaption><div class="table-wrap"><table><thead><tr><th>NIM</th><th>Nama</th><th>Program Studi</th><th>Angkatan</th></tr></thead><tbody><tr><td class="cell-key">21001</td><td class="cell-concept">Jenny</td><td class="">Teknik Geodesi</td><td class="">2024</td></tr><tr><td class="cell-key">21102</td><td class="">Willy</td><td class="">Teknik Geodesi</td><td class="">2024</td></tr><tr><td class="cell-key">21203</td><td class="">Luki</td><td class="">Teknik Geodesi</td><td class="">2025</td></tr></tbody></table></div></figure></div><svg class="drawing-layer " viewBox="0 0 1 1" preserveAspectRatio="none" aria-label="Lapisan untuk membuat anotasi"></svg></div></div></div></div><dl class="term-list"><div><dt>Nama tabel</dt><dd>MAHASISWA menunjukkan jenis objek atau fakta yang disimpan.</dd></div><div><dt>Atribut/kolom</dt><dd>NIM, Nama, Program Studi, dan Angkatan menjelaskan karakteristik mahasiswa.</dd></div><div><dt>Tuple/record/baris</dt><dd>Satu baris menyimpan fakta tentang satu mahasiswa.</dd></div><div><dt>Nilai</dt><dd>Isi satu sel pada perpotongan baris dan kolom, misalnya Jenny.</dd></div><div><dt>Derajat</dt><dd>Jumlah atribut pada relasi; MAHASISWA mempunyai derajat empat.</dd></div><div><dt>Kardinalitas tabel</dt><dd>Jumlah tuple saat ini; contoh mempunyai tiga tuple. Ini berbeda dari kardinalitas relationship pada ER Model.</dd></div></dl><p class="plain-note"><strong>Nama yang sama tidak otomatis salah.</strong> Dua mahasiswa boleh bernama Jenny selama masing-masing mempunyai identitas yang berbeda.</p></section><section id="domain" class="lesson-section numbered-section" data-section="03" data-section-title="DOMAIN DAN TIPE DATA"><h2>Nilai yang diperbolehkan untuk suatu atribut</h2><div class="definition-focus"><span>Domain</span><p>Himpunan nilai yang sah bagi suatu atribut, termasuk jenis nilai, format, rentang, dan aturan maknanya.</p></div><div class="interactive-illustration " aria-label="Ilustrasi interaktif: Domain beberapa atribut"><div class="illustration-toolbar" role="toolbar" aria-label="Alat untuk Domain beberapa atribut"><div class="zoom-tools" aria-label="Pengaturan ukuran"><button data-action="zoom-out" type="button" title="Perkecil ilustrasi"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-zoom-out" aria-hidden="true"><circle cx="11" cy="11" r="8"></circle><line x1="21" x2="16.65" y1="21" y2="16.65"></line><line x1="8" x2="14" y1="11" y2="11"></line></svg><span>Perkecil</span></button><button data-action="zoom-reset" class="zoom-value" type="button" title="Kembalikan ke ukuran 100%">100%</button><button data-action="zoom-in" type="button" title="Perbesar ilustrasi"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-zoom-in" aria-hidden="true"><circle cx="11" cy="11" r="8"></circle><line x1="21" x2="16.65" y1="21" y2="16.65"></line><line x1="11" x2="11" y1="8" y2="14"></line><line x1="8" x2="14" y1="11" y2="11"></line></svg><span>Perbesar</span></button></div><div class="drawing-tools" aria-label="Alat anotasi"><button data-action="pen" class="" type="button" aria-pressed="false" title="Aktifkan pena"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-pen-line" aria-hidden="true"><path d="M13 21h8"></path><path d="M21.174 6.812a1 1 0 0 0-3.986-3.987L3.842 16.174a2 2 0 0 0-.5.83l-1.321 4.352a.5.5 0 0 0 .623.622l4.353-1.32a2 2 0 0 0 .83-.497z"></path></svg><span>Pena</span></button><button data-action="eraser" class="" type="button" aria-pressed="false" disabled="" title="Pilih coretan yang akan dihapus"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-eraser" aria-hidden="true"><path d="M21 21H8a2 2 0 0 1-1.42-.587l-3.994-3.999a2 2 0 0 1 0-2.828l10-10a2 2 0 0 1 2.829 0l5.999 6a2 2 0 0 1 0 2.828L12.834 21"></path><path d="m5.082 11.09 8.828 8.828"></path></svg><span>Penghapus</span></button><button data-action="undo" type="button" disabled="" title="Batalkan coretan terakhir"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-rotate-ccw" aria-hidden="true"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"></path><path d="M3 3v5h5"></path></svg><span>Urungkan</span></button><button data-action="clear" type="button" disabled="" title="Hapus semua coretan"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-trash2 lucide-trash-2" aria-hidden="true"><path d="M10 11v6"></path><path d="M14 11v6"></path><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6"></path><path d="M3 6h18"></path><path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg><span>Bersihkan</span></button></div></div><div class="illustration-viewport"><div class="illustration-stage"><div class="illustration-zoom-layer" style="zoom:1"><div class="illustration-content"><figure class="lesson-table "><figcaption>Domain beberapa atribut</figcaption><div class="table-wrap"><table><thead><tr><th>Atribut</th><th>Tipe data yang sesuai</th><th>Contoh sah</th><th>Contoh tidak sah</th></tr></thead><tbody><tr><td class="">NIM</td><td class="">Teks/karakter</td><td class="">021001</td><td class="">Nilai kosong atau NIM ganda</td></tr><tr><td class="">Nama</td><td class="">Teks</td><td class="">Ni Putu Praja Chintya</td><td class="">Angka tanpa makna sebagai nama</td></tr><tr><td class="">Tanggal Lahir</td><td class="">Tanggal</td><td class="">2005-07-14</td><td class="">31 Februari 2025</td></tr><tr><td class="">Nilai</td><td class="">Numerik</td><td class="">87.5</td><td class="">105 jika rentangnya 0–100</td></tr><tr><td class="">Kode Pos</td><td class="">Teks/karakter</td><td class="">00120</td><td class="">Numerik jika nol awal harus dipertahankan</td></tr></tbody></table></div></figure></div><svg class="drawing-layer " viewBox="0 0 1 1" preserveAspectRatio="none" aria-label="Lapisan untuk membuat anotasi"></svg></div></div></div></div><p>Data yang tersusun dari angka belum tentu bertipe numerik. NIM, nomor telepon, dan kode pos biasanya tidak dihitung sehingga lebih tepat disimpan sebagai teks. Angkatan dapat disimpan sebagai bilangan bulat jika digunakan untuk perbandingan atau perhitungan tahun.</p><div class="comparison-grid two"><article><span>Numerik</span><b>Memiliki makna kuantitatif</b><p>Jumlah SKS, nilai, luas, dan jumlah alat dapat dihitung.</p></article><article><span>Teks berisi digit</span><b>Berfungsi sebagai label</b><p>NIM, kode alat, dan nomor telepon tidak dijumlahkan.</p></article></div></section><section id="null" class="lesson-section numbered-section" data-section="04" data-section-title="NULL"><h2>NULL bukan nol dan bukan teks kosong</h2><div class="null-definition"><b>NULL</b><p>Penanda bahwa suatu nilai tidak tersedia. Penyebabnya dapat berbeda: belum diketahui, belum terjadi, tidak berlaku, atau tidak dicatat.</p></div><div class="null-cases"><article><span>1</span><b>Belum diketahui</b><p>Nomor telepon belum diberikan.</p><small>Nilainya mungkin ada, tetapi sistem belum mengetahuinya.</small></article><article><span>2</span><b>Belum terjadi</b><p>Tanggal lulus mahasiswa aktif.</p><small>Nilainya baru tersedia setelah mahasiswa lulus.</small></article><article><span>3</span><b>Tidak berlaku</b><p>Nomor apartemen untuk rumah tanpa unit.</p><small>Atribut tersebut tidak relevan bagi baris itu.</small></article></div><div class="interactive-illustration " aria-label="Ilustrasi interaktif: Perbedaan NULL, nol, dan teks kosong"><div class="illustration-toolbar" role="toolbar" aria-label="Alat untuk Perbedaan NULL, nol, dan teks kosong"><div class="zoom-tools" aria-label="Pengaturan ukuran"><button data-action="zoom-out" type="button" title="Perkecil ilustrasi"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-zoom-out" aria-hidden="true"><circle cx="11" cy="11" r="8"></circle><line x1="21" x2="16.65" y1="21" y2="16.65"></line><line x1="8" x2="14" y1="11" y2="11"></line></svg><span>Perkecil</span></button><button data-action="zoom-reset" class="zoom-value" type="button" title="Kembalikan ke ukuran 100%">100%</button><button data-action="zoom-in" type="button" title="Perbesar ilustrasi"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-zoom-in" aria-hidden="true"><circle cx="11" cy="11" r="8"></circle><line x1="21" x2="16.65" y1="21" y2="16.65"></line><line x1="11" x2="11" y1="8" y2="14"></line><line x1="8" x2="14" y1="11" y2="11"></line></svg><span>Perbesar</span></button></div><div class="drawing-tools" aria-label="Alat anotasi"><button data-action="pen" class="" type="button" aria-pressed="false" title="Aktifkan pena"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-pen-line" aria-hidden="true"><path d="M13 21h8"></path><path d="M21.174 6.812a1 1 0 0 0-3.986-3.987L3.842 16.174a2 2 0 0 0-.5.83l-1.321 4.352a.5.5 0 0 0 .623.622l4.353-1.32a2 2 0 0 0 .83-.497z"></path></svg><span>Pena</span></button><button data-action="eraser" class="" type="button" aria-pressed="false" disabled="" title="Pilih coretan yang akan dihapus"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-eraser" aria-hidden="true"><path d="M21 21H8a2 2 0 0 1-1.42-.587l-3.994-3.999a2 2 0 0 1 0-2.828l10-10a2 2 0 0 1 2.829 0l5.999 6a2 2 0 0 1 0 2.828L12.834 21"></path><path d="m5.082 11.09 8.828 8.828"></path></svg><span>Penghapus</span></button><button data-action="undo" type="button" disabled="" title="Batalkan coretan terakhir"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-rotate-ccw" aria-hidden="true"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"></path><path d="M3 3v5h5"></path></svg><span>Urungkan</span></button><button data-action="clear" type="button" disabled="" title="Hapus semua coretan"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-trash2 lucide-trash-2" aria-hidden="true"><path d="M10 11v6"></path><path d="M14 11v6"></path><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6"></path><path d="M3 6h18"></path><path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg><span>Bersihkan</span></button></div></div><div class="illustration-viewport"><div class="illustration-stage"><div class="illustration-zoom-layer" style="zoom:1"><div class="illustration-content"><figure class="lesson-table "><figcaption>Perbedaan NULL, nol, dan teks kosong</figcaption><div class="table-wrap"><table><thead><tr><th>Nilai</th><th>Makna</th><th>Contoh</th></tr></thead><tbody><tr><td class="cell-null">NULL</td><td class="">Nilai tidak tersedia</td><td class="">Tanggal lulus mahasiswa aktif</td></tr><tr><td class="">0</td><td class="">Nilai numerik yang diketahui</td><td class="">Jumlah denda memang nol rupiah</td></tr><tr><td class="">Teks kosong (panjang 0)</td><td class="">Nilai teks ada tetapi tidak berisi karakter</td><td class="">Nama panggilan disimpan sebagai &quot;&quot;; biasanya perlu diperiksa apakah memang dibutuhkan</td></tr><tr><td class="">Spasi</td><td class="">Teks yang berisi karakter spasi</td><td class="">Bukan NULL dan bukan teks kosong</td></tr></tbody></table></div></figure></div><svg class="drawing-layer " viewBox="0 0 1 1" preserveAspectRatio="none" aria-label="Lapisan untuk membuat anotasi"></svg></div></div></div></div><p class="plain-note"><strong>Teks kosong</strong> berarti tipe datanya teks dan isinya memiliki nol karakter. NULL tidak mempunyai nilai untuk dibandingkan, sedangkan teks kosong adalah sebuah nilai teks.</p></section><section id="key" class="lesson-section numbered-section" data-section="05" data-section-title="JENIS KEY"><h2>Key membedakan dan menghubungkan data</h2><p class="section-intro">Pemilihan key tidak hanya berdasarkan contoh isi saat ini. Key harus tetap memenuhi aturan untuk seluruh data yang mungkin disimpan.</p><dl class="key-list"><article><span>Superkey</span><p>Satu atau beberapa atribut yang dapat membedakan baris, tetapi mungkin masih mengandung atribut yang tidak diperlukan. Contoh: NIM + Nama.</p></article><article><span>Candidate key</span><p>Superkey yang minimal. Jika satu atribut dilepas, key tidak lagi menjamin keunikan. Contoh: NIM.</p></article><article><span>Primary key</span><p>Candidate key yang dipilih sebagai identitas utama tabel. Nilainya unik dan tidak boleh NULL.</p></article><article><span>Alternate key</span><p>Candidate key yang tidak dipilih menjadi primary key. Contoh: Email Institusi jika dijamin unik.</p></article><article><span>Composite key</span><p>Key yang terdiri atas lebih dari satu atribut. Contoh pada KRS: NIM + Kode MK.</p></article><article><span>Surrogate key</span><p>Identitas buatan sistem yang tidak mempunyai makna bisnis langsung, misalnya ID_Peminjaman.</p></article></dl><h3>Uji candidate key</h3><div class="key-test"><article class="passes"><span>Unik</span><p>Setiap nilai key menunjuk paling banyak satu baris.</p><em>Wajib</em></article><article class="passes"><span>Minimal</span><p>Tidak ada bagian key yang dapat dihapus dan tetap unik.</p><em>Wajib</em></article><article><span>Stabil</span><p>Sebaiknya jarang berubah dan tidak mudah kehilangan makna.</p><em>Pertimbangan desain</em></article></div><div class="interactive-illustration " aria-label="Ilustrasi interaktif: Mengapa KRS memerlukan composite key?"><div class="illustration-toolbar" role="toolbar" aria-label="Alat untuk Mengapa KRS memerlukan composite key?"><div class="zoom-tools" aria-label="Pengaturan ukuran"><button data-action="zoom-out" type="button" title="Perkecil ilustrasi"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-zoom-out" aria-hidden="true"><circle cx="11" cy="11" r="8"></circle><line x1="21" x2="16.65" y1="21" y2="16.65"></line><line x1="8" x2="14" y1="11" y2="11"></line></svg><span>Perkecil</span></button><button data-action="zoom-reset" class="zoom-value" type="button" title="Kembalikan ke ukuran 100%">100%</button><button data-action="zoom-in" type="button" title="Perbesar ilustrasi"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-zoom-in" aria-hidden="true"><circle cx="11" cy="11" r="8"></circle><line x1="21" x2="16.65" y1="21" y2="16.65"></line><line x1="11" x2="11" y1="8" y2="14"></line><line x1="8" x2="14" y1="11" y2="11"></line></svg><span>Perbesar</span></button></div><div class="drawing-tools" aria-label="Alat anotasi"><button data-action="pen" class="" type="button" aria-pressed="false" title="Aktifkan pena"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-pen-line" aria-hidden="true"><path d="M13 21h8"></path><path d="M21.174 6.812a1 1 0 0 0-3.986-3.987L3.842 16.174a2 2 0 0 0-.5.83l-1.321 4.352a.5.5 0 0 0 .623.622l4.353-1.32a2 2 0 0 0 .83-.497z"></path></svg><span>Pena</span></button><button data-action="eraser" class="" type="button" aria-pressed="false" disabled="" title="Pilih coretan yang akan dihapus"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-eraser" aria-hidden="true"><path d="M21 21H8a2 2 0 0 1-1.42-.587l-3.994-3.999a2 2 0 0 1 0-2.828l10-10a2 2 0 0 1 2.829 0l5.999 6a2 2 0 0 1 0 2.828L12.834 21"></path><path d="m5.082 11.09 8.828 8.828"></path></svg><span>Penghapus</span></button><button data-action="undo" type="button" disabled="" title="Batalkan coretan terakhir"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-rotate-ccw" aria-hidden="true"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"></path><path d="M3 3v5h5"></path></svg><span>Urungkan</span></button><button data-action="clear" type="button" disabled="" title="Hapus semua coretan"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-trash2 lucide-trash-2" aria-hidden="true"><path d="M10 11v6"></path><path d="M14 11v6"></path><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6"></path><path d="M3 6h18"></path><path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg><span>Bersihkan</span></button></div></div><div class="illustration-viewport"><div class="illustration-stage"><div class="illustration-zoom-layer" style="zoom:1"><div class="illustration-content"><figure class="lesson-table "><figcaption>Mengapa KRS memerlukan composite key?</figcaption><div class="table-wrap"><table><thead><tr><th>NIM</th><th>Kode MK</th><th>Nilai</th></tr></thead><tbody><tr><td class="cell-key">21001</td><td class="cell-key-alt">9001</td><td class="">90</td></tr><tr><td class="cell-key">21001</td><td class="cell-key-alt">9002</td><td class="">75</td></tr><tr><td class="cell-key">21102</td><td class="cell-key-alt">9001</td><td class="">82</td></tr></tbody></table></div></figure></div><svg class="drawing-layer " viewBox="0 0 1 1" preserveAspectRatio="none" aria-label="Lapisan untuk membuat anotasi"></svg></div></div></div></div><p>NIM saja berulang karena mahasiswa mengambil banyak mata kuliah. Kode MK saja juga berulang karena satu mata kuliah diambil banyak mahasiswa. Pasangan NIM dan Kode MK membedakan setiap pengambilan.</p></section><section id="foreign-key" class="lesson-section numbered-section" data-section="06" data-section-title="FOREIGN KEY"><h2>Menghubungkan tabel melalui identitas</h2><div class="definition-focus"><span>Foreign key</span><p>Atribut pada suatu tabel yang nilainya merujuk pada candidate key—umumnya primary key—di tabel lain atau tabel yang sama.</p></div><div class="interactive-illustration " aria-label="Ilustrasi interaktif: Hubungan MAHASISWA dan KRS"><div class="illustration-toolbar" role="toolbar" aria-label="Alat untuk Hubungan MAHASISWA dan KRS"><div class="zoom-tools" aria-label="Pengaturan ukuran"><button data-action="zoom-out" type="button" title="Perkecil ilustrasi"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-zoom-out" aria-hidden="true"><circle cx="11" cy="11" r="8"></circle><line x1="21" x2="16.65" y1="21" y2="16.65"></line><line x1="8" x2="14" y1="11" y2="11"></line></svg><span>Perkecil</span></button><button data-action="zoom-reset" class="zoom-value" type="button" title="Kembalikan ke ukuran 100%">100%</button><button data-action="zoom-in" type="button" title="Perbesar ilustrasi"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-zoom-in" aria-hidden="true"><circle cx="11" cy="11" r="8"></circle><line x1="21" x2="16.65" y1="21" y2="16.65"></line><line x1="11" x2="11" y1="8" y2="14"></line><line x1="8" x2="14" y1="11" y2="11"></line></svg><span>Perbesar</span></button></div><div class="drawing-tools" aria-label="Alat anotasi"><button data-action="pen" class="" type="button" aria-pressed="false" title="Aktifkan pena"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-pen-line" aria-hidden="true"><path d="M13 21h8"></path><path d="M21.174 6.812a1 1 0 0 0-3.986-3.987L3.842 16.174a2 2 0 0 0-.5.83l-1.321 4.352a.5.5 0 0 0 .623.622l4.353-1.32a2 2 0 0 0 .83-.497z"></path></svg><span>Pena</span></button><button data-action="eraser" class="" type="button" aria-pressed="false" disabled="" title="Pilih coretan yang akan dihapus"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-eraser" aria-hidden="true"><path d="M21 21H8a2 2 0 0 1-1.42-.587l-3.994-3.999a2 2 0 0 1 0-2.828l10-10a2 2 0 0 1 2.829 0l5.999 6a2 2 0 0 1 0 2.828L12.834 21"></path><path d="m5.082 11.09 8.828 8.828"></path></svg><span>Penghapus</span></button><button data-action="undo" type="button" disabled="" title="Batalkan coretan terakhir"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-rotate-ccw" aria-hidden="true"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"></path><path d="M3 3v5h5"></path></svg><span>Urungkan</span></button><button data-action="clear" type="button" disabled="" title="Hapus semua coretan"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-trash2 lucide-trash-2" aria-hidden="true"><path d="M10 11v6"></path><path d="M14 11v6"></path><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6"></path><path d="M3 6h18"></path><path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg><span>Bersihkan</span></button></div></div><div class="illustration-viewport"><div class="illustration-stage"><div class="illustration-zoom-layer" style="zoom:1"><div class="illustration-content"><div class="foreign-key-example"><figure class="lesson-table compact-table"><figcaption>MAHASISWA</figcaption><div class="table-wrap"><table><thead><tr><th>NIM (PK)</th><th>Nama</th></tr></thead><tbody><tr><td class="">21001</td><td class="">Jenny</td></tr><tr><td class="">21102</td><td class="">Willy</td></tr></tbody></table></div></figure><span>NIM pada KRS merujuk ke NIM pada MAHASISWA →</span><figure class="lesson-table compact-table"><figcaption>KRS</figcaption><div class="table-wrap"><table><thead><tr><th>NIM (PK, FK)</th><th>Kode MK (PK, FK)</th><th>Nilai</th></tr></thead><tbody><tr><td class="">21001</td><td class="">9001</td><td class="">90</td></tr><tr><td class="">21001</td><td class="">9002</td><td class="">75</td></tr></tbody></table></div></figure></div></div><svg class="drawing-layer " viewBox="0 0 1 1" preserveAspectRatio="none" aria-label="Lapisan untuk membuat anotasi"></svg></div></div></div></div><div class="comparison-grid two"><article><span>Primary key</span><b>Mengidentifikasi baris pada tabelnya</b><p>NIM membedakan mahasiswa dalam MAHASISWA.</p></article><article><span>Foreign key</span><b>Merujuk identitas dari tabel lain</b><p>NIM pada KRS menunjukkan mahasiswa pemilik pengambilan.</p></article></div><p>Satu atribut dapat sekaligus menjadi bagian dari primary key dan foreign key. Pada KRS, NIM dan Kode MK membentuk primary key gabungan sekaligus merujuk ke tabel induknya.</p></section><section id="integritas" class="lesson-section numbered-section" data-section="07" data-section-title="INTEGRITAS REFERENSIAL"><h2>Referensi harus menunjuk data yang sah</h2><p class="section-intro">Integritas referensial mencegah baris anak merujuk pada baris induk yang tidak ada.</p><div class="interactive-illustration " aria-label="Ilustrasi interaktif: Uji operasi pada MAHASISWA dan KRS"><div class="illustration-toolbar" role="toolbar" aria-label="Alat untuk Uji operasi pada MAHASISWA dan KRS"><div class="zoom-tools" aria-label="Pengaturan ukuran"><button data-action="zoom-out" type="button" title="Perkecil ilustrasi"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-zoom-out" aria-hidden="true"><circle cx="11" cy="11" r="8"></circle><line x1="21" x2="16.65" y1="21" y2="16.65"></line><line x1="8" x2="14" y1="11" y2="11"></line></svg><span>Perkecil</span></button><button data-action="zoom-reset" class="zoom-value" type="button" title="Kembalikan ke ukuran 100%">100%</button><button data-action="zoom-in" type="button" title="Perbesar ilustrasi"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-zoom-in" aria-hidden="true"><circle cx="11" cy="11" r="8"></circle><line x1="21" x2="16.65" y1="21" y2="16.65"></line><line x1="11" x2="11" y1="8" y2="14"></line><line x1="8" x2="14" y1="11" y2="11"></line></svg><span>Perbesar</span></button></div><div class="drawing-tools" aria-label="Alat anotasi"><button data-action="pen" class="" type="button" aria-pressed="false" title="Aktifkan pena"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-pen-line" aria-hidden="true"><path d="M13 21h8"></path><path d="M21.174 6.812a1 1 0 0 0-3.986-3.987L3.842 16.174a2 2 0 0 0-.5.83l-1.321 4.352a.5.5 0 0 0 .623.622l4.353-1.32a2 2 0 0 0 .83-.497z"></path></svg><span>Pena</span></button><button data-action="eraser" class="" type="button" aria-pressed="false" disabled="" title="Pilih coretan yang akan dihapus"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-eraser" aria-hidden="true"><path d="M21 21H8a2 2 0 0 1-1.42-.587l-3.994-3.999a2 2 0 0 1 0-2.828l10-10a2 2 0 0 1 2.829 0l5.999 6a2 2 0 0 1 0 2.828L12.834 21"></path><path d="m5.082 11.09 8.828 8.828"></path></svg><span>Penghapus</span></button><button data-action="undo" type="button" disabled="" title="Batalkan coretan terakhir"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-rotate-ccw" aria-hidden="true"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"></path><path d="M3 3v5h5"></path></svg><span>Urungkan</span></button><button data-action="clear" type="button" disabled="" title="Hapus semua coretan"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-trash2 lucide-trash-2" aria-hidden="true"><path d="M10 11v6"></path><path d="M14 11v6"></path><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6"></path><path d="M3 6h18"></path><path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg><span>Bersihkan</span></button></div></div><div class="illustration-viewport"><div class="illustration-stage"><div class="illustration-zoom-layer" style="zoom:1"><div class="illustration-content"><figure class="lesson-table "><figcaption>Uji operasi pada MAHASISWA dan KRS</figcaption><div class="table-wrap"><table><thead><tr><th>Operasi</th><th>Masalah</th><th>Tindakan yang wajar</th></tr></thead><tbody><tr><td class="">Menambah KRS untuk NIM 29999</td><td class="">Mahasiswa 29999 tidak ada</td><td class="">Tolak sampai mahasiswa terdaftar</td></tr><tr><td class="">Menghapus mahasiswa yang masih mempunyai KRS</td><td class="">KRS menjadi tanpa pemilik</td><td class="">Tolak, hapus terkontrol, atau gunakan kebijakan yang ditentukan</td></tr><tr><td class="">Mengubah NIM primary key</td><td class="">Referensi KRS dapat terputus</td><td class="">Batasi perubahan atau propagasikan secara terkendali</td></tr></tbody></table></div></figure></div><svg class="drawing-layer " viewBox="0 0 1 1" preserveAspectRatio="none" aria-label="Lapisan untuk membuat anotasi"></svg></div></div></div></div><dl class="integrity-list"><div><dt>RESTRICT/NO ACTION</dt><dd>Menolak perubahan jika masih terdapat baris yang merujuk.</dd></div><div><dt>CASCADE</dt><dd>Meneruskan perubahan atau penghapusan ke baris yang merujuk. Harus digunakan dengan hati-hati.</dd></div><div><dt>SET NULL</dt><dd>Mengosongkan foreign key jika hubungan boleh tidak tersedia dan kolom mengizinkan NULL.</dd></div></dl></section><section id="kasus" class="lesson-section numbered-section" data-section="08" data-section-title="KASUS AKADEMIK"><h2>Menentukan key secara bertahap</h2><div class="interactive-illustration " aria-label="Ilustrasi interaktif: Skema awal"><div class="illustration-toolbar" role="toolbar" aria-label="Alat untuk Skema awal"><div class="zoom-tools" aria-label="Pengaturan ukuran"><button data-action="zoom-out" type="button" title="Perkecil ilustrasi"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-zoom-out" aria-hidden="true"><circle cx="11" cy="11" r="8"></circle><line x1="21" x2="16.65" y1="21" y2="16.65"></line><line x1="8" x2="14" y1="11" y2="11"></line></svg><span>Perkecil</span></button><button data-action="zoom-reset" class="zoom-value" type="button" title="Kembalikan ke ukuran 100%">100%</button><button data-action="zoom-in" type="button" title="Perbesar ilustrasi"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-zoom-in" aria-hidden="true"><circle cx="11" cy="11" r="8"></circle><line x1="21" x2="16.65" y1="21" y2="16.65"></line><line x1="11" x2="11" y1="8" y2="14"></line><line x1="8" x2="14" y1="11" y2="11"></line></svg><span>Perbesar</span></button></div><div class="drawing-tools" aria-label="Alat anotasi"><button data-action="pen" class="" type="button" aria-pressed="false" title="Aktifkan pena"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-pen-line" aria-hidden="true"><path d="M13 21h8"></path><path d="M21.174 6.812a1 1 0 0 0-3.986-3.987L3.842 16.174a2 2 0 0 0-.5.83l-1.321 4.352a.5.5 0 0 0 .623.622l4.353-1.32a2 2 0 0 0 .83-.497z"></path></svg><span>Pena</span></button><button data-action="eraser" class="" type="button" aria-pressed="false" disabled="" title="Pilih coretan yang akan dihapus"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-eraser" aria-hidden="true"><path d="M21 21H8a2 2 0 0 1-1.42-.587l-3.994-3.999a2 2 0 0 1 0-2.828l10-10a2 2 0 0 1 2.829 0l5.999 6a2 2 0 0 1 0 2.828L12.834 21"></path><path d="m5.082 11.09 8.828 8.828"></path></svg><span>Penghapus</span></button><button data-action="undo" type="button" disabled="" title="Batalkan coretan terakhir"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-rotate-ccw" aria-hidden="true"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"></path><path d="M3 3v5h5"></path></svg><span>Urungkan</span></button><button data-action="clear" type="button" disabled="" title="Hapus semua coretan"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-trash2 lucide-trash-2" aria-hidden="true"><path d="M10 11v6"></path><path d="M14 11v6"></path><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6"></path><path d="M3 6h18"></path><path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg><span>Bersihkan</span></button></div></div><div class="illustration-viewport"><div class="illustration-stage"><div class="illustration-zoom-layer" style="zoom:1"><div class="illustration-content"><figure class="lesson-table "><figcaption>Skema awal</figcaption><div class="table-wrap"><table><thead><tr><th>Tabel</th><th>Atribut</th></tr></thead><tbody><tr><td class="">MAHASISWA</td><td class="">NIM, Email Institusi, Nama, Program Studi</td></tr><tr><td class="">MATA_KULIAH</td><td class="">Kode MK, Nama MK, SKS</td></tr><tr><td class="">KRS</td><td class="">NIM, Kode MK, Semester, Nilai</td></tr></tbody></table></div></figure></div><svg class="drawing-layer " viewBox="0 0 1 1" preserveAspectRatio="none" aria-label="Lapisan untuk membuat anotasi"></svg></div></div></div></div><ol class="analysis-steps"><li><b>Cari atribut yang selalu unik.</b><span>NIM dan Email Institusi dapat menjadi candidate key MAHASISWA jika keduanya dijamin unik.</span></li><li><b>Pilih primary key.</b><span>NIM dipilih; Email Institusi menjadi alternate key.</span></li><li><b>Periksa tingkat rincian KRS.</b><span>Jika mata kuliah dapat diulang pada semester berbeda, NIM + Kode MK saja tidak cukup.</span></li><li><b>Susun composite key yang tepat.</b><span>NIM + Kode MK + Semester membedakan setiap pengambilan.</span></li><li><b>Tentukan foreign key.</b><span>NIM merujuk MAHASISWA dan Kode MK merujuk MATA_KULIAH.</span></li></ol><p class="plain-note"><strong>Konteks mengubah key.</strong> Jika mata kuliah tidak boleh diulang, pasangan NIM + Kode MK cukup. Jika boleh diulang, atribut pembeda periode harus ikut dipertimbangkan.</p></section><section id="latihan" class="lesson-section numbered-section" data-section="09" data-section-title="LATIHAN"><h2>Latihan menentukan key</h2><ol class="exercise-list"><li><b>BUKU</b><span>Atribut: ISBN, Judul, Tahun, Penerbit. Tentukan candidate key dan primary key.</span></li><li><b>EKSEMPLAR</b><span>Atribut: ISBN, Nomor Eksemplar, Kondisi. Apakah ISBN saja cukup?</span></li><li><b>PEMINJAMAN</b><span>Atribut: Kode Pinjam, NIM, Tanggal Pinjam. Tentukan PK dan FK.</span></li><li><b>DETAIL_PEMINJAMAN</b><span>Atribut: Kode Pinjam, ISBN, Nomor Eksemplar. Susun composite key yang tepat.</span></li><li><b>Referential integrity</b><span>Apa yang harus terjadi jika buku yang masih dipinjam hendak dihapus?</span></li></ol></section><section id="ringkasan" class="lesson-section numbered-section" data-section="10" data-section-title="RINGKASAN"><h2>Inti Pertemuan 3</h2><div class="summary-stack"><p><b>Atribut dan domain</b><span>Menjelaskan jenis nilai yang disimpan dan diperbolehkan.</span></p><p><b>Candidate key</b><span>Identitas yang unik dan minimal.</span></p><p><b>Primary key</b><span>Candidate key yang dipilih sebagai identitas utama.</span></p><p><b>Foreign key</b><span>Referensi untuk menjaga hubungan antartabel.</span></p><p><b>Integritas referensial</b><span>Memastikan setiap referensi menunjuk data yang sah.</span></p></div></section></main><aside class="toc" aria-label="Pada halaman ini"><strong>Pada halaman ini</strong><a href="#tujuan">1. Tujuan pembelajaran</a><a href="#relasi">2. Relasi dan tabel</a><a href="#struktur">3. Struktur tabel</a><a href="#domain">4. Domain dan tipe data</a><a href="#null">5. NULL</a><a href="#key">6. Jenis key</a><a href="#foreign-key">7. Foreign key</a><a href="#integritas">8. Integritas referensial</a><a href="#kasus">9. Kasus akademik</a><a href="#latihan">10. Latihan</a><a href="#ringkasan">11. Ringkasan</a></aside></div><script>
+</style></head><body><a class="skip-link" href="#materi">Langsung ke materi</a><aside class="sidebar"><a class="brand" href="../">Sistem<br/>Basis Data</a><p class="side-meta">Bahan kuliah teori</p><p class="teacher-note">Ni Putu Praja Chintya<br/>bersama Ir. Waljiyanto, M.Sc.</p><nav class="semester-nav" aria-label="Navigasi pertemuan"><p>Pertemuan 1–16</p><ol><li><a href="../pertemuan-1/" title="Pertemuan 1: Pengertian dan kebutuhan basis data"><b>1</b><span>Pengertian dan kebutuhan basis data</span></a></li><li><a href="../pertemuan-2/" title="Pertemuan 2: Karakteristik basis data dan pengelolaannya"><b>2</b><span>Karakteristik basis data dan pengelolaannya</span></a></li><li><a href="../pertemuan-3/" aria-current="page" title="Pertemuan 3: Struktur tabel, identitas tabel, dan key"><b>3</b><span>Struktur tabel, identitas tabel, dan key</span></a></li><li><a href="../" title="Pertemuan 4: Determinan, ketergantungan fungsional, dan 1NF"><b>4</b><span>Determinan, ketergantungan fungsional, dan 1NF</span></a></li><li><a href="../pertemuan-5/" title="Pertemuan 5: Normalisasi 2NF dan 3NF"><b>5</b><span>Normalisasi 2NF dan 3NF</span></a></li><li><a href="../pertemuan-6/" title="Pertemuan 6: ER Model: entitas, atribut, dan relationship"><b>6</b><span>ER Model: entitas, atribut, dan relationship</span></a></li><li><a href="../pertemuan-7/" title="Pertemuan 7: Derajat, kardinalitas, dan partisipasi hubungan"><b>7</b><span>Derajat, kardinalitas, dan partisipasi hubungan</span></a></li><li><a href="../pertemuan-8/" title="Pertemuan 8: Ujian Tengah Semester"><b>8</b><span>Ujian Tengah Semester</span></a></li><li><a href="../pertemuan-9/" title="Pertemuan 9: ER Model menjadi tabel: hubungan 1:1 dan 1:N"><b>9</b><span>ER Model menjadi tabel: hubungan 1:1 dan 1:N</span></a></li><li><a href="../pertemuan-10/" title="Pertemuan 10: Hubungan M:N dan atribut relationship"><b>10</b><span>Hubungan M:N dan atribut relationship</span></a></li><li><a href="../pertemuan-11/" title="Pertemuan 11: Hubungan berjenjang dan rekursif"><b>11</b><span>Hubungan berjenjang dan rekursif</span></a></li><li><a href="../pertemuan-12/" title="Pertemuan 12: Aljabar relasional"><b>12</b><span>Aljabar relasional</span></a></li><li><a href="../pertemuan-13/" title="Pertemuan 13: SQL: memilih dan menggabungkan data"><b>13</b><span>SQL: memilih dan menggabungkan data</span></a></li><li><a href="../pertemuan-14/" title="Pertemuan 14: Fungsi agregat dan pengelompokan data"><b>14</b><span>Fungsi agregat dan pengelompokan data</span></a></li><li><a href="../pertemuan-15/" title="Pertemuan 15: Subquery dan latihan kasus"><b>15</b><span>Subquery dan latihan kasus</span></a></li><li><a href="../#pertemuan-16" title="Pertemuan 16: Ujian Akhir Semester"><b>16</b><span>Ujian Akhir Semester</span></a></li></ol></nav></aside><div class="page-shell" id="top"><main id="materi"><header class="lesson-header"><p class="eyebrow">Pertemuan 3 · Teori</p><h1>Struktur Tabel, Identitas Data, dan Key</h1><p class="lead">Membaca tabel relasional dengan benar, menentukan domain atribut, serta membedakan candidate key, primary key, composite key, dan foreign key.</p></header><section id="tujuan" class="lesson-section"><h2>Tujuan pembelajaran</h2><ol class="agenda"><li><strong>Menjelaskan relasi, atribut, tuple, dan domain</strong><span>menggunakan contoh tabel.</span></li><li><strong>Membedakan NULL, teks kosong, dan angka nol</strong><span>berdasarkan maknanya.</span></li><li><strong>Menentukan berbagai jenis key</strong><span>dengan uji keunikan dan minimalitas.</span></li><li><strong>Menjelaskan foreign key dan integritas referensial</strong><span>dalam hubungan antartabel.</span></li></ol></section><section id="relasi" class="lesson-section numbered-section" data-section="01" data-section-title="MODEL RELASIONAL"><h2>Relasi sebagai struktur logis</h2><div class="definition-focus"><span>Relasi</span><p>Himpunan tuple yang mempunyai atribut dengan nama dan domain tertentu. Dalam implementasi DBMS relasional, relasi biasanya ditampilkan sebagai tabel.</p></div><p>Tabel adalah bentuk tampilan yang mudah dibaca, tetapi istilah relasi menekankan aturan logisnya: setiap baris mempunyai struktur yang sama, urutan baris tidak mengubah makna, dan setiap baris harus dapat dibedakan.</p><div class="comparison-grid"><article><span>Relasi</span><b>MAHASISWA</b><p>Nama struktur yang menyimpan data mahasiswa.</p></article><article><span>Skema relasi</span><b>MAHASISWA(NIM, Nama, Prodi)</b><p>Nama relasi beserta atributnya.</p></article><article><span>Instance relasi</span><b>Isi pada suatu waktu</b><p>Seluruh baris mahasiswa yang tersimpan saat ini.</p></article></div></section><section id="struktur" class="lesson-section numbered-section" data-section="02" data-section-title="STRUKTUR TABEL"><h2>Anatomi tabel MAHASISWA</h2><div class="interactive-illustration " aria-label="Ilustrasi interaktif: MAHASISWA"><div class="illustration-toolbar" role="toolbar" aria-label="Alat untuk MAHASISWA"><div class="zoom-tools" aria-label="Pengaturan ukuran"><button data-action="zoom-out" type="button" title="Perkecil ilustrasi"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-zoom-out" aria-hidden="true"><circle cx="11" cy="11" r="8"></circle><line x1="21" x2="16.65" y1="21" y2="16.65"></line><line x1="8" x2="14" y1="11" y2="11"></line></svg><span>Perkecil</span></button><button data-action="zoom-reset" class="zoom-value" type="button" title="Kembalikan ke ukuran 100%">100%</button><button data-action="zoom-in" type="button" title="Perbesar ilustrasi"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-zoom-in" aria-hidden="true"><circle cx="11" cy="11" r="8"></circle><line x1="21" x2="16.65" y1="21" y2="16.65"></line><line x1="11" x2="11" y1="8" y2="14"></line><line x1="8" x2="14" y1="11" y2="11"></line></svg><span>Perbesar</span></button></div><div class="drawing-tools" aria-label="Alat anotasi"><button data-action="pen" class="" type="button" aria-pressed="false" title="Aktifkan pena"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-pen-line" aria-hidden="true"><path d="M13 21h8"></path><path d="M21.174 6.812a1 1 0 0 0-3.986-3.987L3.842 16.174a2 2 0 0 0-.5.83l-1.321 4.352a.5.5 0 0 0 .623.622l4.353-1.32a2 2 0 0 0 .83-.497z"></path></svg><span>Pena</span></button><button data-action="eraser" class="" type="button" aria-pressed="false" disabled="" title="Pilih coretan yang akan dihapus"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-eraser" aria-hidden="true"><path d="M21 21H8a2 2 0 0 1-1.42-.587l-3.994-3.999a2 2 0 0 1 0-2.828l10-10a2 2 0 0 1 2.829 0l5.999 6a2 2 0 0 1 0 2.828L12.834 21"></path><path d="m5.082 11.09 8.828 8.828"></path></svg><span>Penghapus</span></button><button data-action="undo" type="button" disabled="" title="Batalkan coretan terakhir"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-rotate-ccw" aria-hidden="true"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"></path><path d="M3 3v5h5"></path></svg><span>Urungkan</span></button><button data-action="clear" type="button" disabled="" title="Hapus semua coretan"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-trash2 lucide-trash-2" aria-hidden="true"><path d="M10 11v6"></path><path d="M14 11v6"></path><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6"></path><path d="M3 6h18"></path><path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg><span>Bersihkan</span></button></div></div><div class="illustration-viewport"><div class="illustration-stage"><div class="illustration-zoom-layer" style="zoom:1"><div class="illustration-content"><figure class="lesson-table "><figcaption>MAHASISWA</figcaption><div class="table-wrap"><table><thead><tr><th>NIM</th><th>Nama</th><th>Program Studi</th><th>Angkatan</th></tr></thead><tbody><tr><td class="cell-key">21001</td><td class="cell-concept">Jenny</td><td class="">Teknik Geodesi</td><td class="">2024</td></tr><tr><td class="cell-key">21102</td><td class="">Willy</td><td class="">Teknik Geodesi</td><td class="">2024</td></tr><tr><td class="cell-key">21203</td><td class="">Luki</td><td class="">Teknik Geodesi</td><td class="">2025</td></tr></tbody></table></div></figure></div><svg class="drawing-layer " viewBox="0 0 1 1" preserveAspectRatio="none" aria-label="Lapisan untuk membuat anotasi"></svg></div></div></div></div><dl class="term-list"><div><dt>Nama tabel</dt><dd>MAHASISWA menunjukkan jenis objek atau fakta yang disimpan.</dd></div><div><dt>Atribut/kolom</dt><dd>NIM, Nama, Program Studi, dan Angkatan menjelaskan karakteristik mahasiswa.</dd></div><div><dt>Tuple/record/baris</dt><dd>Satu baris menyimpan fakta tentang satu mahasiswa.</dd></div><div><dt>Nilai</dt><dd>Isi satu sel pada perpotongan baris dan kolom, misalnya Jenny.</dd></div><div><dt>Derajat</dt><dd>Jumlah atribut pada relasi; MAHASISWA mempunyai derajat empat.</dd></div><div><dt>Kardinalitas tabel</dt><dd>Jumlah tuple saat ini; contoh mempunyai tiga tuple. Ini berbeda dari kardinalitas relationship pada ER Model.</dd></div></dl><p class="plain-note"><strong>Nama yang sama tidak otomatis salah.</strong> Dua mahasiswa boleh bernama Jenny selama masing-masing mempunyai identitas yang berbeda.</p></section><section id="domain" class="lesson-section numbered-section" data-section="03" data-section-title="DOMAIN DAN TIPE DATA"><h2>Nilai yang diperbolehkan untuk suatu atribut</h2><div class="definition-focus"><span>Domain</span><p>Himpunan nilai yang sah bagi suatu atribut, termasuk jenis nilai, format, rentang, dan aturan maknanya.</p></div><div class="interactive-illustration " aria-label="Ilustrasi interaktif: Domain beberapa atribut"><div class="illustration-toolbar" role="toolbar" aria-label="Alat untuk Domain beberapa atribut"><div class="zoom-tools" aria-label="Pengaturan ukuran"><button data-action="zoom-out" type="button" title="Perkecil ilustrasi"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-zoom-out" aria-hidden="true"><circle cx="11" cy="11" r="8"></circle><line x1="21" x2="16.65" y1="21" y2="16.65"></line><line x1="8" x2="14" y1="11" y2="11"></line></svg><span>Perkecil</span></button><button data-action="zoom-reset" class="zoom-value" type="button" title="Kembalikan ke ukuran 100%">100%</button><button data-action="zoom-in" type="button" title="Perbesar ilustrasi"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-zoom-in" aria-hidden="true"><circle cx="11" cy="11" r="8"></circle><line x1="21" x2="16.65" y1="21" y2="16.65"></line><line x1="11" x2="11" y1="8" y2="14"></line><line x1="8" x2="14" y1="11" y2="11"></line></svg><span>Perbesar</span></button></div><div class="drawing-tools" aria-label="Alat anotasi"><button data-action="pen" class="" type="button" aria-pressed="false" title="Aktifkan pena"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-pen-line" aria-hidden="true"><path d="M13 21h8"></path><path d="M21.174 6.812a1 1 0 0 0-3.986-3.987L3.842 16.174a2 2 0 0 0-.5.83l-1.321 4.352a.5.5 0 0 0 .623.622l4.353-1.32a2 2 0 0 0 .83-.497z"></path></svg><span>Pena</span></button><button data-action="eraser" class="" type="button" aria-pressed="false" disabled="" title="Pilih coretan yang akan dihapus"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-eraser" aria-hidden="true"><path d="M21 21H8a2 2 0 0 1-1.42-.587l-3.994-3.999a2 2 0 0 1 0-2.828l10-10a2 2 0 0 1 2.829 0l5.999 6a2 2 0 0 1 0 2.828L12.834 21"></path><path d="m5.082 11.09 8.828 8.828"></path></svg><span>Penghapus</span></button><button data-action="undo" type="button" disabled="" title="Batalkan coretan terakhir"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-rotate-ccw" aria-hidden="true"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"></path><path d="M3 3v5h5"></path></svg><span>Urungkan</span></button><button data-action="clear" type="button" disabled="" title="Hapus semua coretan"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-trash2 lucide-trash-2" aria-hidden="true"><path d="M10 11v6"></path><path d="M14 11v6"></path><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6"></path><path d="M3 6h18"></path><path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg><span>Bersihkan</span></button></div></div><div class="illustration-viewport"><div class="illustration-stage"><div class="illustration-zoom-layer" style="zoom:1"><div class="illustration-content"><figure class="lesson-table "><figcaption>Domain beberapa atribut</figcaption><div class="table-wrap"><table><thead><tr><th>Atribut</th><th>Tipe data yang sesuai</th><th>Contoh sah</th><th>Contoh tidak sah</th></tr></thead><tbody><tr><td class="">NIM</td><td class="">Teks/karakter</td><td class="">021001</td><td class="">Nilai kosong atau NIM ganda</td></tr><tr><td class="">Nama</td><td class="">Teks</td><td class="">Ni Putu Praja Chintya</td><td class="">Angka tanpa makna sebagai nama</td></tr><tr><td class="">Tanggal Lahir</td><td class="">Tanggal</td><td class="">2005-07-14</td><td class="">31 Februari 2025</td></tr><tr><td class="">Nilai</td><td class="">Numerik</td><td class="">87.5</td><td class="">105 jika rentangnya 0–100</td></tr><tr><td class="">Kode Pos</td><td class="">Teks/karakter</td><td class="">00120</td><td class="">Numerik jika nol awal harus dipertahankan</td></tr></tbody></table></div></figure></div><svg class="drawing-layer " viewBox="0 0 1 1" preserveAspectRatio="none" aria-label="Lapisan untuk membuat anotasi"></svg></div></div></div></div><p>Data yang tersusun dari angka belum tentu bertipe numerik. NIM, nomor telepon, dan kode pos biasanya tidak dihitung sehingga lebih tepat disimpan sebagai teks. Angkatan dapat disimpan sebagai bilangan bulat jika digunakan untuk perbandingan atau perhitungan tahun.</p><div class="comparison-grid two"><article><span>Numerik</span><b>Memiliki makna kuantitatif</b><p>Jumlah SKS, nilai, luas, dan jumlah alat dapat dihitung.</p></article><article><span>Teks berisi digit</span><b>Berfungsi sebagai label</b><p>NIM, kode alat, dan nomor telepon tidak dijumlahkan.</p></article></div></section><section id="null" class="lesson-section numbered-section" data-section="04" data-section-title="NULL"><h2>NULL bukan nol dan bukan teks kosong</h2><div class="null-definition"><b>NULL</b><p>Penanda bahwa suatu nilai tidak tersedia. Penyebabnya dapat berbeda: belum diketahui, belum terjadi, tidak berlaku, atau tidak dicatat.</p></div><div class="null-cases"><article><span>1</span><b>Belum diketahui</b><p>Nomor telepon belum diberikan.</p><small>Nilainya mungkin ada, tetapi sistem belum mengetahuinya.</small></article><article><span>2</span><b>Belum terjadi</b><p>Tanggal lulus mahasiswa aktif.</p><small>Nilainya baru tersedia setelah mahasiswa lulus.</small></article><article><span>3</span><b>Tidak berlaku</b><p>Nomor apartemen untuk rumah tanpa unit.</p><small>Atribut tersebut tidak relevan bagi baris itu.</small></article></div><div class="interactive-illustration " aria-label="Ilustrasi interaktif: Perbedaan NULL, nol, dan teks kosong"><div class="illustration-toolbar" role="toolbar" aria-label="Alat untuk Perbedaan NULL, nol, dan teks kosong"><div class="zoom-tools" aria-label="Pengaturan ukuran"><button data-action="zoom-out" type="button" title="Perkecil ilustrasi"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-zoom-out" aria-hidden="true"><circle cx="11" cy="11" r="8"></circle><line x1="21" x2="16.65" y1="21" y2="16.65"></line><line x1="8" x2="14" y1="11" y2="11"></line></svg><span>Perkecil</span></button><button data-action="zoom-reset" class="zoom-value" type="button" title="Kembalikan ke ukuran 100%">100%</button><button data-action="zoom-in" type="button" title="Perbesar ilustrasi"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-zoom-in" aria-hidden="true"><circle cx="11" cy="11" r="8"></circle><line x1="21" x2="16.65" y1="21" y2="16.65"></line><line x1="11" x2="11" y1="8" y2="14"></line><line x1="8" x2="14" y1="11" y2="11"></line></svg><span>Perbesar</span></button></div><div class="drawing-tools" aria-label="Alat anotasi"><button data-action="pen" class="" type="button" aria-pressed="false" title="Aktifkan pena"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-pen-line" aria-hidden="true"><path d="M13 21h8"></path><path d="M21.174 6.812a1 1 0 0 0-3.986-3.987L3.842 16.174a2 2 0 0 0-.5.83l-1.321 4.352a.5.5 0 0 0 .623.622l4.353-1.32a2 2 0 0 0 .83-.497z"></path></svg><span>Pena</span></button><button data-action="eraser" class="" type="button" aria-pressed="false" disabled="" title="Pilih coretan yang akan dihapus"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-eraser" aria-hidden="true"><path d="M21 21H8a2 2 0 0 1-1.42-.587l-3.994-3.999a2 2 0 0 1 0-2.828l10-10a2 2 0 0 1 2.829 0l5.999 6a2 2 0 0 1 0 2.828L12.834 21"></path><path d="m5.082 11.09 8.828 8.828"></path></svg><span>Penghapus</span></button><button data-action="undo" type="button" disabled="" title="Batalkan coretan terakhir"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-rotate-ccw" aria-hidden="true"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"></path><path d="M3 3v5h5"></path></svg><span>Urungkan</span></button><button data-action="clear" type="button" disabled="" title="Hapus semua coretan"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-trash2 lucide-trash-2" aria-hidden="true"><path d="M10 11v6"></path><path d="M14 11v6"></path><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6"></path><path d="M3 6h18"></path><path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg><span>Bersihkan</span></button></div></div><div class="illustration-viewport"><div class="illustration-stage"><div class="illustration-zoom-layer" style="zoom:1"><div class="illustration-content"><figure class="lesson-table "><figcaption>Perbedaan NULL, nol, dan teks kosong</figcaption><div class="table-wrap"><table><thead><tr><th>Nilai</th><th>Makna</th><th>Contoh</th></tr></thead><tbody><tr><td class="cell-null">NULL</td><td class="">Nilai tidak tersedia</td><td class="">Tanggal lulus mahasiswa aktif</td></tr><tr><td class="">0</td><td class="">Nilai numerik yang diketahui</td><td class="">Jumlah denda memang nol rupiah</td></tr><tr><td class="">Teks kosong (panjang 0)</td><td class="">Nilai teks ada tetapi tidak berisi karakter</td><td class="">Nama panggilan disimpan sebagai &quot;&quot;; biasanya perlu diperiksa apakah memang dibutuhkan</td></tr><tr><td class="">Spasi</td><td class="">Teks yang berisi karakter spasi</td><td class="">Bukan NULL dan bukan teks kosong</td></tr></tbody></table></div></figure></div><svg class="drawing-layer " viewBox="0 0 1 1" preserveAspectRatio="none" aria-label="Lapisan untuk membuat anotasi"></svg></div></div></div></div><p class="plain-note"><strong>Teks kosong</strong> berarti tipe datanya teks dan isinya memiliki nol karakter. NULL tidak mempunyai nilai untuk dibandingkan, sedangkan teks kosong adalah sebuah nilai teks.</p></section><section id="key" class="lesson-section numbered-section" data-section="05" data-section-title="JENIS KEY"><h2>Key membedakan dan menghubungkan data</h2><p class="section-intro">Pemilihan key tidak hanya berdasarkan contoh isi saat ini. Key harus tetap memenuhi aturan untuk seluruh data yang mungkin disimpan.</p><dl class="key-list"><article><span>Superkey</span><p>Satu atau beberapa atribut yang dapat membedakan baris, tetapi mungkin masih mengandung atribut yang tidak diperlukan. Contoh: NIM + Nama.</p></article><article><span>Candidate key</span><p>Superkey yang minimal. Jika satu atribut dilepas, key tidak lagi menjamin keunikan. Contoh: NIM.</p></article><article><span>Primary key</span><p>Candidate key yang dipilih sebagai identitas utama tabel. Nilainya unik dan tidak boleh NULL.</p></article><article><span>Alternate key</span><p>Candidate key yang tidak dipilih menjadi primary key. Contoh: Email Institusi jika dijamin unik.</p></article><article><span>Composite key</span><p>Key yang terdiri atas lebih dari satu atribut. Contoh pada KRS: NIM + Kode MK.</p></article><article><span>Surrogate key</span><p>Identitas buatan sistem yang tidak mempunyai makna bisnis langsung, misalnya ID_Peminjaman.</p></article></dl><h3>Uji candidate key</h3><div class="key-test"><article class="passes"><span>Unik</span><p>Setiap nilai key menunjuk paling banyak satu baris.</p><em>Wajib</em></article><article class="passes"><span>Minimal</span><p>Tidak ada bagian key yang dapat dihapus dan tetap unik.</p><em>Wajib</em></article><article><span>Stabil</span><p>Sebaiknya jarang berubah dan tidak mudah kehilangan makna.</p><em>Pertimbangan desain</em></article></div><div class="interactive-illustration " aria-label="Ilustrasi interaktif: Mengapa KRS memerlukan composite key?"><div class="illustration-toolbar" role="toolbar" aria-label="Alat untuk Mengapa KRS memerlukan composite key?"><div class="zoom-tools" aria-label="Pengaturan ukuran"><button data-action="zoom-out" type="button" title="Perkecil ilustrasi"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-zoom-out" aria-hidden="true"><circle cx="11" cy="11" r="8"></circle><line x1="21" x2="16.65" y1="21" y2="16.65"></line><line x1="8" x2="14" y1="11" y2="11"></line></svg><span>Perkecil</span></button><button data-action="zoom-reset" class="zoom-value" type="button" title="Kembalikan ke ukuran 100%">100%</button><button data-action="zoom-in" type="button" title="Perbesar ilustrasi"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-zoom-in" aria-hidden="true"><circle cx="11" cy="11" r="8"></circle><line x1="21" x2="16.65" y1="21" y2="16.65"></line><line x1="11" x2="11" y1="8" y2="14"></line><line x1="8" x2="14" y1="11" y2="11"></line></svg><span>Perbesar</span></button></div><div class="drawing-tools" aria-label="Alat anotasi"><button data-action="pen" class="" type="button" aria-pressed="false" title="Aktifkan pena"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-pen-line" aria-hidden="true"><path d="M13 21h8"></path><path d="M21.174 6.812a1 1 0 0 0-3.986-3.987L3.842 16.174a2 2 0 0 0-.5.83l-1.321 4.352a.5.5 0 0 0 .623.622l4.353-1.32a2 2 0 0 0 .83-.497z"></path></svg><span>Pena</span></button><button data-action="eraser" class="" type="button" aria-pressed="false" disabled="" title="Pilih coretan yang akan dihapus"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-eraser" aria-hidden="true"><path d="M21 21H8a2 2 0 0 1-1.42-.587l-3.994-3.999a2 2 0 0 1 0-2.828l10-10a2 2 0 0 1 2.829 0l5.999 6a2 2 0 0 1 0 2.828L12.834 21"></path><path d="m5.082 11.09 8.828 8.828"></path></svg><span>Penghapus</span></button><button data-action="undo" type="button" disabled="" title="Batalkan coretan terakhir"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-rotate-ccw" aria-hidden="true"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"></path><path d="M3 3v5h5"></path></svg><span>Urungkan</span></button><button data-action="clear" type="button" disabled="" title="Hapus semua coretan"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-trash2 lucide-trash-2" aria-hidden="true"><path d="M10 11v6"></path><path d="M14 11v6"></path><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6"></path><path d="M3 6h18"></path><path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg><span>Bersihkan</span></button></div></div><div class="illustration-viewport"><div class="illustration-stage"><div class="illustration-zoom-layer" style="zoom:1"><div class="illustration-content"><figure class="lesson-table "><figcaption>Mengapa KRS memerlukan composite key?</figcaption><div class="table-wrap"><table><thead><tr><th>NIM</th><th>Kode MK</th><th>Nilai</th></tr></thead><tbody><tr><td class="cell-key">21001</td><td class="cell-key-alt">9001</td><td class="">90</td></tr><tr><td class="cell-key">21001</td><td class="cell-key-alt">9002</td><td class="">75</td></tr><tr><td class="cell-key">21102</td><td class="cell-key-alt">9001</td><td class="">82</td></tr></tbody></table></div></figure></div><svg class="drawing-layer " viewBox="0 0 1 1" preserveAspectRatio="none" aria-label="Lapisan untuk membuat anotasi"></svg></div></div></div></div><p>NIM saja berulang karena mahasiswa mengambil banyak mata kuliah. Kode MK saja juga berulang karena satu mata kuliah diambil banyak mahasiswa. Pasangan NIM dan Kode MK membedakan setiap pengambilan.</p></section><section id="foreign-key" class="lesson-section numbered-section" data-section="06" data-section-title="FOREIGN KEY"><h2>Menghubungkan tabel melalui identitas</h2><div class="definition-focus"><span>Foreign key</span><p>Atribut pada suatu tabel yang nilainya merujuk pada candidate key—umumnya primary key—di tabel lain atau tabel yang sama.</p></div><div class="interactive-illustration " aria-label="Ilustrasi interaktif: Hubungan MAHASISWA dan KRS"><div class="illustration-toolbar" role="toolbar" aria-label="Alat untuk Hubungan MAHASISWA dan KRS"><div class="zoom-tools" aria-label="Pengaturan ukuran"><button data-action="zoom-out" type="button" title="Perkecil ilustrasi"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-zoom-out" aria-hidden="true"><circle cx="11" cy="11" r="8"></circle><line x1="21" x2="16.65" y1="21" y2="16.65"></line><line x1="8" x2="14" y1="11" y2="11"></line></svg><span>Perkecil</span></button><button data-action="zoom-reset" class="zoom-value" type="button" title="Kembalikan ke ukuran 100%">100%</button><button data-action="zoom-in" type="button" title="Perbesar ilustrasi"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-zoom-in" aria-hidden="true"><circle cx="11" cy="11" r="8"></circle><line x1="21" x2="16.65" y1="21" y2="16.65"></line><line x1="11" x2="11" y1="8" y2="14"></line><line x1="8" x2="14" y1="11" y2="11"></line></svg><span>Perbesar</span></button></div><div class="drawing-tools" aria-label="Alat anotasi"><button data-action="pen" class="" type="button" aria-pressed="false" title="Aktifkan pena"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-pen-line" aria-hidden="true"><path d="M13 21h8"></path><path d="M21.174 6.812a1 1 0 0 0-3.986-3.987L3.842 16.174a2 2 0 0 0-.5.83l-1.321 4.352a.5.5 0 0 0 .623.622l4.353-1.32a2 2 0 0 0 .83-.497z"></path></svg><span>Pena</span></button><button data-action="eraser" class="" type="button" aria-pressed="false" disabled="" title="Pilih coretan yang akan dihapus"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-eraser" aria-hidden="true"><path d="M21 21H8a2 2 0 0 1-1.42-.587l-3.994-3.999a2 2 0 0 1 0-2.828l10-10a2 2 0 0 1 2.829 0l5.999 6a2 2 0 0 1 0 2.828L12.834 21"></path><path d="m5.082 11.09 8.828 8.828"></path></svg><span>Penghapus</span></button><button data-action="undo" type="button" disabled="" title="Batalkan coretan terakhir"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-rotate-ccw" aria-hidden="true"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"></path><path d="M3 3v5h5"></path></svg><span>Urungkan</span></button><button data-action="clear" type="button" disabled="" title="Hapus semua coretan"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-trash2 lucide-trash-2" aria-hidden="true"><path d="M10 11v6"></path><path d="M14 11v6"></path><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6"></path><path d="M3 6h18"></path><path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg><span>Bersihkan</span></button></div></div><div class="illustration-viewport"><div class="illustration-stage"><div class="illustration-zoom-layer" style="zoom:1"><div class="illustration-content"><div class="foreign-key-example"><figure class="lesson-table compact-table"><figcaption>MAHASISWA</figcaption><div class="table-wrap"><table><thead><tr><th>NIM (PK)</th><th>Nama</th></tr></thead><tbody><tr><td class="">21001</td><td class="">Jenny</td></tr><tr><td class="">21102</td><td class="">Willy</td></tr></tbody></table></div></figure><span>NIM pada KRS merujuk ke NIM pada MAHASISWA →</span><figure class="lesson-table compact-table"><figcaption>KRS</figcaption><div class="table-wrap"><table><thead><tr><th>NIM (PK, FK)</th><th>Kode MK (PK, FK)</th><th>Nilai</th></tr></thead><tbody><tr><td class="">21001</td><td class="">9001</td><td class="">90</td></tr><tr><td class="">21001</td><td class="">9002</td><td class="">75</td></tr></tbody></table></div></figure></div></div><svg class="drawing-layer " viewBox="0 0 1 1" preserveAspectRatio="none" aria-label="Lapisan untuk membuat anotasi"></svg></div></div></div></div><div class="comparison-grid two"><article><span>Primary key</span><b>Mengidentifikasi baris pada tabelnya</b><p>NIM membedakan mahasiswa dalam MAHASISWA.</p></article><article><span>Foreign key</span><b>Merujuk identitas dari tabel lain</b><p>NIM pada KRS menunjukkan mahasiswa pemilik pengambilan.</p></article></div><p>Satu atribut dapat sekaligus menjadi bagian dari primary key dan foreign key. Pada KRS, NIM dan Kode MK membentuk primary key gabungan sekaligus merujuk ke tabel induknya.</p></section><section id="integritas" class="lesson-section numbered-section" data-section="07" data-section-title="INTEGRITAS REFERENSIAL"><h2>Referensi harus menunjuk data yang sah</h2><p class="section-intro">Integritas referensial mencegah baris anak merujuk pada baris induk yang tidak ada.</p><div class="interactive-illustration " aria-label="Ilustrasi interaktif: Uji operasi pada MAHASISWA dan KRS"><div class="illustration-toolbar" role="toolbar" aria-label="Alat untuk Uji operasi pada MAHASISWA dan KRS"><div class="zoom-tools" aria-label="Pengaturan ukuran"><button data-action="zoom-out" type="button" title="Perkecil ilustrasi"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-zoom-out" aria-hidden="true"><circle cx="11" cy="11" r="8"></circle><line x1="21" x2="16.65" y1="21" y2="16.65"></line><line x1="8" x2="14" y1="11" y2="11"></line></svg><span>Perkecil</span></button><button data-action="zoom-reset" class="zoom-value" type="button" title="Kembalikan ke ukuran 100%">100%</button><button data-action="zoom-in" type="button" title="Perbesar ilustrasi"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-zoom-in" aria-hidden="true"><circle cx="11" cy="11" r="8"></circle><line x1="21" x2="16.65" y1="21" y2="16.65"></line><line x1="11" x2="11" y1="8" y2="14"></line><line x1="8" x2="14" y1="11" y2="11"></line></svg><span>Perbesar</span></button></div><div class="drawing-tools" aria-label="Alat anotasi"><button data-action="pen" class="" type="button" aria-pressed="false" title="Aktifkan pena"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-pen-line" aria-hidden="true"><path d="M13 21h8"></path><path d="M21.174 6.812a1 1 0 0 0-3.986-3.987L3.842 16.174a2 2 0 0 0-.5.83l-1.321 4.352a.5.5 0 0 0 .623.622l4.353-1.32a2 2 0 0 0 .83-.497z"></path></svg><span>Pena</span></button><button data-action="eraser" class="" type="button" aria-pressed="false" disabled="" title="Pilih coretan yang akan dihapus"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-eraser" aria-hidden="true"><path d="M21 21H8a2 2 0 0 1-1.42-.587l-3.994-3.999a2 2 0 0 1 0-2.828l10-10a2 2 0 0 1 2.829 0l5.999 6a2 2 0 0 1 0 2.828L12.834 21"></path><path d="m5.082 11.09 8.828 8.828"></path></svg><span>Penghapus</span></button><button data-action="undo" type="button" disabled="" title="Batalkan coretan terakhir"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-rotate-ccw" aria-hidden="true"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"></path><path d="M3 3v5h5"></path></svg><span>Urungkan</span></button><button data-action="clear" type="button" disabled="" title="Hapus semua coretan"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-trash2 lucide-trash-2" aria-hidden="true"><path d="M10 11v6"></path><path d="M14 11v6"></path><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6"></path><path d="M3 6h18"></path><path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg><span>Bersihkan</span></button></div></div><div class="illustration-viewport"><div class="illustration-stage"><div class="illustration-zoom-layer" style="zoom:1"><div class="illustration-content"><figure class="lesson-table "><figcaption>Uji operasi pada MAHASISWA dan KRS</figcaption><div class="table-wrap"><table><thead><tr><th>Operasi</th><th>Masalah</th><th>Tindakan yang wajar</th></tr></thead><tbody><tr><td class="">Menambah KRS untuk NIM 29999</td><td class="">Mahasiswa 29999 tidak ada</td><td class="">Tolak sampai mahasiswa terdaftar</td></tr><tr><td class="">Menghapus mahasiswa yang masih mempunyai KRS</td><td class="">KRS menjadi tanpa pemilik</td><td class="">Tolak, hapus terkontrol, atau gunakan kebijakan yang ditentukan</td></tr><tr><td class="">Mengubah NIM primary key</td><td class="">Referensi KRS dapat terputus</td><td class="">Batasi perubahan atau propagasikan secara terkendali</td></tr></tbody></table></div></figure></div><svg class="drawing-layer " viewBox="0 0 1 1" preserveAspectRatio="none" aria-label="Lapisan untuk membuat anotasi"></svg></div></div></div></div><dl class="integrity-list"><div><dt>RESTRICT/NO ACTION</dt><dd>Menolak perubahan jika masih terdapat baris yang merujuk.</dd></div><div><dt>CASCADE</dt><dd>Meneruskan perubahan atau penghapusan ke baris yang merujuk. Harus digunakan dengan hati-hati.</dd></div><div><dt>SET NULL</dt><dd>Mengosongkan foreign key jika hubungan boleh tidak tersedia dan kolom mengizinkan NULL.</dd></div></dl></section><section id="kasus" class="lesson-section numbered-section" data-section="08" data-section-title="KASUS AKADEMIK"><h2>Menentukan key secara bertahap</h2><div class="interactive-illustration " aria-label="Ilustrasi interaktif: Skema awal"><div class="illustration-toolbar" role="toolbar" aria-label="Alat untuk Skema awal"><div class="zoom-tools" aria-label="Pengaturan ukuran"><button data-action="zoom-out" type="button" title="Perkecil ilustrasi"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-zoom-out" aria-hidden="true"><circle cx="11" cy="11" r="8"></circle><line x1="21" x2="16.65" y1="21" y2="16.65"></line><line x1="8" x2="14" y1="11" y2="11"></line></svg><span>Perkecil</span></button><button data-action="zoom-reset" class="zoom-value" type="button" title="Kembalikan ke ukuran 100%">100%</button><button data-action="zoom-in" type="button" title="Perbesar ilustrasi"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-zoom-in" aria-hidden="true"><circle cx="11" cy="11" r="8"></circle><line x1="21" x2="16.65" y1="21" y2="16.65"></line><line x1="11" x2="11" y1="8" y2="14"></line><line x1="8" x2="14" y1="11" y2="11"></line></svg><span>Perbesar</span></button></div><div class="drawing-tools" aria-label="Alat anotasi"><button data-action="pen" class="" type="button" aria-pressed="false" title="Aktifkan pena"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-pen-line" aria-hidden="true"><path d="M13 21h8"></path><path d="M21.174 6.812a1 1 0 0 0-3.986-3.987L3.842 16.174a2 2 0 0 0-.5.83l-1.321 4.352a.5.5 0 0 0 .623.622l4.353-1.32a2 2 0 0 0 .83-.497z"></path></svg><span>Pena</span></button><button data-action="eraser" class="" type="button" aria-pressed="false" disabled="" title="Pilih coretan yang akan dihapus"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-eraser" aria-hidden="true"><path d="M21 21H8a2 2 0 0 1-1.42-.587l-3.994-3.999a2 2 0 0 1 0-2.828l10-10a2 2 0 0 1 2.829 0l5.999 6a2 2 0 0 1 0 2.828L12.834 21"></path><path d="m5.082 11.09 8.828 8.828"></path></svg><span>Penghapus</span></button><button data-action="undo" type="button" disabled="" title="Batalkan coretan terakhir"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-rotate-ccw" aria-hidden="true"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"></path><path d="M3 3v5h5"></path></svg><span>Urungkan</span></button><button data-action="clear" type="button" disabled="" title="Hapus semua coretan"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-trash2 lucide-trash-2" aria-hidden="true"><path d="M10 11v6"></path><path d="M14 11v6"></path><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6"></path><path d="M3 6h18"></path><path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg><span>Bersihkan</span></button></div></div><div class="illustration-viewport"><div class="illustration-stage"><div class="illustration-zoom-layer" style="zoom:1"><div class="illustration-content"><figure class="lesson-table "><figcaption>Skema awal</figcaption><div class="table-wrap"><table><thead><tr><th>Tabel</th><th>Atribut</th></tr></thead><tbody><tr><td class="">MAHASISWA</td><td class="">NIM, Email Institusi, Nama, Program Studi</td></tr><tr><td class="">MATA_KULIAH</td><td class="">Kode MK, Nama MK, SKS</td></tr><tr><td class="">KRS</td><td class="">NIM, Kode MK, Semester, Nilai</td></tr></tbody></table></div></figure></div><svg class="drawing-layer " viewBox="0 0 1 1" preserveAspectRatio="none" aria-label="Lapisan untuk membuat anotasi"></svg></div></div></div></div><ol class="analysis-steps"><li><b>Cari atribut yang selalu unik.</b><span>NIM dan Email Institusi dapat menjadi candidate key MAHASISWA jika keduanya dijamin unik.</span></li><li><b>Pilih primary key.</b><span>NIM dipilih; Email Institusi menjadi alternate key.</span></li><li><b>Periksa tingkat rincian KRS.</b><span>Jika mata kuliah dapat diulang pada semester berbeda, NIM + Kode MK saja tidak cukup.</span></li><li><b>Susun composite key yang tepat.</b><span>NIM + Kode MK + Semester membedakan setiap pengambilan.</span></li><li><b>Tentukan foreign key.</b><span>NIM merujuk MAHASISWA dan Kode MK merujuk MATA_KULIAH.</span></li></ol><p class="plain-note"><strong>Konteks mengubah key.</strong> Jika mata kuliah tidak boleh diulang, pasangan NIM + Kode MK cukup. Jika boleh diulang, atribut pembeda periode harus ikut dipertimbangkan.</p></section><section id="latihan" class="lesson-section numbered-section" data-section="09" data-section-title="LATIHAN"><h2>Latihan menentukan key</h2><ol class="exercise-list"><li><b>BUKU</b><span>Atribut: ISBN, Judul, Tahun, Penerbit. Tentukan candidate key dan primary key.</span></li><li><b>EKSEMPLAR</b><span>Atribut: ISBN, Nomor Eksemplar, Kondisi. Apakah ISBN saja cukup?</span></li><li><b>PEMINJAMAN</b><span>Atribut: Kode Pinjam, NIM, Tanggal Pinjam. Tentukan PK dan FK.</span></li><li><b>DETAIL_PEMINJAMAN</b><span>Atribut: Kode Pinjam, ISBN, Nomor Eksemplar. Susun composite key yang tepat.</span></li><li><b>Referential integrity</b><span>Apa yang harus terjadi jika buku yang masih dipinjam hendak dihapus?</span></li></ol></section><section id="ringkasan" class="lesson-section numbered-section" data-section="10" data-section-title="RINGKASAN"><h2>Inti Pertemuan 3</h2><div class="summary-stack"><p><b>Atribut dan domain</b><span>Menjelaskan jenis nilai yang disimpan dan diperbolehkan.</span></p><p><b>Candidate key</b><span>Identitas yang unik dan minimal.</span></p><p><b>Primary key</b><span>Candidate key yang dipilih sebagai identitas utama.</span></p><p><b>Foreign key</b><span>Referensi untuk menjaga hubungan antartabel.</span></p><p><b>Integritas referensial</b><span>Memastikan setiap referensi menunjuk data yang sah.</span></p></div></section></main><aside class="toc" aria-label="Pada halaman ini"><strong>Pada halaman ini</strong><a href="#tujuan">1. Tujuan pembelajaran</a><a href="#relasi">2. Relasi dan tabel</a><a href="#struktur">3. Struktur tabel</a><a href="#domain">4. Domain dan tipe data</a><a href="#null">5. NULL</a><a href="#key">6. Jenis key</a><a href="#foreign-key">7. Foreign key</a><a href="#integritas">8. Integritas referensial</a><a href="#kasus">9. Kasus akademik</a><a href="#latihan">10. Latihan</a><a href="#ringkasan">11. Ringkasan</a></aside></div>
+<div class="page-annotation-toolbar" role="toolbar" aria-label="Alat anotasi halaman">
+  <button type="button" data-page-action="pen" aria-pressed="false" title="Aktifkan pena untuk mencoret halaman"><span>Pena</span></button>
+  <button type="button" data-page-action="eraser" aria-pressed="false" disabled title="Pilih coretan yang akan dihapus"><span>Hapus</span></button>
+  <button type="button" data-page-action="undo" disabled title="Batalkan coretan terakhir"><span>Urungkan</span></button>
+  <button type="button" data-page-action="clear" disabled title="Bersihkan semua coretan pada halaman"><span>Bersihkan</span></button>
+  <button type="button" class="finish-annotation" data-page-action="finish" hidden title="Selesai mencoret dan kembali menggunakan halaman"><span>Selesai</span></button>
+</div>
+<svg class="page-annotation-layer" width="1" height="1" viewBox="0 0 1 1" preserveAspectRatio="none" aria-label="Lapisan anotasi seluruh halaman"></svg>
+<output class="page-annotation-status" hidden></output><script>
 (() => {
   const NS = 'http://www.w3.org/2000/svg';
   document.querySelectorAll('.interactive-illustration').forEach((root) => {
@@ -3676,5 +4678,59 @@ footer {
     const finish = () => { drawing=false; currentPath=null; }; svg.addEventListener('pointerup',finish); svg.addEventListener('pointercancel',finish); svg.addEventListener('pointerleave',finish);
     new ResizeObserver(updateSize).observe(content); updateSize(); updateButtons();
   });
+
+  const pageToolbar = document.querySelector('.page-annotation-toolbar');
+  const pageLayer = document.querySelector('.page-annotation-layer');
+  const pageStatus = document.querySelector('.page-annotation-status');
+  if (pageToolbar && pageLayer && pageStatus) {
+    const pageButton = action => pageToolbar.querySelector('[data-page-action="' + action + '"]');
+    const pen = pageButton('pen'), eraser = pageButton('eraser'), undo = pageButton('undo');
+    const clear = pageButton('clear'), finishButton = pageButton('finish');
+    let tool = 'view', drawing = false, currentPath = null, strokeId = 0;
+    let pageWidth = 1, pageHeight = 1;
+    const paths = () => Array.from(pageLayer.querySelectorAll('g[data-page-stroke]'));
+    function updatePageSize() {
+      const root = document.documentElement, body = document.body;
+      pageWidth = Math.max(root.scrollWidth, root.clientWidth, body.scrollWidth, 1);
+      pageHeight = Math.max(root.scrollHeight, root.clientHeight, body.scrollHeight, 1);
+      pageLayer.style.width = pageWidth + 'px'; pageLayer.style.height = pageHeight + 'px';
+      pageLayer.setAttribute('viewBox', '0 0 ' + pageWidth + ' ' + pageHeight);
+    }
+    function updatePageButtons() {
+      const hasPaths = paths().length > 0;
+      eraser.disabled = !hasPaths; undo.disabled = !hasPaths; clear.disabled = !hasPaths;
+      pen.classList.toggle('active', tool === 'pen'); eraser.classList.toggle('active', tool === 'eraser');
+      pen.setAttribute('aria-pressed', String(tool === 'pen')); eraser.setAttribute('aria-pressed', String(tool === 'eraser'));
+      pageLayer.classList.toggle('is-active', tool !== 'view');
+      finishButton.hidden = tool === 'view'; pageStatus.hidden = tool === 'view';
+      pageStatus.textContent = tool === 'pen'
+        ? 'Pena aktif. Tekan Selesai atau Esc untuk kembali menggulir halaman.'
+        : 'Penghapus aktif. Pilih coretan yang ingin dihapus.';
+    }
+    function setPageTool(next) { tool = tool === next ? 'view' : next; updatePageButtons(); }
+    function pagePoint(event) { return { x:event.clientX + window.scrollX, y:event.clientY + window.scrollY }; }
+    function makePageStroke(first) {
+      const group = document.createElementNS(NS, 'g'); group.dataset.pageStroke = String(++strokeId);
+      const visible = document.createElementNS(NS, 'path'); visible.setAttribute('class', 'page-annotation-stroke');
+      const target = document.createElementNS(NS, 'path'); target.setAttribute('class', 'page-annotation-eraser-target');
+      group.append(visible, target); const start = 'M ' + first.x.toFixed(1) + ' ' + first.y.toFixed(1);
+      visible.setAttribute('d', start); target.setAttribute('d', start); pageLayer.appendChild(group); return visible;
+    }
+    pen.addEventListener('click', () => setPageTool('pen'));
+    eraser.addEventListener('click', () => setPageTool('eraser'));
+    undo.addEventListener('click', () => { paths().at(-1)?.remove(); if (!paths().length) tool = 'view'; updatePageButtons(); });
+    clear.addEventListener('click', () => { paths().forEach(path => path.remove()); tool = 'view'; updatePageButtons(); });
+    finishButton.addEventListener('click', () => { tool = 'view'; updatePageButtons(); });
+    pageLayer.addEventListener('pointerdown', event => {
+      if (tool === 'eraser') { const group = event.target.closest?.('g[data-page-stroke]'); if (group) group.remove(); if (!paths().length) tool='view'; updatePageButtons(); return; }
+      if (tool !== 'pen') return; event.preventDefault(); pageLayer.setPointerCapture(event.pointerId); drawing = true; currentPath = makePageStroke(pagePoint(event)); updatePageButtons();
+    });
+    pageLayer.addEventListener('pointermove', event => { if (!drawing || !currentPath) return; event.preventDefault(); const next=pagePoint(event); const d=currentPath.getAttribute('d')+' L '+next.x.toFixed(1)+' '+next.y.toFixed(1); currentPath.setAttribute('d',d); currentPath.nextElementSibling?.setAttribute('d',d); });
+    const finishStroke = () => { drawing=false; currentPath=null; };
+    pageLayer.addEventListener('pointerup',finishStroke); pageLayer.addEventListener('pointercancel',finishStroke); pageLayer.addEventListener('pointerleave',finishStroke);
+    window.addEventListener('keydown', event => { if (event.key === 'Escape') { tool='view'; updatePageButtons(); } });
+    window.addEventListener('resize', updatePageSize); new ResizeObserver(updatePageSize).observe(document.body);
+    updatePageSize(); updatePageButtons();
+  }
 })();
 </script></body></html>
